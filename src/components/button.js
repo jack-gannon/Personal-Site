@@ -6,6 +6,7 @@ const Button = props => (
 )
 
 const ButtonWrapper = styled.button`
+  font-family: "Helvetica Neue", sans-serif;
   display: block;
   border: none;
   text-align: center;

@@ -1,0 +1,100 @@
+import React from "react"
+import { StaticQuery, graphql } from "gatsby"
+import Image from "gatsby-image"
+import styled from "styled-components"
+import { colors } from "../utils/colors"
+import { rhythm, scale } from "../utils/typography"
+
+const BlogHeader = ({ title, date, author }) => {
+  return (
+    <StaticQuery
+      query={subheaderQuery}
+      render={data => {
+        return (
+          <div>
+            <Title>{title}</Title>
+            <Divider />
+            <BlogSubheader>
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                alt={author}
+                style={{
+                  marginRight: rhythm(1 / 4),
+                  marginBottom: 0,
+                  minWidth: 48,
+                  borderRadius: `100%`,
+                }}
+                imgStyle={{
+                  borderRadius: `50%`,
+                }}
+              />
+              <div>
+                <FieldLabel>By: </FieldLabel>
+                <AuthorName>{author}</AuthorName>
+                <Date>{date}</Date>
+              </div>
+            </BlogSubheader>
+          </div>
+        )
+      }}
+    ></StaticQuery>
+  )
+}
+
+const Title = styled.h1`
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  color: ${colors.gray70};
+`
+
+const Divider = styled.hr`
+  margin-bottom: 1rem;
+  background: none;
+  border-bottom: 3px dotted ${colors.gray20};
+`
+
+const BlogSubheader = styled.div`
+  display: flex;
+  font-family: monospace;
+`
+
+const AuthorName = styled.span`
+  font-weight: 800;
+  font-size: 0.875rem;
+  line-height: 0.75rem;
+  color: ${colors.gray70};
+`
+
+const FieldLabel = styled.span`
+  font-size: 0.875rem;
+  line-height: 2rem;
+  color: ${colors.gray60};
+`
+
+const Date = styled.p`
+  font-size: 0.75rem;
+  line-height: 0.5rem;
+  color: ${colors.gray60};
+`
+
+const subheaderQuery = graphql`
+  query subheaderQuery {
+    avatar: file(absolutePath: { regex: "/avatar-pic.jpg/" }) {
+      childImageSharp {
+        fixed(width: 50, height: 50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        author
+        social {
+          twitter
+        }
+      }
+    }
+  }
+`
+
+export default BlogHeader

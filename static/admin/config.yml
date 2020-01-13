@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: jack-gannon/.io.git
+  repo: jack-gannon/Personal-Site.git
 
 media_folder: static/assets
 public_folder: assets

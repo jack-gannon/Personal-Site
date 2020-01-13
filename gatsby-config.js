@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Gatsby Starter Personal Blog`,
-    author: `Kyle Matthews`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Jack Gannon - Designer & Developer | UX Design • UI Design • Web Development`,
+    author: `Jack Gannon`,
+    description: `Jack Gannon is a Designer and Developer based out of Phoenix, Arizona. He specializes in User-Experience (UX) Design, User-Interface (UI) Design, and Web Development. His primary focus is on Front-End Development, working with HTML, CSS, JavaScript, and JavaScript frameworks such as React. This website shows his portfolio, blog, and more information.`,
+    siteUrl: `https://jackgannon.io`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `jackgannon_`,
     },
   },
   plugins: [

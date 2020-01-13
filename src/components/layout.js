@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import Navbar from "../components/Navbar"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -9,48 +10,53 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
+
     let header
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
+    if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
+        <Navbar color="dark" location={location}></Navbar>
+        // <h1
+        //   style={{
+        //     ...scale(1.5),
+        //     marginBottom: rhythm(1.5),
+        //     marginTop: 0,
+        //   }}
+        // >
+        //   <Link
+        //     style={{
+        //       boxShadow: `none`,
+        //       textDecoration: `none`,
+        //       color: `inherit`,
+        //     }}
+        //     to={location.pathname === blogPath ? `/blog/` : `/`}
+        //   >
+        //     {title}
+        //   </Link>
+        // </h1>
       )
+    } else if (location.pathname === blogPath) {
+      header = <Navbar color="white" location={location}></Navbar>
     } else {
       header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
+        <Navbar color="white" location={location}></Navbar>
+        // <h3
+        //   style={{
+        //     fontFamily: `Montserrat, sans-serif`,
+        //     marginTop: 0,
+        //   }}
+        // >
+        //   <Link
+        //     style={{
+        //       boxShadow: `none`,
+        //       textDecoration: `none`,
+        //       color: `inherit`,
+        //     }}
+        //     to={`/blog/`}
+        //   >
+        //     {title}
+        //   </Link>
+        // </h3>
       )
     }
     return (
@@ -59,18 +65,14 @@ class Layout extends React.Component {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(24),
+            maxWidth: rhythm(42),
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
           <header>{header}</header>
           <main>{children}</main>
         </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
+        <Footer>© {new Date().getFullYear()} Jack Gannon</Footer>
       </Wrapper>
     )
   }
@@ -82,7 +84,8 @@ const Wrapper = styled.div`
 
 const Footer = styled.footer`
   text-align: center;
-  margin: 24px;
+  margin: none;
+  background-color: #eaeaea;
 `
 
 export default Layout

@@ -6,22 +6,16 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Button from "../components/button"
-import styled from "styled-components"
 
-class Blog extends React.Component {
+class About extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
-    const PageTitle = styled.h3`
-      margin-top: 4rem;
-      font-size: 2.5rem;
-    `
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Blog" />
-        <PageTitle>Blog</PageTitle>
+        <SEO title="About" />
         <Bio />
         <div style={{ margin: "20px 0 40px" }}>
           {posts.map(({ node }) => {
@@ -58,7 +52,7 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog
+export default About
 
 export const pageQuery = graphql`
   query {

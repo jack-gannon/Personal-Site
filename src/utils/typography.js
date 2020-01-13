@@ -1,10 +1,14 @@
 import Typography from "typography"
 import Wordpress2016 from "typography-theme-wordpress-2016"
+import { colors } from "./colors"
 
 Wordpress2016.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
+    },
+    "h1, h2, h3": {
+      fontFamily: "'Helvetica Neue', sans-serif",
     },
   }
 }
