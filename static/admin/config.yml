@@ -4,6 +4,11 @@ backend:
 
 media_folder: static/assets
 public_folder: assets
+media_library:
+  {
+    name: cloudinary,
+    config: { cloud_name: dthoxmity, api_key: 144732167219663 },
+  }
 
 collections:
   - name: blog
@@ -14,7 +19,7 @@ collections:
       - { name: path, label: Path }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
-      - { name: author, label: Author }
+      - { name: author, label: Author, default: "Jack Gannon" }
       - { name: description, label: Description }
       - { name: thumbnail, label: Featured Image, widget: image }
       - { name: body, label: Body, widget: markdown }
@@ -28,5 +33,10 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: thumbnail, label: Featured Image, widget: image }
-      - { name: project-images, label: Project Images , widget: image, media_library: {{config: multiple: true}} }
+      - {
+          name: project-images,
+          label: Project Images,
+          widget: image,
+          media_library: { config: { multiple: true } },
+        }
       - { name: body, label: Body, widget: markdown }
