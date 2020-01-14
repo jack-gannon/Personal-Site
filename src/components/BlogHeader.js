@@ -34,6 +34,7 @@ const BlogHeader = ({ title, date, author }) => {
                 <Date>{date}</Date>
               </div>
             </BlogSubheader>
+            <Divider />
           </div>
         )
       }}
@@ -42,37 +43,37 @@ const BlogHeader = ({ title, date, author }) => {
 }
 
 const Title = styled.h1`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.75rem;
   color: ${colors.gray70};
 `
 
 const Divider = styled.hr`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background: none;
   border-bottom: 3px dotted ${colors.gray20};
 `
 
 const BlogSubheader = styled.div`
   display: flex;
+  align-items: flex-start;
   font-family: monospace;
 `
 
 const AuthorName = styled.span`
   font-weight: 800;
-  font-size: 0.875rem;
-  line-height: 0.75rem;
+  font-size: 1rem;
   color: ${colors.gray70};
 `
 
 const FieldLabel = styled.span`
   font-size: 0.875rem;
-  line-height: 2rem;
-  color: ${colors.gray60};
+  color: ${colors.gray70};
 `
 
 const Date = styled.p`
-  font-size: 0.75rem;
+  font-family: monospace;
+  font-size: 0.875rem;
   line-height: 0.5rem;
   color: ${colors.gray60};
 `

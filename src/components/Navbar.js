@@ -19,7 +19,7 @@ const Navbar = ({ color, location }) => {
     top: 0;
     z-index: 5;
     padding: ${rhythm(0.25)};
-    background-color: ${colors.gray20};
+    background-color: ${color === "dark" ? colors.gray70 : colors.gray20};
     height: 3rem;
   `
 
@@ -89,7 +89,11 @@ const Navbar = ({ color, location }) => {
     z-index: 6;
     height: 3rem;
     width: 3rem;
-    background-color: ${isExpanded ? colors.secondary : colors.gray30};
+    background-color: ${isExpanded
+      ? colors.secondary
+      : color === "dark"
+      ? colors.gray60
+      : colors.gray30};
     border: none;
   `
 

@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: jack-gannon/Personal-Site.git
+  repo: jack-gannon/Personal-Site
 
 media_folder: static/assets
 public_folder: assets
@@ -9,6 +9,18 @@ collections:
   - name: blog
     label: Blog
     folder: content/blog
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title }
+      - { name: author, label: Author }
+      - { name: description, label: Description }
+      - { name: thumbnail, label: Featured Image, widget: image }
+      - { name: body, label: Body, widget: markdown }
+  - name: portfolio
+    label: Portfolio
+    folder: content/portfolio
     create: true
     fields:
       - { name: path, label: Path }
