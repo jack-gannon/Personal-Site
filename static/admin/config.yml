@@ -27,4 +27,6 @@ collections:
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: description, label: Description }
+      - { name: thumbnail, label: Featured Image, widget: image }
+      - { name: project-images, label: Project Images , widget: image, media_library: config: multiple: true }
       - { name: body, label: Body, widget: markdown }
