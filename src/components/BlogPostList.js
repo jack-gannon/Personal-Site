@@ -5,10 +5,10 @@ import styled from "styled-components"
 
 import { rhythm } from "../utils/typography"
 
-function FeaturedPost() {
+function FeaturedPost({ sortDesc }) {
   return (
     <StaticQuery
-      query={featuredPostQuery}
+      query={sortDesc ? blogQueryDescending : blogQueryAsending}
       render={data => {
         const post = data.allMdx.edges[0].node
         const { title, date, description } = post.frontmatter
@@ -42,21 +42,25 @@ function FeaturedPost() {
   )
 }
 
-const featuredPostQuery = graphql`
-  query FeaturedPostQuery {
-    allMdx(limit: 1, sort: { order: DESC, fields: frontmatter___date }) {
+const blogQueryDescending = graphql`
+  query BlogAsc {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMdx(sort: { fields: [frontmatter___date], order: ASC }) {
       edges {
         node {
-          id
+          excerpt
           fields {
             slug
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
-            description
             title
+            description
           }
-          excerpt(pruneLength: 30)
         }
       }
     }

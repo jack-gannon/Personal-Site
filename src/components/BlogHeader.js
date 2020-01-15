@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { colors } from "../utils/colors"
 import { rhythm, scale } from "../utils/typography"
 
-const BlogHeader = ({ title, date, author }) => {
+const BlogHeader = ({ title, date, author, imageSrc }) => {
   return (
     <StaticQuery
       query={subheaderQuery}
@@ -78,11 +78,14 @@ const Date = styled.p`
   color: ${colors.gray60};
 `
 
+const MainImg = styled(Image)`
+  width: 100%;
+`
 const subheaderQuery = graphql`
   query subheaderQuery {
     avatar: file(absolutePath: { regex: "/avatar-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(height: 50) {
           ...GatsbyImageSharpFixed
         }
       }

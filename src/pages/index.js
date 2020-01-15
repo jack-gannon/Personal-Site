@@ -24,31 +24,25 @@ class IndexPage extends React.Component {
             alt="Gatsby Scene"
           />
           <hr />
-          <h1>
-            Hey people{" "}
-            <span role="img" aria-label="wave emoji">
-              👋
-            </span>
-          </h1>
+          <h1>Hey people </h1>
           <p>Welcome to your new Gatsby website. You are on your home page.</p>
           <p>
             This starter comes out of the box with styled components and
-            Gatsby's default starter blog running on Netlify CMS.
+            Gatsby's default starter blog running on Netlify CMS.This starter
+            comes out of the box with styled components and Gatsby's default
+            starter blog running on Netlify CMS.This starter comes out of the
+            box with styled components and Gatsby's default starter blog running
+            on Netlify CMS.
           </p>
-
-          <p>Now go build something great!</p>
-          <Link to="/blog/">
-            <Button marginTop="35px">Go to Blog</Button>
-          </Link>
-          <p>Welcome to your new Gatsby website. You are on your home page.</p>
           <p>
             This starter comes out of the box with styled components and
-            Gatsby's default starter blog running on Netlify CMS.
+            Gatsby's default starter blog running on Netlify CMS.This starter
+            comes out of the box with styled components and Gatsby's default
+            starter blog running on Netlify CMS.This starter comes out of the
+            box with styled components and Gatsby's default starter blog running
+            on Netlify CMS.
           </p>
           <p>Now go build something great!</p>
-          <Link to="/blog/">
-            <Button marginTop="35px">Go to Blog</Button>
-          </Link>
         </Layout>
       </>
     )

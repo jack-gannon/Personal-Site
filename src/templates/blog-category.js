@@ -6,7 +6,6 @@ import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 import styled from "styled-components"
 import FeaturedPost from "../components/FeaturedPost"
-import BlogCategoryTabs from "../components/BlogCategoryTabs"
 
 class Blog extends React.Component {
   constructor(props) {
@@ -31,7 +30,6 @@ class Blog extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
-        <FeaturedPost />
         <div style={{ margin: "20px 0 40px" }}>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
@@ -67,13 +65,16 @@ class Blog extends React.Component {
 export default Blog
 
 export const blogQuery = graphql`
-  query {
+  query($category: String) {
     site {
       siteMetadata {
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { category: { eq: $category } } }
+    ) {
       edges {
         node {
           excerpt
@@ -83,6 +84,8 @@ export const blogQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            category
+            author
             description
           }
         }

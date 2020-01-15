@@ -5,7 +5,7 @@ import { rhythm } from "../utils/typography"
 import { colors } from "../utils/colors"
 import Logo from "../components/Logo"
 
-const Navbar = ({ color, location }) => {
+const Navbar = ({ color, location, isAbout, isBlog }) => {
   const [isExpanded, setExpanded] = useState(false)
 
   const handleNavToggle = () => {
@@ -124,12 +124,14 @@ const Navbar = ({ color, location }) => {
         </NavLink>
         <NavLink
           activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
+          partiallyActive={true}
           to="/blog/"
         >
           Blog
         </NavLink>
         <NavLink
           activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
+          partiallyActive={true}
           to="/about/"
         >
           About
@@ -156,6 +158,7 @@ const Navbar = ({ color, location }) => {
             borderRight: `8px solid ${colors.primary}`,
             paddingRight: ".5rem",
           }}
+          partiallyActive={true}
         >
           Blog
         </NavLink>
@@ -166,6 +169,7 @@ const Navbar = ({ color, location }) => {
             borderRight: `8px solid ${colors.primary}`,
             paddingRight: ".5rem",
           }}
+          partiallyActive={true}
         >
           About
         </NavLink>

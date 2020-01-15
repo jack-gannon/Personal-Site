@@ -23,6 +23,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           author={post.frontmatter.author}
           date={post.frontmatter.date}
+          imageSrc={post.frontmatter.thumbnail}
         />
         {/* <h1>{post.frontmatter.title}</h1>
         <p
