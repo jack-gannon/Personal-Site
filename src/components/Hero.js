@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import { colors } from "../utils/colors"
+import { breakpoints } from "../utils/breakpoints"
 import Button from "./button"
 
 const Hero = () => {
@@ -15,7 +16,11 @@ const Hero = () => {
     margin-right: auto;
     padding-top: 25vh;
     padding-bottom: 20vh;
-    max-width: ${rhythm(48)};
+    max-width: ${rhythm(40)};
+
+    @media only screen and (min-width: ${breakpoints.desktop.medium}) {
+      margin-left: auto;
+    }
   `
 
   const Eyebrow = styled.span`
@@ -26,6 +31,10 @@ const Hero = () => {
     letter-spacing: 0.25rem;
     line-height: 1rem;
     padding: 0.25rem 0.5rem;
+
+    @media only screen and (min-width: ${breakpoints.desktop.medium}) {
+      font-size: 1.5rem;
+    }
   `
 
   const Title = styled.h1`
@@ -34,6 +43,12 @@ const Hero = () => {
     margin-bottom: 1rem;
     width: 80%;
     color: #eaeaea;
+
+    @media only screen and (min-width: ${breakpoints.desktop.medium}) {
+      font-size: 8rem;
+      width: 60%;
+      line-height: 7rem;
+    }
   `
 
   const Divider = styled.hr`

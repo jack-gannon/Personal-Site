@@ -27,7 +27,7 @@ collections:
           name: thumbnail,
           label: Featured Image,
           widget: image,
-          default: /placeholder.png/,
+          default: ../assets/placeholder.png,
         }
       - { name: body, label: Body, widget: markdown }
   - name: portfolio

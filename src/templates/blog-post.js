@@ -1,8 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Image from "gatsby-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
+import styled from "styled-components"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import BlogHeader from "../components/BlogHeader"
@@ -23,20 +25,13 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           author={post.frontmatter.author}
           date={post.frontmatter.date}
-          imageSrc={post.frontmatter.thumbnail}
+          avatar={this.props.data.avatar.childImageSharp.fixed}
         />
-        {/* <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p> */}
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <StyledImage fluid={post.frontmatter.thumbnail.childImageSharp.fluid} />
+        <BodyContainer>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </BodyContainer>
+
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -74,8 +69,36 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate
 
+const StyledImage = styled(Image)`
+  height: 16rem;
+  width: 100vw;
+  margin-left: -1rem;
+  margin-bottom: ${rhythm(1.5)};
+
+  @media (min-width: 768px) {
+    height: 32rem;
+    margin-left: 0rem;
+    width: 100%;
+  }
+`
+
+const BodyContainer = styled.div`
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+`
+
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    avatar: file(absolutePath: { regex: "/avatar-pic.jpg/" }) {
+      childImageSharp {
+        fixed(width: 50, height: 50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       siteMetadata {
         title
@@ -91,6 +114,13 @@ export const pageQuery = graphql`
         author
         date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail {
+          childImageSharp {
+            fluid(maxWidth: 590) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

@@ -1,103 +1,96 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import { colors } from "../utils/colors"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
+import ArrowIcon from "./ArrowIcon"
 
-const BlogHeader = ({ title, date, author, imageSrc }) => {
+const BlogHeader = ({ author, date, title, avatar }) => {
   return (
-    <StaticQuery
-      query={subheaderQuery}
-      render={data => {
-        return (
-          <div>
-            <Title>{title}</Title>
-            <Divider />
-            <BlogSubheader>
-              <Image
-                fixed={data.avatar.childImageSharp.fixed}
-                alt={author}
-                style={{
-                  marginRight: rhythm(1 / 4),
-                  marginBottom: 0,
-                  minWidth: 48,
-                  borderRadius: `100%`,
-                }}
-                imgStyle={{
-                  borderRadius: `50%`,
-                }}
-              />
-              <div>
-                <FieldLabel>By: </FieldLabel>
-                <AuthorName>{author}</AuthorName>
-                <Date>{date}</Date>
-              </div>
-            </BlogSubheader>
-            <Divider />
-          </div>
-        )
-      }}
-    ></StaticQuery>
+    <div>
+      <BackButton onClick={() => window.history.back()}>
+        <ArrowIcon lineColor={colors.gray50} lineWidth="4px" />
+      </BackButton>
+      <Title>{title}</Title>
+      <BlogSubheader>
+        <Avatar fixed={avatar} />
+        {/* <Image
+          fixed={data.avatar.childImageSharp.fixed}
+          alt={author}
+          style={{
+            marginRight: rhythm(1 / 4),
+            marginBottom: 0,
+            minWidth: 48,
+            borderRadius: `100%`,
+          }}
+          imgStyle={{
+            borderRadius: `50%`,
+          }}
+        /> */}
+        <div>
+          <Author>
+            By:
+            <AuthorName>{author}</AuthorName>
+          </Author>
+          <Published>
+            <Date>{date}</Date>
+          </Published>
+        </div>
+      </BlogSubheader>
+    </div>
   )
 }
 
 const Title = styled.h1`
-  margin-bottom: 0.5rem;
-  font-size: 1.75rem;
-  color: ${colors.gray70};
-`
-
-const Divider = styled.hr`
-  margin-bottom: 0.5rem;
-  background: none;
-  border-bottom: 3px dotted ${colors.gray20};
+  margin-top: ${rhythm(0.5)};
+  margin-bottom: ${rhythm(1 / 2)};
 `
 
 const BlogSubheader = styled.div`
   display: flex;
-  align-items: flex-start;
-  font-family: monospace;
+  align-items: center;
+  font-family: "Helvetica Neue", "Segoe UI", "Helvetica", "Arial", sans-serif;
+  margin-bottom: ${rhythm(1 / 2)};
+`
+
+const Avatar = styled(Image)`
+  margin-right: 0.5rem;
+  border-radius: 50%;
+`
+
+const Author = styled.p`
+  margin-bottom: ${rhythm(0)};
+  line-height: 1.5rem;
 `
 
 const AuthorName = styled.span`
   font-weight: 800;
   font-size: 1rem;
   color: ${colors.gray70};
+  margin-left: 0.25rem;
 `
 
-const FieldLabel = styled.span`
-  font-size: 0.875rem;
-  color: ${colors.gray70};
-`
-
-const Date = styled.p`
-  font-family: monospace;
-  font-size: 0.875rem;
-  line-height: 0.5rem;
+const Published = styled.p`
   color: ${colors.gray60};
+  font-size: 0.875rem;
+  margin-bottom: ${rhythm(0)};
 `
 
-const MainImg = styled(Image)`
-  width: 100%;
-`
-const subheaderQuery = graphql`
-  query subheaderQuery {
-    avatar: file(absolutePath: { regex: "/avatar-pic.jpg/" }) {
-      childImageSharp {
-        fixed(height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        social {
-          twitter
-        }
-      }
-    }
+const Date = styled.span``
+
+const BackButton = styled.button`
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  margin-top: ${rhythm(0.5)};
+  background-color: ${colors.gray20};
+  border: none;
+  border-radius: 50%;
+
+  & svg {
+    width: 1.5rem;
   }
 `
 

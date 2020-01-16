@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar"
 import Logo from "../../content/assets/logo.svg"
 import SocialIconPanelFooter from "./social-icons/SocialIconPanelFooter"
 import BlogCategoryTabs from "./BlogCategoryTabs"
+import PortfolioCategoryTabs from "./PortfolioCategoryTabs"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -16,12 +17,11 @@ class Layout extends React.Component {
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const blogCategory = `${__PATH_PREFIX__}/blog/category/`
     const aboutPath = `${__PATH_PREFIX__}/about/`
+    const portfolioPath = `${__PATH_PREFIX__}/portfolio/`
+    const portfolioCategory = `${__PATH_PREFIX__}/portfolio/category/`
 
     let header
-    const PageTitle = styled.h3`
-      margin-top: 4rem;
-      font-size: 2.5rem;
-    `
+
     if (location.pathname === rootPath) {
       header = (
         <Navbar color="dark" location={location}></Navbar>
@@ -79,6 +79,34 @@ class Layout extends React.Component {
         //   </Link>
         // </h3>
       )
+    } else if (
+      location.pathname === portfolioPath ||
+      location.pathname.startsWith(portfolioCategory)
+    ) {
+      header = (
+        <>
+          <Navbar color="white" location={location}></Navbar>
+          <PageTitle>Portfolio</PageTitle>
+          <PortfolioCategoryTabs />
+        </>
+        //
+        //   style={{
+        //     fontFamily: `Montserrat, sans-serif`,
+        //     marginTop: 0,
+        //   }}
+        // >
+        //   <Link
+        //     style={{
+        //       boxShadow: `none`,
+        //       textDecoration: `none`,
+        //       color: `inherit`,
+        //     }}
+        //     to={`/blog/`}
+        //   >
+        //     {title}
+        //   </Link>
+        // </h3>
+      )
     } else {
       header = (
         <>
@@ -92,12 +120,12 @@ class Layout extends React.Component {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(42),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            maxWidth: rhythm(40),
+            padding: `${rhythm(1.5)} 1rem`,
           }}
         >
           <header>{header}</header>
-          <main>{children}</main>
+          <main style={{ marginBottom: rhythm(8) }}>{children}</main>
         </div>
         <Footer>
           <img
@@ -111,12 +139,22 @@ class Layout extends React.Component {
     )
   }
 }
+const PageTitle = styled.h3`
+  margin-top: ${rhythm(1)};
+  margin-bottom: ${rhythm(0.25)};
+  font-size: 2.5rem;
+`
 
 const Wrapper = styled.div`
+  position: relative;
   min-height: 100vh;
+  background-color: ${colors.gray10};
 `
 
 const Footer = styled.footer`
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
   text-align: center;
   margin: none;
   margin-bottom: 0;

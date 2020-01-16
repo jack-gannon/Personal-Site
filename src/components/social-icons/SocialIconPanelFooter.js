@@ -45,6 +45,8 @@ const Panel = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  max-width: 560px;
+  margin: auto;
 
   & * {
     flex-basis: 11%;

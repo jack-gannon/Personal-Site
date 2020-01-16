@@ -8,36 +8,39 @@ import styled from "styled-components"
 import FeaturedPost from "../components/FeaturedPost"
 import BlogPostList from "../components/BlogPostList"
 
-class BlogCategoryTemplate extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeCategory: "all",
-    }
-    this.handleSelectCategory = this.handleSelectCategory.bind(this)
-  }
+class PortfolioCategoryTemplate extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     activeCategory: "all",
+  //   }
+  //   this.handleSelectCategory = this.handleSelectCategory.bind(this)
+  // }
 
-  handleSelectCategory(category) {
-    this.setState(state => ({
-      activeCategory: category,
-    }))
-  }
+  // handleSelectCategory(category) {
+  //   this.setState(state => ({
+  //     activeCategory: category,
+  //   }))
+  // }
 
+  // render() {
+  //   const { data } = this.props
+  //   const siteTitle = data.site.siteMetadata.title
+  //   const posts = data.allMdx.edges
+
+  //   return (
+  //     <Layout location={this.props.location} title={siteTitle}>
+  //       <SEO title="Blog" />
+  //       <BlogPostList posts={posts} />
+  //     </Layout>
+  //   )
+  // }
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMdx.edges
-
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Blog" />
-        <BlogPostList posts={posts} />
-      </Layout>
-    )
+    return <p>heyyyy</p>
   }
 }
 
-export default BlogCategoryTemplate
+export default PortfolioCategoryTemplate
 
 export const blogQuery = graphql`
   query($category: String) {

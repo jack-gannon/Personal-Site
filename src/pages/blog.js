@@ -5,8 +5,10 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 import styled from "styled-components"
+import Image from "gatsby-image"
 import FeaturedPost from "../components/FeaturedPost"
-import BlogCategoryTabs from "../components/BlogCategoryTabs"
+import BlogPostList from "../components/BlogPostList"
+import BlogPostListItem from "../components/BlogPostListItem"
 
 class Blog extends React.Component {
   constructor(props) {
@@ -32,33 +34,7 @@ class Blog extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
         <FeaturedPost />
-        <div style={{ margin: "20px 0 40px" }}>
-          {posts.map(({ node }) => {
-            const title = node.frontmatter.title || node.fields.slug
-            return (
-              <div key={node.fields.slug}>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link
-                    style={{ boxShadow: `none` }}
-                    to={`blog${node.fields.slug}`}
-                  >
-                    {title}
-                  </Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </div>
-            )
-          })}
-        </div>
+        <BlogPostList posts={posts} />
       </Layout>
     )
   }
@@ -84,6 +60,14 @@ export const blogQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            category
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 590) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

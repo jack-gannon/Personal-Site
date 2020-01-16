@@ -1,25 +1,27 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
 import styled from "styled-components"
-
+import { keyframes } from "styled-components"
+import BlogPostListItem from "./BlogPostListItem"
 import { rhythm } from "../utils/typography"
 
-function FeaturedPost({ sortDesc }) {
+function BlogPostList({ posts }) {
   return (
-    <StaticQuery
-      query={sortDesc ? blogQueryDescending : blogQueryAsending}
-      render={data => {
-        const post = data.allMdx.edges[0].node
-        const { title, date, description } = post.frontmatter
-        const { id, fields } = post
+    <Container>
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug
         return (
-          <Container>
-            <h3>{post.frontmatter.title}</h3>
-            <p>{date}</p>
-            <p>{description}</p>
+          <BlogPostListItem
+            title={title}
+            slug={node.fields.slug}
+            category={node.frontmatter.category}
+            imgFluid={node.frontmatter.thumbnail.childImageSharp.fluid}
+            date={node.frontmatter.date}
+            description={node.frontmatter.description || node.excerpt}
+          />
+        )
+      })}
 
-            {/* <Image
+      {/* <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
@@ -32,44 +34,27 @@ function FeaturedPost({ sortDesc }) {
                 borderRadius: `50%`,
               }}
             /> */}
-            {/* <h3>{title}</h3>
+      {/* <h3>{title}</h3>
             <p>{date}</p>
             <p>{description}</p> */}
-          </Container>
-        )
-      }}
-    />
+    </Container>
   )
 }
 
-const blogQueryDescending = graphql`
-  query BlogAsc {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMdx(sort: { fields: [frontmatter___date], order: ASC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
+const Container = styled.div`
+  margin: 20px 0 40px;
+
+  @media (min-width: 760px) {
+    display: grid;
+    grid-template-columns: calc(50% - 0.5rem) calc(50% - 0.5rem);
+    grid-gap: 1rem;
+  }
+
+  @media (min-width: 960px) {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 1rem;
   }
 `
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export default FeaturedPost
+export default BlogPostList

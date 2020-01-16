@@ -4,33 +4,20 @@ import styled from "styled-components"
 import { keyframes } from "styled-components"
 import { colors } from "../utils/colors"
 
-const BlogCategoryTabs = ({ location }) => {
+const CategoryTabs = ({ location, categories }) => {
   return (
     <ButtonPanel>
-      <Tab category="All" to="/blog/" activeClassName="activeTab">
-        All Posts
-      </Tab>
-      <Tab
-        category="Design"
-        to="/blog/category/design-posts"
-        activeClassName="activeTab"
-      >
-        Design
-      </Tab>
-      <Tab
-        category="Development"
-        to="/blog/category/development-posts"
-        activeClassName="activeTab"
-      >
-        Development
-      </Tab>
-      <Tab
-        category="Personal"
-        to="/blog/category/personal-posts"
-        activeClassName="activeTab"
-      >
-        Personal
-      </Tab>
+      {categories.map(category => {
+        return (
+          <Tab
+            to={category.path}
+            color={category.color}
+            activeClassName="activeTab"
+          >
+            {category.name}
+          </Tab>
+        )
+      })}
     </ButtonPanel>
   )
 }
@@ -45,7 +32,7 @@ const slideIn = keyframes`
 `
 
 const Tab = styled(Link).attrs(props => ({
-  category: props.category,
+  color: props.color,
 }))`
   position: relative;
   font-size: 0.875rem;
@@ -86,14 +73,7 @@ const Tab = styled(Link).attrs(props => ({
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: ${props =>
-      props.category === "Design"
-        ? colors.secondary
-        : props.category === "Development"
-        ? colors.primary
-        : props.category === "Personal"
-        ? colors.tertiaryMedium
-        : colors.gray50};
+    background-color: ${props => props.color};
     animation: ${slideIn} 0.25s ease-in-out;
   }
 `
@@ -108,4 +88,4 @@ const ButtonPanel = styled.div`
   }
 `
 
-export default BlogCategoryTabs
+export default CategoryTabs
