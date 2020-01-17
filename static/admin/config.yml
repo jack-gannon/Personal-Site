@@ -4,11 +4,6 @@ backend:
 
 media_folder: static/assets
 public_folder: assets
-media_library:
-  {
-    name: cloudinary,
-    config: { cloud_name: dthoxmity, api_key: 144732167219663 },
-  }
 
 collections:
   - name: blog
@@ -17,6 +12,7 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
+      - { name: content_type, label: Content Type, default: Blog Post }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: author, label: Author, default: "Jack Gannon" }
@@ -36,6 +32,7 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
+      - { name: content_type, label: Content Type, default: Portfolio Project }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: description, label: Description }
@@ -44,6 +41,10 @@ collections:
           name: project-images,
           label: Project Images,
           widget: image,
-          media_library: { config: { multiple: true } },
+          media_library:
+            {
+              name: cloudinary,
+              config: { cloud_name: dthoxmity, api_key: 144732167219663 },
+            },
         }
       - { name: body, label: Body, widget: markdown }
