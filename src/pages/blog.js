@@ -49,7 +49,10 @@ export const blogQuery = graphql`
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { content_type: { eq: "blog" } } }
+    ) {
       edges {
         node {
           excerpt

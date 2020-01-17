@@ -171,9 +171,9 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
         <NavLink
           activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
           partiallyActive={true}
-          to="/work/"
+          to="/portfolio/"
         >
-          Work
+          Portfolio
         </NavLink>
         <NavLink
           activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
@@ -205,7 +205,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
           Home
         </NavLink>
         <NavLink
-          to="/work/"
+          to="/portfolio/"
           onClick={() => handleNavToggle()}
           activeStyle={{
             borderRight: `8px solid ${colors.primary}`,
@@ -213,7 +213,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
           }}
           partiallyActive={true}
         >
-          Work
+          Portfolio
         </NavLink>
         <NavLink
           to="/blog/"

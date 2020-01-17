@@ -1,5 +1,6 @@
 ---
 title: My Second Post!
+content_type: blog
 author: Jack Gannon
 category: Development
 date: "2015-05-06T23:46:37.121Z"

@@ -53,7 +53,7 @@ const typography = new Typography({
     "Arial",
     "sans-serif",
   ],
-  headerColor: colors.gray70,
+  headerColor: colors.gray80,
   bodyFontFamily: ["Georgia", "serif"],
   bodyColor: colors.gray80,
   overrideStyles: ({ rhythm }, options, styles) => ({

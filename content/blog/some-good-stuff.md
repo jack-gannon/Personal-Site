@@ -1,5 +1,6 @@
 ---
 path: goodstuff
+content_type: blog
 date: 2020-01-14T02:04:20.237Z
 title: Some Good Stuff With An Even Longer Title
 author: Jack Gannon

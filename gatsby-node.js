@@ -6,6 +6,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const blogCategory = path.resolve(`./src/templates/blog-category.js`)
+  const portfolioProject = path.resolve(`./src/templates/portfolio-project.js`)
   const portfolioCategory = path.resolve(
     `./src/templates/portfolio-category.js`
   )
@@ -24,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                content_type
               }
             }
           }
@@ -54,23 +56,6 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    // Create blog posts pages.
-    const posts = result.data.allMdx.edges
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
-
-      createPage({
-        path: `blog${post.node.fields.slug}`,
-        component: blogPost,
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      })
-    })
-
     // Create Portfolio Category Pages
     const portfolioCategories = [
       { name: "All", path: "/portfolio/" },
@@ -90,22 +75,33 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    // // Create blog posts pages.
-    // const posts = result.data.allMdx.edges
-    // posts.forEach((post, index) => {
-    //   const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    //   const next = index === 0 ? null : posts[index - 1].node
+    // Create blog posts pages.
+    const allContent = result.data.allMdx.edges
+    allContent.forEach((content, index) => {
+      if (content.node.frontmatter.content_type === "blog") {
+        const previous =
+          index === allContent.length - 1 ? null : allContent[index + 1].node
+        const next = index === 0 ? null : allContent[index - 1].node
 
-    //   createPage({
-    //     path: `blog${post.node.fields.slug}`,
-    //     component: blogPost,
-    //     context: {
-    //       slug: post.node.fields.slug,
-    //       previous,
-    //       next,
-    //     },
-    //   })
-    // })
+        createPage({
+          path: `blog${content.node.fields.slug}`,
+          component: blogPost,
+          context: {
+            slug: content.node.fields.slug,
+            previous,
+            next,
+          },
+        })
+      } else if (content.node.frontmatter.content_type === "portfolio") {
+        createPage({
+          path: `portfolio${content.node.fields.slug}`,
+          component: portfolioProject,
+          context: {
+            slug: content.node.fields.slug,
+          },
+        })
+      }
+    })
 
     return null
   })

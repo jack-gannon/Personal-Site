@@ -58,7 +58,11 @@ function FeaturedPost() {
 
 const featuredPostQuery = graphql`
   query FeaturedPostQuery {
-    allMdx(limit: 1, sort: { order: DESC, fields: frontmatter___date }) {
+    allMdx(
+      limit: 1
+      sort: { order: DESC, fields: frontmatter___date }
+      filter: { frontmatter: { content_type: { eq: "blog" } } }
+    ) {
       edges {
         node {
           id

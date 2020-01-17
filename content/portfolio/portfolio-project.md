@@ -1,11 +1,13 @@
 ---
 path: portfolio-project
+content_type: portfolio
 date: 2020-01-16T21:43:23.216Z
 title: Portfolio Project
 description: This is a test to see how my portfolio project stacks up.
-thumbnail: assets/placeholder.png
+thumbnail: ../assets/placeholder.png
 project-images: assets/avatar-pic.jpg
 ---
+
 But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with
 [Longe and Parole](http://google.com) and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been
 rewritten, then they are still using her.

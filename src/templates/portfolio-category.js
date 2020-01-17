@@ -9,34 +9,30 @@ import FeaturedPost from "../components/FeaturedPost"
 import BlogPostList from "../components/BlogPostList"
 
 class PortfolioCategoryTemplate extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     activeCategory: "all",
-  //   }
-  //   this.handleSelectCategory = this.handleSelectCategory.bind(this)
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      activeCategory: "all",
+    }
+    this.handleSelectCategory = this.handleSelectCategory.bind(this)
+  }
 
-  // handleSelectCategory(category) {
-  //   this.setState(state => ({
-  //     activeCategory: category,
-  //   }))
-  // }
+  handleSelectCategory(category) {
+    this.setState(state => ({
+      activeCategory: category,
+    }))
+  }
 
-  // render() {
-  //   const { data } = this.props
-  //   const siteTitle = data.site.siteMetadata.title
-  //   const posts = data.allMdx.edges
-
-  //   return (
-  //     <Layout location={this.props.location} title={siteTitle}>
-  //       <SEO title="Blog" />
-  //       <BlogPostList posts={posts} />
-  //     </Layout>
-  //   )
-  // }
   render() {
-    return <p>heyyyy</p>
+    const { data } = this.props
+    const siteTitle = data.site.siteMetadata.title
+    const posts = data.allMdx.edges
+
+    return (
+      <Layout location={this.props.location} title={siteTitle}>
+        <SEO title="Portfolio" />
+      </Layout>
+    )
   }
 }
 

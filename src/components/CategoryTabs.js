@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { keyframes } from "styled-components"
 import { colors } from "../utils/colors"
+import { breakpoints } from "../utils/breakpoints"
 
 const CategoryTabs = ({ location, categories }) => {
   return (
@@ -76,6 +77,10 @@ const Tab = styled(Link).attrs(props => ({
     background-color: ${props => props.color};
     animation: ${slideIn} 0.25s ease-in-out;
   }
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 1rem;
+  }
 `
 
 const ButtonPanel = styled.div`
@@ -83,7 +88,7 @@ const ButtonPanel = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  @media (min-width: 720px) {
+  @media (min-width: ${breakpoints.tablet.small}) {
     width: calc(50% - 0.5rem);
   }
 `

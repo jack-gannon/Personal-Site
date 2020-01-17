@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 
-class Work extends React.Component {
+class Portfolio extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -17,15 +17,12 @@ class Work extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="About" />
         <div style={{ margin: "20px 0 40px" }}></div>
-        <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
-        </Link>
       </Layout>
     )
   }
 }
 
-export default Work
+export default Portfolio
 
 export const pageQuery = graphql`
   query {
