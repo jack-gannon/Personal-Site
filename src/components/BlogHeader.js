@@ -1,33 +1,19 @@
 import React from "react"
 import Image from "gatsby-image"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import { colors } from "../utils/colors"
 import { rhythm } from "../utils/typography"
 import ArrowIcon from "./ArrowIcon"
 
 const BlogHeader = ({ author, date, title, avatar }) => {
   return (
-    <div>
+    <Container>
       <BackButton onClick={() => window.history.back()}>
         <ArrowIcon lineColor={colors.gray50} lineWidth="4px" />
       </BackButton>
       <Title>{title}</Title>
       <BlogSubheader>
         <Avatar fixed={avatar} />
-        {/* <Image
-          fixed={data.avatar.childImageSharp.fixed}
-          alt={author}
-          style={{
-            marginRight: rhythm(1 / 4),
-            marginBottom: 0,
-            minWidth: 48,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        /> */}
         <div>
           <Author>
             By:
@@ -38,9 +24,11 @@ const BlogHeader = ({ author, date, title, avatar }) => {
           </Published>
         </div>
       </BlogSubheader>
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div``
 
 const Title = styled.h1`
   margin-top: ${rhythm(0.5)};
@@ -61,13 +49,13 @@ const Avatar = styled(Image)`
 
 const Author = styled.p`
   margin-bottom: ${rhythm(0)};
-  line-height: 1.5rem;
+  line-height: 1rem;
 `
 
 const AuthorName = styled.span`
   font-weight: 800;
   font-size: 1rem;
-  color: ${colors.gray70};
+  color: ${colors.gray80};
   margin-left: 0.25rem;
 `
 
@@ -91,6 +79,17 @@ const BackButton = styled.button`
 
   & svg {
     width: 1.5rem;
+  }
+
+  :focus {
+    outline: none;
+    background-color: ${colors.primary};
+  }
+
+  :focus svg polyline,
+  :focus svg line {
+    stroke: #fff;
+    stroke-width: 6px;
   }
 `
 

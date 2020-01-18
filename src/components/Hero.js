@@ -4,11 +4,13 @@ import { rhythm } from "../utils/typography"
 import { colors } from "../utils/colors"
 import { breakpoints } from "../utils/breakpoints"
 import Button from "./button"
+import Typist from "react-typist"
 
 const Hero = () => {
   const Hero = styled.div`
     background-color: #222;
     margin-top: 0rem;
+    height: 90vh;
   `
 
   const MainText = styled.div`
@@ -50,20 +52,40 @@ const Hero = () => {
       line-height: 7rem;
     }
   `
-
-  const Divider = styled.hr`
-    border-bottom: dotted 4px #fff;
-    margin-bottom: 0.75rem;
-    opacity: 0.2;
-    width: 90%;
-  `
-
   const Subheader = styled.p`
-    font-family: "Source Code Pro", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 1rem;
-    line-height: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.075rem;
+    line-height: 1.5em;
     color: #eaeaea;
-    width: 90%;
+    width: calc(100% - 1rem);
+
+    @media only screen and (min-width: ${breakpoints.desktop.medium}) {
+      font-size: 1.25rem;
+    }
+  `
+  const CustomTypist = styled(Typist)`
+    & .Cursor {
+      display: inline-block;
+      color: ${colors.primary};
+
+      &--blinking {
+        opacity: 1;
+        animation: blink 1s linear infinite;
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      }
+    }
   `
 
   return (
@@ -74,9 +96,17 @@ const Hero = () => {
           <br />
           Jack Gannon.
         </Title>
-        <Divider />
         <Subheader>
-          I am a Designer & Developer based out of Phoenix, Arizona. I
+          <CustomTypist cursor={{ blink: true }}>
+            <Typist.Delay ms={2000} />
+            <span>I am a designer and developer based in Phoenix, AZ.</span>
+            <Typist.Backspace count={49} delay={3000} />
+            <span> help teams build products that their users love.</span>
+            <Typist.Backspace count={48} delay={3000} />
+            <span> craft meaningful user-experiences.</span>
+            <Typist.Backspace count={36} delay={3000} />
+            <span> build beautiful user-interfaces.</span>
+          </CustomTypist>
         </Subheader>
         <Button background={colors.primary} radius={"2px"} color="#222">
           Contact Me

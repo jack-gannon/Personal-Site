@@ -2,7 +2,6 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
-import { keyframes } from "styled-components"
 import { colors } from "../utils/colors"
 import { rhythm } from "../utils/typography"
 
@@ -19,7 +18,7 @@ function FeaturedPost() {
           thumbnail,
           category,
         } = post.frontmatter
-        const { id, fields } = post
+        const { fields } = post
         return (
           <Container>
             <MainImage fluid={thumbnail.childImageSharp.fluid} />
@@ -30,7 +29,7 @@ function FeaturedPost() {
                 <Date>{date}</Date>
               </Info>
               <Description>{description}</Description>
-              <ReadMore to={`blog${post.fields.slug}`}>Read More...</ReadMore>
+              <ReadMore to={`blog${fields.slug}`}>Read More...</ReadMore>
             </Details>
 
             {/* <Image
@@ -103,7 +102,8 @@ const Container = styled.div`
     grid-gap: 1rem;
     margin-left: 0rem;
     width: 100%;
-    border-bottom: none;
+    border: 1px solid ${colors.gray20};
+    background-color: #fff;
   }
 `
 
@@ -134,6 +134,7 @@ const Details = styled.div`
 const Title = styled.h3`
   margin-bottom: ${rhythm(0.5)};
   font-size: 1.875rem;
+  color: ${colors.gray70};
 
   @media (min-width: 960px) {
     font-size: 2.75rem;

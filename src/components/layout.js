@@ -1,18 +1,25 @@
 import React from "react"
-import { Link } from "gatsby"
+import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { colors } from "../utils/colors"
 import Navbar from "../components/Navbar"
+import Navigation from "../components/Navigation"
 import Logo from "../../content/assets/logo.svg"
 import SocialIconPanelFooter from "./social-icons/SocialIconPanelFooter"
 import BlogCategoryTabs from "./BlogCategoryTabs"
 import PortfolioCategoryTabs from "./PortfolioCategoryTabs"
+import { breakpoints } from "../utils/breakpoints"
+import throttle from "lodash.throttle"
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 class Layout extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
-    const { location, title, children } = this.props
+    const { location, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const blogCategory = `${__PATH_PREFIX__}/blog/category/`
@@ -24,7 +31,10 @@ class Layout extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <Navbar color="dark" location={location}></Navbar>
+        <>
+          <Navbar color="dark" location={location}></Navbar>
+          <Navigation />
+        </>
         // <h1
         //   style={{
         //     ...scale(1.5),
@@ -51,6 +61,7 @@ class Layout extends React.Component {
       header = (
         <>
           <Navbar color="white" location={location}></Navbar>
+          <Navigation />
           <PageTitle>Blog</PageTitle>
           <BlogCategoryTabs />
         </>
@@ -59,6 +70,7 @@ class Layout extends React.Component {
       header = (
         <>
           <Navbar color="white" location={location}></Navbar>
+          <Navigation />
           <PageTitle>About</PageTitle>
         </>
         //
@@ -86,6 +98,7 @@ class Layout extends React.Component {
       header = (
         <>
           <Navbar color="white" location={location}></Navbar>
+          <Navigation />
           <PageTitle>Portfolio</PageTitle>
           <PortfolioCategoryTabs />
         </>
@@ -111,6 +124,7 @@ class Layout extends React.Component {
       header = (
         <>
           <Navbar color="white" location={location}></Navbar>
+          <Navigation />
         </>
       )
     }
@@ -131,6 +145,7 @@ class Layout extends React.Component {
           <img
             src={Logo}
             style={{ width: "4rem", marginTop: "1rem", marginBottom: ".5rem" }}
+            alt="Jack Gannon Logo"
           />
           <SocialIconPanelFooter />
           <Legal>© {new Date().getFullYear()} Jack Gannon</Legal>
@@ -143,6 +158,10 @@ const PageTitle = styled.h3`
   margin-top: ${rhythm(1)};
   margin-bottom: ${rhythm(0.25)};
   font-size: 2.5rem;
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 4rem;
+  }
 `
 
 const Wrapper = styled.div`
@@ -156,7 +175,6 @@ const Footer = styled.footer`
   bottom: 0;
   width: 100vw;
   text-align: center;
-  margin: none;
   margin-bottom: 0;
   background-color: ${colors.gray20};
 `

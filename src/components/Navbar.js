@@ -29,6 +29,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
   `
 
   const NavLink = styled(Link)`
+    position: relative;
     font-family: "Helvetica Neue", sans-serif;
     font-weight: 700;
     letter-spacing: 0.05rem;
@@ -41,9 +42,24 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
       margin-right: 0;
     }
 
+    &.activeLink {
+      &:before {
+        position: absolute;
+        top: -0.5rem;
+        left: 0;
+        content: " ";
+        width: 100%;
+        height: 4px;
+        background-color: ${colors.primary};
+      }
+    }
+
     @media only screen and (min-width: ${breakpoints.desktop.medium}) {
+      line-height: ${rhythm(1)};
       font-size: 1.5rem;
-      font-weight: 600;
+      font-weight: 500;
+      margin-top: 0rem;
+      margin-right: ;
     }
   `
 
@@ -71,8 +87,6 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
     height: 3rem;
     background-color: ${color === "dark" ? colors.gray80 : colors.gray20};
     box-shadow: none;
-    margin-right: ${rhythm(1)};
-
     padding: 0.5rem 0.25rem;
 
     & svg {
@@ -162,28 +176,25 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
         <Logo color={color === "dark" ? "light" : "dark"} width="2.5rem" />
       </LogoLink>
       <NavLinksDesktop>
-        <NavLink
-          activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
-          to="/"
-        >
-          <span>Home</span>
+        <NavLink activeClassName="activeLink" to="/">
+          Home
         </NavLink>
         <NavLink
-          activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
+          activeClassName="activeLink"
           partiallyActive={true}
           to="/portfolio/"
         >
           Portfolio
         </NavLink>
         <NavLink
-          activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
+          activeClassName="activeLink"
           partiallyActive={true}
           to="/blog/"
         >
           Blog
         </NavLink>
         <NavLink
-          activeStyle={{ boxShadow: `inset 0 -3px 0 0 ${colors.primary}` }}
+          activeClassName="activeLink"
           partiallyActive={true}
           to="/about/"
         >
@@ -191,7 +202,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
         </NavLink>
       </NavLinksDesktop>
       <NavLinksToggle onClick={() => handleNavToggle()}>
-        {isExpanded ? "x" : "..."}
+        {isExpanded ? "×" : "..."}
       </NavLinksToggle>
       <NavLinksMobile>
         <NavLink

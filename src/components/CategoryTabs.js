@@ -11,6 +11,7 @@ const CategoryTabs = ({ location, categories }) => {
       {categories.map(category => {
         return (
           <Tab
+            key={category.name}
             to={category.path}
             color={category.color}
             activeClassName="activeTab"

@@ -1,5 +1,4 @@
 import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
 import { colors } from "./colors"
 
 // Wordpress2016.overrideThemeStyles = ({ rhythm }, options) => {
@@ -46,6 +45,7 @@ const typography = new Typography({
   baseFontSize: "16px",
   baseLineHeight: 2,
   scaleRatio: 2,
+  googleFonts: [{ name: "IBM Plex Mono", styles: ["300", "400", "600"] }],
   headerFontFamily: [
     "Helvetica Neue",
     "Segoe UI",
@@ -68,6 +68,9 @@ const typography = new Typography({
     },
     a: {
       textDecoration: "underline",
+    },
+    "main a": {
+      color: colors.tertiaryMedium,
     },
   }),
 })

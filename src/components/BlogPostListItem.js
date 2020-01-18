@@ -14,7 +14,7 @@ const BlogPostListItem = ({
   imgFluid,
 }) => {
   return (
-    <Post key={title}>
+    <Post>
       <Top>
         <Thumbnail fluid={imgFluid} />
         <Details>
@@ -78,7 +78,7 @@ const Thumbnail = styled(Image)`
 const Info = styled.span`
   display: flex;
   margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: ${colors.gray30};
 `
 
