@@ -1,14 +1,9 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
-import Button from "../components/button"
-import styled from "styled-components"
-import Image from "gatsby-image"
 import FeaturedPost from "../components/FeaturedPost"
 import BlogPostList from "../components/BlogPostList"
-import BlogPostListItem from "../components/BlogPostListItem"
 
 class Blog extends React.Component {
   constructor(props) {

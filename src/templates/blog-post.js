@@ -6,7 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 import BlogHeader from "../components/BlogHeader"
 
 class BlogPostTemplate extends React.Component {

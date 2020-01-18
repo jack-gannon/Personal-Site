@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { keyframes } from "styled-components"
 import BlogPostListItem from "./BlogPostListItem"
-import { rhythm } from "../utils/typography"
 
 function BlogPostList({ posts }) {
   return (
@@ -11,6 +9,7 @@ function BlogPostList({ posts }) {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <BlogPostListItem
+            key={title}
             title={title}
             slug={node.fields.slug}
             category={node.frontmatter.category}
@@ -20,23 +19,6 @@ function BlogPostList({ posts }) {
           />
         )
       })}
-
-      {/* <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            /> */}
-      {/* <h3>{title}</h3>
-            <p>{date}</p>
-            <p>{description}</p> */}
     </Container>
   )
 }
