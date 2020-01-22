@@ -1,49 +1,73 @@
 import React from "react"
 import styled from "styled-components"
 import throttle from "lodash.throttle"
+import NavbarNew from "./NavbarNew"
 
 class Navigation extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       showNav: true,
+      isDark: this.props.defaultToDark ? true : false,
     }
     this.handleHideNav = this.handleHideNav.bind(this)
     this.handleShowNav = this.handleShowNav.bind(this)
     this.handleNav = this.handleNav.bind(this)
+    this.handleDark = this.handleDark.bind(this)
+    this.handleLight = this.handleLight.bind(this)
+    // Tracks instance of the event, prevents memory leak
+    this.throttleNav = throttle(this.handleNav, 500)
   }
 
   handleHideNav() {
-    console.log("hiding...")
     this.setState(state => ({
       showNav: false,
     }))
   }
 
   handleShowNav() {
-    console.log("showing...")
     this.setState(state => ({
       showNav: true,
     }))
   }
 
+  handleDark() {
+    this.setState(state => ({
+      isDark: true,
+    }))
+  }
+
+  handleLight() {
+    this.setState(state => ({
+      isDark: false,
+    }))
+  }
+
   componentDidMount() {
     this.prev = window.scrollY
-    window.addEventListener(
-      "scroll",
-      throttle(e => this.handleNav(e), 1000)
-    )
+    window.addEventListener("scroll", this.throttleNav)
   }
 
   componentWillUnmount() {
-    window.removeEventListener(
-      "scroll",
-      throttle(e => this.handleNav(e), 1000)
-    )
+    this.throttleNav.cancel()
+    window.removeEventListener("scroll", this.throttleNav)
   }
 
   handleNav = e => {
-    if (this.prev > window.scrollY) {
+    // Handle dark or light theme - index page only
+    if (this.props.defaultToDark) {
+      let heroHeight = window.screen.height * 0.9
+      if (window.scrollY > heroHeight) {
+        this.handleLight()
+      } else {
+        this.handleDark()
+      }
+    } else {
+      this.handleLight()
+    }
+
+    // Handle scroll activated nav toggle
+    if (this.prev > window.scrollY || window.scrollY === 0) {
       this.handleShowNav()
     } else {
       this.handleHideNav()
@@ -54,29 +78,13 @@ class Navigation extends React.Component {
   render() {
     return (
       <>
-        <NavItem className={this.state.showNav ? "visible" : "hidden"}>
-          {this.state.showNav ? "show" : "hide"}
-        </NavItem>
+        <NavbarNew
+          color={this.state.isDark ? "dark" : "light"}
+          showNav={this.state.showNav}
+        />
       </>
     )
   }
 }
-
-const NavItem = styled.p`
-  position: fixed;
-  top: 4rem;
-  z-index: 5;
-  padding: 0.25rem 0.5rem;
-  background-color: #fff;
-  transition: top 0.5s ease-in-out;
-
-  &.visible {
-    top: 2rem;
-  }
-
-  &.hidden {
-    top: -3rem;
-  }
-`
 
 export default Navigation

@@ -1,28 +1,47 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import { keyframes } from "styled-components"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 import { colors } from "../utils/colors"
 import Logo from "../components/Logo"
 import { breakpoints } from "../utils/breakpoints"
 
-const Navbar = ({ color, location, isAbout, isBlog }) => {
+const Navbar = ({ color, location, showNav }) => {
   const [isExpanded, setExpanded] = useState(false)
 
   const handleNavToggle = () => {
     setExpanded(!isExpanded)
   }
 
+  const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.95;
+  }
+  `
+
   const Nav = styled.nav`
     position: fixed;
     width: 100vw;
-    left: 0;
-    top: 0;
+    left: 0rem;
+    top: 0rem;
     z-index: 5;
     padding: ${rhythm(0.25)};
-    background-color: ${color === "dark" ? colors.gray70 : colors.gray20};
+    background-color: ${color === "dark" ? colors.gray70 : colors.gray10};
     border-bottom: 1px solid ${color === "dark" ? colors.gray70 : colors.gray20};
     height: 3rem;
+    transition: top 0.5s ease;
+
+    &.visible {
+      top: 4rem;
+    }
+
+    &.hidden {
+      top: 0rem;
+    }
 
     @media (min-width: ${breakpoints.desktop.small}) {
     }
@@ -78,7 +97,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
   //       to="/"
 
   const LogoLink = styled(Link)`
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     box-sizing: border-box;
@@ -125,16 +144,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
     height: 100vh;
     opacity: 0.95;
     background-color: ${colors.gray10};
-    animation: fadeIn 0.25s ease-in-out;
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 0.95;
-      }
-    }
+    animation: ${fadeIn} 0.25s ease-in-out;
 
     & * {
       width: 100%;
@@ -147,12 +157,12 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
     }
 
     & *:first-child {
-      margin-top: 8rem;
+      margin-top: 8.5rem;
     }
   `
 
   const NavLinksToggle = styled.button`
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     z-index: 6;
@@ -171,7 +181,7 @@ const Navbar = ({ color, location, isAbout, isBlog }) => {
   `
 
   return (
-    <Nav>
+    <Nav className={showNav ? "visible" : "hidden"}>
       <LogoLink to="/">
         <Logo color={color === "dark" ? "light" : "dark"} width="2.5rem" />
       </LogoLink>
