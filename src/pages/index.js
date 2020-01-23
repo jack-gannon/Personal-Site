@@ -1,7 +1,10 @@
 import React from "react"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/Hero"
+import Services from "../components/Services"
+import FeaturedProjects from "../components/FeaturedProjects"
 
 class IndexPage extends React.Component {
   render() {
@@ -10,19 +13,17 @@ class IndexPage extends React.Component {
     return (
       <>
         <Hero />
-        <Layout location={this.props.location} title={siteTitle}>
+        <Layout
+          location={this.props.location}
+          title={siteTitle}
+          fullWidth={true}
+        >
           <SEO
             title="Home"
             keywords={[`blog`, `gatsby`, `javascript`, `react`]}
           />
-          <img
-            style={{ margin: 0 }}
-            src="./GatsbyScene.svg"
-            alt="Gatsby Scene"
-          />
-          <hr />
-          <h1>Hey people </h1>
-
+          <Services />
+          <FeaturedProjects />
           <p>Welcome to your new Gatsby website. You are on your home page.</p>
           <p>
             This starter comes out of the box with styled components and

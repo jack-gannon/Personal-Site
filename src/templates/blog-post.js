@@ -86,6 +86,7 @@ const BodyContainer = styled.div`
   width: 100%;
 
   @media (min-width: 768px) {
+    font-size: 18px;
     width: 60%;
   }
 `

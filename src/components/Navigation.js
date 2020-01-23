@@ -7,28 +7,13 @@ class Navigation extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showNav: true,
       isDark: this.props.defaultToDark ? true : false,
     }
-    this.handleHideNav = this.handleHideNav.bind(this)
-    this.handleShowNav = this.handleShowNav.bind(this)
     this.handleNav = this.handleNav.bind(this)
     this.handleDark = this.handleDark.bind(this)
     this.handleLight = this.handleLight.bind(this)
     // Tracks instance of the event, prevents memory leak
     this.throttleNav = throttle(this.handleNav, 500)
-  }
-
-  handleHideNav() {
-    this.setState(state => ({
-      showNav: false,
-    }))
-  }
-
-  handleShowNav() {
-    this.setState(state => ({
-      showNav: true,
-    }))
   }
 
   handleDark() {
@@ -68,9 +53,9 @@ class Navigation extends React.Component {
 
     // Handle scroll activated nav toggle
     if (this.prev > window.scrollY || window.scrollY === 0) {
-      this.handleShowNav()
+      this.props.handleShowNav()
     } else {
-      this.handleHideNav()
+      this.props.handleHideNav()
     }
     this.prev = window.scrollY
   }
@@ -80,7 +65,7 @@ class Navigation extends React.Component {
       <>
         <NavbarNew
           color={this.state.isDark ? "dark" : "light"}
-          showNav={this.state.showNav}
+          showNav={this.props.showNav}
         />
       </>
     )

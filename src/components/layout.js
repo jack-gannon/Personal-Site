@@ -13,13 +13,32 @@ import throttle from "lodash.throttle"
 
 import { rhythm } from "../utils/typography"
 
+export const NavContext = React.createContext()
+
 class Layout extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showNav: true,
+    }
+    this.handleHideNav = this.handleHideNav.bind(this)
+    this.handleShowNav = this.handleShowNav.bind(this)
+  }
+
+  handleHideNav() {
+    this.setState(state => ({
+      showNav: false,
+    }))
+  }
+
+  handleShowNav() {
+    this.setState(state => ({
+      showNav: true,
+    }))
   }
 
   render() {
-    const { location, children } = this.props
+    const { location, children, fullWidth = false } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const blogCategory = `${__PATH_PREFIX__}/blog/category/`
@@ -32,8 +51,12 @@ class Layout extends React.Component {
     if (location.pathname === rootPath) {
       header = (
         <>
-          <Navbar color="dark" location={location}></Navbar>
-          <Navigation />
+          <Navigation
+            handleHideNav={this.handleHideNav}
+            handleShowNav={this.handleShowNav}
+            showNav={this.state.showNav}
+            defaultToDark={true}
+          />
         </>
         // <h1
         //   style={{
@@ -60,8 +83,12 @@ class Layout extends React.Component {
     ) {
       header = (
         <>
-          <Navbar color="white" location={location}></Navbar>
-          <Navigation />
+          <Navigation
+            handleHideNav={this.handleHideNav}
+            handleShowNav={this.handleShowNav}
+            showNav={this.state.showNav}
+            defaultToDark={false}
+          />
           <PageTitle>Blog</PageTitle>
           <BlogCategoryTabs />
         </>
@@ -69,7 +96,6 @@ class Layout extends React.Component {
     } else if (location.pathname === aboutPath) {
       header = (
         <>
-          <Navbar color="white" location={location}></Navbar>
           <Navigation />
           <PageTitle>About</PageTitle>
         </>
@@ -97,8 +123,12 @@ class Layout extends React.Component {
     ) {
       header = (
         <>
-          <Navbar color="white" location={location}></Navbar>
-          <Navigation />
+          <Navigation
+            handleHideNav={this.handleHideNav}
+            handleShowNav={this.handleShowNav}
+            showNav={this.state.showNav}
+            defaultToDark={false}
+          />
           <PageTitle>Portfolio</PageTitle>
           <PortfolioCategoryTabs />
         </>
@@ -123,8 +153,12 @@ class Layout extends React.Component {
     } else {
       header = (
         <>
-          <Navbar color="white" location={location}></Navbar>
-          <Navigation />
+          <Navigation
+            handleHideNav={this.handleHideNav}
+            handleShowNav={this.handleShowNav}
+            showNav={this.state.showNav}
+            defaultToDark={false}
+          />
         </>
       )
     }
@@ -134,12 +168,14 @@ class Layout extends React.Component {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(40),
-            padding: `${rhythm(1.5)} 1rem`,
+            maxWidth: fullWidth ? "100vw" : rhythm(40),
+            padding: fullWidth ? "0" : `${rhythm(1.5)} 1rem`,
           }}
         >
-          <header>{header}</header>
-          <main style={{ marginBottom: rhythm(8) }}>{children}</main>
+          <header style={{ position: "relative" }}>{header}</header>
+          <NavContext.Provider value={this.state.showNav}>
+            <main style={{ marginBottom: "8rem" }}>{children}</main>
+          </NavContext.Provider>
         </div>
         <Footer>
           <img
@@ -171,11 +207,9 @@ const Wrapper = styled.div`
 `
 
 const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   text-align: center;
-  margin-bottom: 0;
+
   background-color: ${colors.gray20};
 `
 

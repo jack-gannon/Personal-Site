@@ -154,7 +154,7 @@ const Date = styled.span`
   margin-left: 0.5rem;
 `
 
-const Category = styled.p.attrs(props => ({
+const Category = styled.span.attrs(props => ({
   category: props.category,
 }))`
   text-transform: uppercase;
