@@ -1,39 +1,36 @@
 import React from "react"
 import { Link } from "gatsby"
 import Image from "gatsby-image"
-import { colors } from "../utils/colors"
+import { colors } from "../../utils/colors"
 import styled from "styled-components"
-import ArrowIcon from "./ArrowIcon"
+import ArrowIcon from "../vectors/ArrowIcon"
+import { breakpoints } from "../../utils/breakpoints"
 
-const BlogPostListItem = ({
-  title,
-  category,
-  date,
-  description,
-  slug,
-  imgFluid,
-}) => {
+const PostItemLarge = ({ post, direction = "vertical" }) => {
+  const { thumbnail, title, category, date, description } = post.frontmatter
+  const { slug } = post.fields
+  const imgFluid = thumbnail.childImageSharp.fluid
   return (
-    <Post>
-      <Top>
-        <Thumbnail fluid={imgFluid} />
-        <Details>
-          <Info>
-            <Category category={category}>{category}</Category> |
-            <Date>{date}</Date>
-          </Info>
-
-          <PostTitle>
-            <Link to={`blog${slug}`}>{title}</Link>
-          </PostTitle>
-
-          <Description
-            dangerouslySetInnerHTML={{
-              __html: description,
-            }}
-          />
-        </Details>
-      </Top>
+    <Post direction={direction}>
+      <Thumbnail direction={direction} fluid={imgFluid} />
+      <Details direction={direction}>
+        <Info>
+          <Category category={category}>{category}</Category> |
+          <Date>{date}</Date>
+        </Info>
+        <PostTitle>
+          <Link to={`blog${slug}`}>{title}</Link>
+        </PostTitle>
+        <Description
+          dangerouslySetInnerHTML={
+            description
+              ? {
+                  __html: description,
+                }
+              : { __html: post.excerpt }
+          }
+        />
+      </Details>
       <ReadMore category={category} to={`blog${slug}`}>
         <ArrowIcon
           direction="right"
@@ -51,27 +48,29 @@ const BlogPostListItem = ({
   )
 }
 
-const Post = styled.div`
+const Post = styled.div.attrs(props => ({
+  direction: props.direction,
+}))`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 2rem;
   border: 1px solid ${colors.gray30};
   border-radius: 2px;
   background-color: #fff;
+
+  @media (min-width: ${breakpoints.tablet.medium}) {
+  }
 `
 
-const Top = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
-
-const Thumbnail = styled(Image)`
-  height: 9rem;
+const Thumbnail = styled(Image).attrs(props => ({
+  direction: props.direction,
+}))`
+  height: 100%;
+  max-height: 12rem;
   width: 100%;
-  margin-right: 1rem;
-
   @media (min-width: 960px) {
-    height: 12rem;
   }
 `
 
@@ -82,10 +81,16 @@ const Info = styled.span`
   color: ${colors.gray30};
 `
 
-const Details = styled.div`
-  flex-basis: 20%;
-  width: 100%;
+const Details = styled.div.attrs(props => ({
+  direction: props.direction,
+}))`
+  width: 100%
+  height: 100%;
   padding: 1rem;
+
+  @media (min-width: ${breakpoints.tablet.medium}) {
+    
+  }
 `
 
 const Category = styled.p.attrs(props => ({
@@ -115,6 +120,10 @@ const PostTitle = styled.h3`
     color: ${colors.gray70};
     text-decoration: none;
   }
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 const Date = styled.p`
@@ -127,7 +136,7 @@ const Date = styled.p`
 
 const Description = styled.p`
   margin-bottom: 2rem;
-  color: ${colors.gray50};
+  color: ${colors.gray60};
 `
 
 const ReadMore = styled(Link).attrs(props => ({
@@ -159,4 +168,4 @@ const ReadMore = styled(Link).attrs(props => ({
     width: 1.25rem;
   }
 `
-export default BlogPostListItem
+export default PostItemLarge

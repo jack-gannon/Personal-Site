@@ -2,9 +2,10 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Hero from "../components/Hero"
-import Services from "../components/Services"
-import FeaturedProjects from "../components/FeaturedProjects"
+
+import Services from "../components/home/Services"
+import FeaturedProjects from "../components/home/FeaturedProjects"
+import FromTheBlog from "../components/home/FromTheBlog"
 
 class IndexPage extends React.Component {
   render() {
@@ -12,7 +13,6 @@ class IndexPage extends React.Component {
 
     return (
       <>
-        <Hero />
         <Layout
           location={this.props.location}
           title={siteTitle}
@@ -22,26 +22,9 @@ class IndexPage extends React.Component {
             title="Home"
             keywords={[`blog`, `gatsby`, `javascript`, `react`]}
           />
-          <Services />
           <FeaturedProjects />
-          <p>Welcome to your new Gatsby website. You are on your home page.</p>
-          <p>
-            This starter comes out of the box with styled components and
-            Gatsby's default starter blog running on Netlify CMS.This starter
-            comes out of the box with styled components and Gatsby's default
-            starter blog running on Netlify CMS.This starter comes out of the
-            box with styled components and Gatsby's default starter blog running
-            on Netlify CMS.
-          </p>
-          <p data-sal="slide-up" data-sal-delay="300" data-sal-easing="ease">
-            This starter comes out of the box with styled components and
-            Gatsby's default starter blog running on Netlify CMS.This starter
-            comes out of the box with styled components and Gatsby's default
-            starter blog running on Netlify CMS.This starter comes out of the
-            box with styled components and Gatsby's default starter blog running
-            on Netlify CMS.
-          </p>
-          <p>Now go build something great!</p>
+          <Services />
+          <FromTheBlog />
         </Layout>
       </>
     )

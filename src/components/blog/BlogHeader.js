@@ -1,9 +1,9 @@
 import React from "react"
 import Image from "gatsby-image"
 import styled from "styled-components"
-import { colors } from "../utils/colors"
-import { rhythm } from "../utils/typography"
-import ArrowIcon from "./ArrowIcon"
+import { colors } from "../../utils/colors"
+import { rhythm } from "../../utils/typography"
+import ArrowIcon from "../vectors/ArrowIcon"
 
 const BlogHeader = ({ author, date, title, avatar }) => {
   return (

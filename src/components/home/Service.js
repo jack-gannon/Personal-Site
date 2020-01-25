@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { colors } from "../utils/colors"
-import { rhythm } from "../utils/typography"
-import { breakpoints } from "../utils/breakpoints"
-import SalWrapper from "./SalWrapper"
+import { colors } from "../../utils/colors"
+import { rhythm } from "../../utils/typography"
+import { breakpoints } from "../../utils/breakpoints"
+import SalWrapper from "../SalWrapper"
+import { Link } from "gatsby"
 
 class Service extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Service extends React.Component {
   }
 
   render() {
-    const { reverse, title } = this.props
+    const { reverse, title, children, path } = this.props
     return (
       <StyledSal
         dataSal="disabled"
@@ -57,19 +58,15 @@ class Service extends React.Component {
               reverse={reverse}
               className={this.state.isDisplayed ? "active" : "inactive"}
             >
-              This starter comes out of the box with styled components and
-              Gatsby's default starter blog running on Netlify CMS. This starter
-              comes out of the box with styled components and Gatsby's default
-              starter blog running on Netlify CMS. This starter comes out of the
-              box with styled components and Gatsby's default starter blog
-              running on Netlify CMS.
-              <LearnMore
-                reverse={reverse}
-                className={this.state.isDisplayed ? "active" : "inactive"}
-              >
-                Learn More
-              </LearnMore>
+              {children}
             </ServiceBlurb>
+            <LearnMore
+              to={path}
+              reverse={reverse}
+              className={this.state.isDisplayed ? "active" : "inactive"}
+            >
+              Learn More
+            </LearnMore>
           </Right>
         </ServiceWrapper>
       </StyledSal>
@@ -85,7 +82,7 @@ const ServiceWrapper = styled.div.attrs(props => ({
   max-width: 100vw;
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
+  margin-left: 1rem;
   margin-bottom: 4rem;
   margin-top: 4rem;
 
@@ -99,7 +96,6 @@ const ServiceWrapper = styled.div.attrs(props => ({
 
   @media only screen and (min-width: ${breakpoints.desktop.medium}) {
     width: 100%;
-    height: ${rhythm(16)};
     margin-left: 0rem;
     margin-top: 8rem;
     margin-bottom: 8rem;
@@ -189,11 +185,12 @@ const ServiceTitle = styled.h3.attrs(props => ({
   :before {
     content: " ";
     position: absolute;
-    width: 1rem;
-    height: 1rem;
-    left: -2.55rem;
-    top: 0.25em;
+    width: 0.75rem;
+    height: 0.75rem;
+    left: -1.925rem;
+    top: 0.35em;
     border-radius: 8px;
+    border: 1px solid #fff;
     background-color: ${colors.gray60};
     transform: scale(0, 0);
     transition: transform 0.25s ease;
@@ -229,6 +226,8 @@ const ServiceTitle = styled.h3.attrs(props => ({
   @media only screen and (min-width: ${breakpoints.tablet.medium}) {
     text-align: ${props => (props.reverse ? "right" : "left")};
     :before {
+      width: 1rem;
+      height: 1rem;
       left: ${props => (props.reverse ? "auto" : "-1.5rem")};
       right: ${props => (props.reverse ? "-1.5rem" : "auto")};
     }
@@ -262,10 +261,10 @@ const ServiceBlurb = styled.p.attrs(props => ({
   reverse: props.reverse,
 }))`
   position: relative;
+  color: ${colors.gray70};
   font-size: 0.875rem;
-  border: 1px solid pink;
   width: 100%;
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
   transition: opacity 0.25s ease-in-out;
 
   &.inactive {
@@ -278,47 +277,49 @@ const ServiceBlurb = styled.p.attrs(props => ({
 
   @media only screen and (min-width: ${breakpoints.tablet.medium}) {
     text-align: ${props => (props.reverse ? "right" : "left")};
+    margin-bottom: 1rem;
     font-size: 1rem;
   }
 
   @media only screen and (min-width: ${breakpoints.desktop.medium}) {
     width: 100%;
+    font-size: 1.25rem;
     text-align: ${props => (props.reverse ? "right" : "left")};
   }
 `
 
-const LearnMore = styled.button.attrs(props => ({
+const LearnMore = styled(Link).attrs(props => ({
   reverse: props.reverse,
 }))`
-  position: absolute;
-  bottom: -3rem;
-  left: 0rem;
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 0.75rem;
   font-weight: 600;
+  font-size: 0.875rem;
   letter-spacing: 0.05rem;
-  padding: 0.25rem 1rem;
-  background-color: transparent;
-  border: 2px solid ${colors.gray80};
-  text-transform: uppercase;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  color: ${colors.gray60};
 
   &.inactive {
-    opacity: 0;
-    transform: translateX(2rem);
+    opacity: 0.4;
   }
 
   &.active {
     opacity: 1;
-    transform: translateX(0rem);
   }
 
-  @media only screen and (min-width: ${breakpoints.tablet.medium}) {
-    right: ${props => (props.reverse ? "0rem" : "auto")};
-    left: ${props => (props.reverse ? "auto" : "0rem")};
-    transform: ${props =>
-      props.reverse ? "translateX(-4rem)" : "translateX(4rem)"};
-  }
+  @media only screen and (min-width: ${breakpoints.desktop.small}) {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid ${colors.gray60};
+    transition: opacity 0.25s ease;
+    float: ${props => (props.reverse ? "right" : "left")};
+
+    &:hover {
+      color: #fff;
+      border-color: ${colors.gray70};
+      background-color: ${colors.gray70};
+    }
   }
 `
 

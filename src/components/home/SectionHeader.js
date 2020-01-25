@@ -1,14 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { NavContext } from "../components/layout"
-import { breakpoints } from "../utils/breakpoints"
-import { colors } from "../utils/colors"
+import { NavContext } from "../layout"
+import { breakpoints } from "../../utils/breakpoints"
+import { colors } from "../../utils/colors"
 
 class SectionHeader extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { title } = this.props
     return (
@@ -36,9 +32,8 @@ const Header = styled.h2`
   text-transform: uppercase;
   letter-spacing: 0.125rem;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: ${colors.gray70};
-  margin-top: 4rem;
   padding-top: 1rem;
   padding-bottom: 0.5rem;
   transition: top 0.5s ease;
@@ -59,6 +54,7 @@ const Header = styled.h2`
   }
 
   @media (min-width: ${breakpoints.tablet.medium}) {
+    font-size: 1rem;
     text-align: center;
     margin-left: 0rem;
   }
@@ -67,15 +63,18 @@ const Header = styled.h2`
 const Arrow = styled.svg`
   position: absolute;
   display: block;
-  width: 2rem;
-  height: 1rem;
+  width: 1rem;
+  height: 0.5rem;
   fill: ${colors.gray10};
   stroke: ${colors.gray20};
   stroke-width: 1px;
-  bottom: -1rem;
+  bottom: -0.5rem;
   left: 0;
 
   @media (min-width: ${breakpoints.tablet.medium}) {
+    width: 2rem;
+    height: 1rem;
+    bottom: -1rem;
     left: calc(50vw - 1rem);
     right: auto;
   }

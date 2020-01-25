@@ -4,7 +4,7 @@ import DribbleLogo from "./DribbbleLogo"
 import TwitterLogo from "./TwitterLogo"
 import CodePenLogo from "./CodePenLogo"
 import GitHubLogo from "./GitHubLogo"
-import { colors } from "../../utils/colors"
+import { colors } from "../../../utils/colors"
 
 const SocialIconPanelFooter = () => {
   return (

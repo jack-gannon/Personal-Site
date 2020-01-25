@@ -1,15 +1,14 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { colors } from "../utils/colors"
-import Navbar from "../components/Navbar"
-import Navigation from "../components/Navigation"
+import Hero from "./home/Hero"
+import Navigation from "./nav/Navigation"
 import Logo from "../../content/assets/logo.svg"
-import SocialIconPanelFooter from "./social-icons/SocialIconPanelFooter"
-import BlogCategoryTabs from "./BlogCategoryTabs"
-import PortfolioCategoryTabs from "./PortfolioCategoryTabs"
+import SocialIconPanelFooter from "./vectors/social-icons/SocialIconPanelFooter"
+import BlogCategoryTabs from "./blog/BlogCategoryTabs"
+import PortfolioCategoryTabs from "./portfolio/PortfolioCategoryTabs"
+import AboutCategoryTabs from "./about/AboutCategoryTabs"
 import { breakpoints } from "../utils/breakpoints"
-import throttle from "lodash.throttle"
 
 import { rhythm } from "../utils/typography"
 
@@ -57,6 +56,7 @@ class Layout extends React.Component {
             showNav={this.state.showNav}
             defaultToDark={true}
           />
+          <Hero />
         </>
         // <h1
         //   style={{
@@ -93,11 +93,20 @@ class Layout extends React.Component {
           <BlogCategoryTabs />
         </>
       )
-    } else if (location.pathname === aboutPath) {
+    } else if (
+      location.pathname === aboutPath ||
+      location.pathname.startsWith(aboutPath)
+    ) {
       header = (
         <>
-          <Navigation />
+          <Navigation
+            handleHideNav={this.handleHideNav}
+            handleShowNav={this.handleShowNav}
+            showNav={this.state.showNav}
+            defaultToDark={false}
+          />
           <PageTitle>About</PageTitle>
+          <AboutCategoryTabs />
         </>
         //
         //   style={{
@@ -174,7 +183,9 @@ class Layout extends React.Component {
         >
           <header style={{ position: "relative" }}>{header}</header>
           <NavContext.Provider value={this.state.showNav}>
-            <main style={{ marginBottom: "8rem" }}>{children}</main>
+            <main style={{ marginBottom: "8rem", marginTop: "4rem" }}>
+              {children}
+            </main>
           </NavContext.Provider>
         </div>
         <Footer>
@@ -202,7 +213,6 @@ const PageTitle = styled.h3`
 
 const Wrapper = styled.div`
   position: relative;
-  min-height: 100vh;
   background-color: ${colors.gray10};
 `
 

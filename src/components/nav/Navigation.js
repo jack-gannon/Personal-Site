@@ -1,7 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import throttle from "lodash.throttle"
-import NavbarNew from "./NavbarNew"
+import Navbar from "./Navbar"
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -63,7 +62,7 @@ class Navigation extends React.Component {
   render() {
     return (
       <>
-        <NavbarNew
+        <Navbar
           color={this.state.isDark ? "dark" : "light"}
           showNav={this.props.showNav}
         />

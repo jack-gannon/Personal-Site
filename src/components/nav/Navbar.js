@@ -2,11 +2,11 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { keyframes } from "styled-components"
 import { Link } from "gatsby"
-import { colors } from "../utils/colors"
-import { rhythm } from "../utils/typography"
-import { breakpoints } from "../utils/breakpoints"
+import { colors } from "../../utils/colors"
+import { rhythm } from "../../utils/typography"
+import { breakpoints } from "../../utils/breakpoints"
 
-import Logo from "../components/Logo"
+import Logo from "../vectors/Logo"
 
 class NavbarNew extends Component {
   constructor(props) {
@@ -177,7 +177,7 @@ const NavLink = styled(Link).attrs(props => ({
   }
 
   &:last-child {
-    margin-right: 0;
+    margin-right: 0rem;
   }
 
   &.activeLink {
@@ -199,7 +199,12 @@ const NavLink = styled(Link).attrs(props => ({
     font-size: 1.5rem;
     font-weight: 500;
     margin-top: 0rem;
-    margin-right: ;
+    margin-right: 2.5rem;
+    border: 1px solid pink;
+
+    &:last-child {
+      margin-right: 0rem;
+    }
   }
 `
 
@@ -242,6 +247,7 @@ const NavLinksDesktop = styled.div`
     margin-left: auto;
     margin-right: auto;
     max-width: ${rhythm(40)};
+    border: 1px solid purple;
   }
 `
 

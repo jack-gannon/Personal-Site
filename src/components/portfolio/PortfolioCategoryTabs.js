@@ -1,6 +1,6 @@
 import React from "react"
-import CategoryTabs from "./CategoryTabs"
-import { colors } from "../utils/colors"
+import CategoryTabs from "../nav/CategoryTabs"
+import { colors } from "../../utils/colors"
 
 const PortfolioCategoryTabs = () => {
   // Create Portfolio Category Pages

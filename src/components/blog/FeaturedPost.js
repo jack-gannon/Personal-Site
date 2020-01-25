@@ -1,108 +1,85 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
-import { colors } from "../utils/colors"
-import { rhythm } from "../utils/typography"
+import { colors } from "../../utils/colors"
+import { rhythm } from "../../utils/typography"
 
-function FeaturedPost() {
+const FeaturedPost = ({ featuredPost }) => {
+  const {
+    thumbnail,
+    title,
+    category,
+    date,
+    description,
+  } = featuredPost.frontmatter
+  const { fields } = featuredPost
   return (
-    <StaticQuery
-      query={featuredPostQuery}
-      render={data => {
-        const post = data.allMdx.edges[0].node
-        const {
-          title,
-          date,
-          description,
-          thumbnail,
-          category,
-        } = post.frontmatter
-        const { fields } = post
-        return (
-          <Container>
-            <MainImage fluid={thumbnail.childImageSharp.fluid} />
-            <Details>
-              <Title>{title}</Title>
-              <Info>
-                <Category category={category}>{category}</Category> |
-                <Date>{date}</Date>
-              </Info>
-              <Description>{description}</Description>
-              <ReadMore to={`blog${fields.slug}`}>Read More...</ReadMore>
-            </Details>
-
-            {/* <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            /> */}
-            {/* <h3>{title}</h3>
-            <p>{date}</p>
-            <p>{description}</p> */}
-          </Container>
-        )
-      }}
-    />
+    <Container>
+      <MainImage fluid={thumbnail.childImageSharp.fluid} />
+      <Details>
+        <Title>
+          <Link to={`blog${fields.slug}`}>{title}</Link>
+        </Title>
+        <Info>
+          <Category category={category}>{category}</Category> |
+          <Date>{date}</Date>
+        </Info>
+        <Description>{description}</Description>
+        <ReadMore to={`blog${fields.slug}`}>Read More...</ReadMore>
+      </Details>
+    </Container>
   )
 }
 
-const featuredPostQuery = graphql`
-  query FeaturedPostQuery {
-    allMdx(
-      limit: 1
-      sort: { order: DESC, fields: frontmatter___date }
-      filter: { frontmatter: { content_type: { eq: "blog" } } }
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            description
-            category
-            title
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 590) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          excerpt(pruneLength: 30)
-        }
-      }
-    }
-  }
-`
+// const featuredPostQuery = graphql`
+//   query FeaturedPostQuery {
+//     allMdx(
+//       limit: 1
+//       sort: { order: DESC, fields: frontmatter___date }
+//       filter: { frontmatter: { content_type: { eq: "blog" } } }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           fields {
+//             slug
+//           }
+//           frontmatter {
+//             date(formatString: "MMMM DD, YYYY")
+//             description
+//             category
+//             title
+//             thumbnail {
+//               childImageSharp {
+//                 fluid(maxWidth: 590) {
+//                   ...GatsbyImageSharpFluid
+//                 }
+//               }
+//             }
+//           }
+//           excerpt(pruneLength: 30)
+//         }
+//       }
+//     }
+//   }
+// `
 
 const Container = styled.div`
   margin-left: -1rem;
   position: relative;
   margin-top: ${rhythm(1)};
-  margin-bottom: ${rhythm(2)};
+  margin-bottom: ${rhythm(0.5)};
   border-bottom: 1px solid ${colors.gray30};
   width: 100vw;
 
   @media (min-width: 960px) {
     display: grid;
-    grid-template-columns: 67% 33%;
+    grid-template-columns: 67% auto;
     grid-gap: 1rem;
     margin-left: 0rem;
     width: 100%;
-    border: 1px solid ${colors.gray20};
+    border: 1px solid ${colors.gray30};
     background-color: #fff;
   }
 `
@@ -134,10 +111,18 @@ const Details = styled.div`
 const Title = styled.h3`
   margin-bottom: ${rhythm(0.5)};
   font-size: 1.875rem;
-  color: ${colors.gray70};
+
+  & > :last-child {
+    color: ${colors.gray80};
+    text-decoration: none;
+  }
 
   @media (min-width: 960px) {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 `
 

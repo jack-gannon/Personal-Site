@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BlogPostList from "../components/BlogPostList"
+import PostCollection from "../components/blog/PostCollection"
 
 class BlogCategoryTemplate extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class BlogCategoryTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
-        <BlogPostList posts={posts} />
+        <PostCollection posts={posts} />
       </Layout>
     )
   }

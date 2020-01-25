@@ -2,35 +2,24 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { keyframes } from "styled-components"
-import { colors } from "../utils/colors"
+import { colors } from "../../utils/colors"
+import { breakpoints } from "../../utils/breakpoints"
 
-const BlogCategoryTabs = ({ location }) => {
+const CategoryTabs = ({ location, categories }) => {
   return (
     <ButtonPanel>
-      <Tab category="All" to="/blog/" activeClassName="activeTab">
-        All Posts
-      </Tab>
-      <Tab
-        category="Design"
-        to="/blog/category/design-posts"
-        activeClassName="activeTab"
-      >
-        Design
-      </Tab>
-      <Tab
-        category="Development"
-        to="/blog/category/development-posts"
-        activeClassName="activeTab"
-      >
-        Development
-      </Tab>
-      <Tab
-        category="Personal"
-        to="/blog/category/personal-posts"
-        activeClassName="activeTab"
-      >
-        Personal
-      </Tab>
+      {categories.map(category => {
+        return (
+          <Tab
+            key={category.name}
+            to={category.path}
+            color={category.color}
+            activeClassName="activeTab"
+          >
+            {category.name}
+          </Tab>
+        )
+      })}
     </ButtonPanel>
   )
 }
@@ -45,7 +34,7 @@ const slideIn = keyframes`
 `
 
 const Tab = styled(Link).attrs(props => ({
-  category: props.category,
+  color: props.color,
 }))`
   position: relative;
   font-size: 0.875rem;
@@ -86,15 +75,12 @@ const Tab = styled(Link).attrs(props => ({
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: ${props =>
-      props.category === "Design"
-        ? colors.secondary
-        : props.category === "Development"
-        ? colors.primary
-        : props.category === "Personal"
-        ? colors.tertiaryMedium
-        : colors.gray50};
+    background-color: ${props => props.color};
     animation: ${slideIn} 0.25s ease-in-out;
+  }
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 1rem;
   }
 `
 
@@ -103,9 +89,9 @@ const ButtonPanel = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  @media (min-width: 720px) {
+  @media (min-width: ${breakpoints.tablet.small}) {
     width: calc(50% - 0.5rem);
   }
 `
 
-export default BlogCategoryTabs
+export default CategoryTabs

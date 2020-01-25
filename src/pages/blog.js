@@ -2,8 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import FeaturedPost from "../components/FeaturedPost"
-import BlogPostList from "../components/BlogPostList"
+import FeaturedPost from "../components/blog/FeaturedPost"
+import PostCollection from "../components/blog/PostCollection"
 
 class Blog extends React.Component {
   constructor(props) {
@@ -24,12 +24,17 @@ class Blog extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
+    const featuredPost = data.allMdx.edges[0].node
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
-        <FeaturedPost />
-        <BlogPostList posts={posts} />
+        <FeaturedPost featuredPost={featuredPost} />
+        <PostCollection
+          posts={posts.filter((post, index) => {
+            return index !== 0
+          })}
+        />
       </Layout>
     )
   }
