@@ -23,9 +23,11 @@ class Hero extends React.Component {
               <Typist.Backspace count={49} delay={3000} />
               <span> help teams build products that their users love.</span>
               <Typist.Backspace count={48} delay={3000} />
-              <span> craft meaningful user-experiences.</span>
+              <span> craft meaningful user experiences.</span>
               <Typist.Backspace count={36} delay={3000} />
-              <span> build beautiful user-interfaces.</span>
+              <span> build beautiful user interfaces.</span>
+              <Typist.Backspace count={33} delay={3000} />
+              <span>am a designer and developer based in Phoenix, AZ.</span>
             </CustomTypist>
           </Subheader>
           <PrimaryButton

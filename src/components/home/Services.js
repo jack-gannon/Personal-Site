@@ -18,7 +18,7 @@ const Services = () => {
         />
       </Line>
       <SectionHeader title="What I Do" />
-      <Service title="UX Design" path="/about/skills-services/ux">
+      <Service title="UX Design" path="/about/skills-services#ux-skills">
         Your users are unique. They deserve a unique experience. I research your
         users and apply that knowledge to create meaningful digital products.
       </Service>

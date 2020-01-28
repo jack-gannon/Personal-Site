@@ -2,6 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import WebSkills from "../../components/about/WebSkills"
+import WebTools from "../../components/about/WebTools"
+import UXSkills from "../../components/about/UXSkills"
+import UISkills from "../../components/about/UISkills"
+import DesignTools from "../../components/about/DesignTools"
 
 class About extends React.Component {
   render() {
@@ -11,7 +16,11 @@ class About extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="About" />
-        <h3>Contact!</h3>
+        <WebSkills />
+        <WebTools />
+        <UXSkills />
+        <UISkills />
+        <DesignTools />
       </Layout>
     )
   }

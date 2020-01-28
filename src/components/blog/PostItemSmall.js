@@ -6,8 +6,8 @@ import styled from "styled-components"
 import ArrowIcon from "../vectors/ArrowIcon"
 import { breakpoints } from "../../utils/breakpoints"
 
-const PostItemLarge = ({ post }) => {
-  const { thumbnail, title, category, date, description } = post.frontmatter
+const PostItemSmall = ({ post }) => {
+  const { thumbnail, title, category, date } = post.frontmatter
   const { slug } = post.fields
   const imgFluid = thumbnail.childImageSharp.fluid
   return (
@@ -21,15 +21,6 @@ const PostItemLarge = ({ post }) => {
         <PostTitle>
           <Link to={`blog${slug}`}>{title}</Link>
         </PostTitle>
-        <Description
-          dangerouslySetInnerHTML={
-            description
-              ? {
-                  __html: description,
-                }
-              : { __html: post.excerpt }
-          }
-        />
       </Details>
       <ReadMore category={category} to={`blog${slug}`}>
         <ArrowIcon
@@ -160,4 +151,4 @@ const ReadMore = styled(Link).attrs(props => ({
     width: 1.25rem;
   }
 `
-export default PostItemLarge
+export default PostItemSmall

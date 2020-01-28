@@ -183,7 +183,13 @@ class Layout extends React.Component {
         >
           <header style={{ position: "relative" }}>{header}</header>
           <NavContext.Provider value={this.state.showNav}>
-            <main style={{ marginBottom: "8rem", marginTop: "4rem" }}>
+            <main
+              style={{
+                marginBottom: "8rem",
+                marginTop: "4rem",
+                minHeight: "100vh",
+              }}
+            >
               {children}
             </main>
           </NavContext.Provider>
