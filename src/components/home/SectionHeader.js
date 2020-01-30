@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { NavContext } from "../layout"
 import { breakpoints } from "../../utils/breakpoints"
 import { colors } from "../../utils/colors"
 
@@ -8,7 +7,7 @@ class SectionHeader extends React.Component {
   render() {
     const { title } = this.props
     return (
-      <NavContext.Consumer>
+      <>
         {showNav => (
           <>
             <Header className={showNav ? "active" : "inactive"}>
@@ -19,7 +18,7 @@ class SectionHeader extends React.Component {
             </Header>
           </>
         )}
-      </NavContext.Consumer>
+      </>
     )
   }
 }
