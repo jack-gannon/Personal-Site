@@ -143,7 +143,7 @@ const Nav = styled.nav.attrs(props => ({
     props.color === "dark" ? colors.gray80 : colors.gray10};
   border-bottom: 1px solid
     ${props => (props.color === "dark" ? colors.gray80 : colors.gray20)};
-  transition: top 0.5s ease, background-color 0.25s ease;
+  transition: top 0.5s ease, background-color 1s ease, border-color 1s ease;
 
   &.visible {
     top: 0rem;
@@ -200,7 +200,6 @@ const NavLink = styled(Link).attrs(props => ({
     font-weight: 500;
     margin-top: 0rem;
     margin-right: 2.5rem;
-    border: 1px solid pink;
 
     &:last-child {
       margin-right: 0rem;
@@ -247,7 +246,6 @@ const NavLinksDesktop = styled.div`
     margin-left: auto;
     margin-right: auto;
     max-width: ${rhythm(40)};
-    border: 1px solid purple;
   }
 `
 

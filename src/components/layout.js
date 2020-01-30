@@ -9,30 +9,33 @@ import BlogCategoryTabs from "./blog/BlogCategoryTabs"
 import PortfolioCategoryTabs from "./portfolio/PortfolioCategoryTabs"
 import AboutCategoryTabs from "./about/AboutCategoryTabs"
 import { breakpoints } from "../utils/breakpoints"
+import SlideDeck from "./home/SlideDeck"
 
 import { rhythm } from "../utils/typography"
-
-export const NavContext = React.createContext()
 
 class Layout extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showNav: true,
+      navIsDark: false,
     }
-    this.handleHideNav = this.handleHideNav.bind(this)
-    this.handleShowNav = this.handleShowNav.bind(this)
+
+    this.handleDark = this.handleDark.bind(this)
+    this.handleLight = this.handleLight.bind(this)
   }
 
-  handleHideNav() {
+  // These handle the appearance of the navbar based on
+  // the page content
+
+  handleDark() {
     this.setState(state => ({
-      showNav: false,
+      navIsDark: true,
     }))
   }
 
-  handleShowNav() {
+  handleLight() {
     this.setState(state => ({
-      showNav: true,
+      navIsDark: false,
     }))
   }
 
@@ -51,12 +54,18 @@ class Layout extends React.Component {
       header = (
         <>
           <Navigation
-            handleHideNav={this.handleHideNav}
-            handleShowNav={this.handleShowNav}
-            showNav={this.state.showNav}
             defaultToDark={true}
+            navIsDark={this.state.navIsDark}
+            handleLight={this.handleLight}
+            handleDark={this.handleDark}
           />
-          <Hero />
+          <SlideDeck
+            handleDark={this.handleDark}
+            handleLight={this.handleLight}
+            navIsDark={this.state.navIsDark}
+            orientation="vertical"
+          />
+          {/* <Hero /> */}
         </>
         // <h1
         //   style={{
@@ -84,10 +93,10 @@ class Layout extends React.Component {
       header = (
         <>
           <Navigation
-            handleHideNav={this.handleHideNav}
-            handleShowNav={this.handleShowNav}
-            showNav={this.state.showNav}
             defaultToDark={false}
+            navIsDark={this.state.navIsDark}
+            handleLight={this.handleLight}
+            handleDark={this.handleDark}
           />
           <PageTitle>Blog</PageTitle>
           <BlogCategoryTabs />
@@ -100,10 +109,10 @@ class Layout extends React.Component {
       header = (
         <>
           <Navigation
-            handleHideNav={this.handleHideNav}
-            handleShowNav={this.handleShowNav}
-            showNav={this.state.showNav}
             defaultToDark={false}
+            navIsDark={this.state.navIsDark}
+            handleLight={this.handleLight}
+            handleDark={this.handleDark}
           />
           <PageTitle>About</PageTitle>
           <AboutCategoryTabs />
@@ -133,10 +142,10 @@ class Layout extends React.Component {
       header = (
         <>
           <Navigation
-            handleHideNav={this.handleHideNav}
-            handleShowNav={this.handleShowNav}
-            showNav={this.state.showNav}
             defaultToDark={false}
+            navIsDark={this.state.navIsDark}
+            handleLight={this.handleLight}
+            handleDark={this.handleDark}
           />
           <PageTitle>Portfolio</PageTitle>
           <PortfolioCategoryTabs />
@@ -163,10 +172,10 @@ class Layout extends React.Component {
       header = (
         <>
           <Navigation
-            handleHideNav={this.handleHideNav}
-            handleShowNav={this.handleShowNav}
-            showNav={this.state.showNav}
             defaultToDark={false}
+            navIsDark={this.state.navIsDark}
+            handleLight={this.handleLight}
+            handleDark={this.handleDark}
           />
         </>
       )
@@ -182,17 +191,15 @@ class Layout extends React.Component {
           }}
         >
           <header style={{ position: "relative" }}>{header}</header>
-          <NavContext.Provider value={this.state.showNav}>
-            <main
-              style={{
-                marginBottom: "8rem",
-                marginTop: "4rem",
-                minHeight: "100vh",
-              }}
-            >
-              {children}
-            </main>
-          </NavContext.Provider>
+          <main
+            style={{
+              marginBottom: "8rem",
+              marginTop: "4rem",
+              minHeight: "100vh",
+            }}
+          >
+            {children}
+          </main>
         </div>
         <Footer>
           <img

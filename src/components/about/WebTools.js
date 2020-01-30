@@ -1,96 +1,86 @@
 import React from "react"
-import styled from "styled-components"
-import { colors } from "../../utils/colors"
+import ToolsSection from "./ToolsSection"
+import HTML5Logo from "../../../content/assets/logos/html5.svg"
+import CSS3Logo from "../../../content/assets/logos/css3.svg"
+import JSLogo from "../../../content/assets/logos/javascript.svg"
+import ReactLogo from "../../../content/assets/logos/react.svg"
+import NodeLogo from "../../../content/assets/logos/node.svg"
+import ExpressLogo from "../../../content/assets/logos/express.svg"
+import WebpackLogo from "../../../content/assets/logos/webpack.svg"
+import GitLogo from "../../../content/assets/logos/git.svg"
+import GatsbyLogo from "../../../content/assets/logos/gatsby.svg"
+import GraphQLLogo from "../../../content/assets/logos/graphql.svg"
+import ReduxLogo from "../../../content/assets/logos/redux.svg"
+import MongoDBLogo from "../../../content/assets/logos/mongodb.svg"
 
 const WebTools = () => {
-  return (
-    <Tools>
-      <ToolHeader>Development Tools</ToolHeader>
-      <Grid>
-        <Tool>
-          <h5>React</h5>
-          <p>
-            JavaScript library for building interfaces and single-page
-            applications
-          </p>
-        </Tool>
-        <Tool>
-          <h5>Node.js</h5>
-          <p>JavaScript runtime environment outside of the browser</p>
-        </Tool>
-        <Tool>
-          <h5>Express.js</h5>
-          <p>Node.js framework for building APIs and template engines</p>
-        </Tool>
-        <Tool>
-          <h5>webpack</h5>
-          <p>Module bundler for ES6 modules</p>
-        </Tool>
-        <Tool>
-          <h5>Git/GitHub</h5>
-          <p>Version management tool and code repository</p>
-        </Tool>
-        <Tool>
-          <h5>Gatsby.js</h5>
-          <p>Static-Site Generator for programmatically creating websites</p>
-        </Tool>
-        <Tool>
-          <h5>GraphQL</h5>
-          <p>Language for querying and manipulating data from APIs</p>
-        </Tool>
-        <Tool>
-          <h5>Redux</h5>
-          <p>JavaScript library for managing application-level state</p>
-        </Tool>
-        <Tool>
-          <h5>MongoDB</h5>
-          <p>NoSQL document-oriented database solution</p>
-        </Tool>
-      </Grid>
-    </Tools>
-  )
+  const webTools = [
+    {
+      name: "HTML5",
+      description: "Markup language for defining and structuring web content",
+      logo: HTML5Logo,
+    },
+    {
+      name: "CSS3",
+      description:
+        "Language for defining presentation and styling of web content",
+      logo: CSS3Logo,
+    },
+    {
+      name: "JavaScript",
+      description: "Scripting language to add interactivity to web content",
+      logo: JSLogo,
+    },
+    {
+      name: "React",
+      description:
+        "JavaScript library for building interfaces and single-page applications",
+      logo: ReactLogo,
+    },
+    {
+      name: "Redux",
+      description: "Version management tool and code repository",
+      logo: ReduxLogo,
+    },
+    {
+      name: "webpack",
+      description: "Module bundler for ES6 modules",
+      logo: WebpackLogo,
+    },
+    {
+      name: "Node.js",
+      description: "JavaScript runtime environment outside of the browser",
+      logo: NodeLogo,
+    },
+    {
+      name: "Express.js",
+      description: "Node.js framework for building APIs and template engines",
+      logo: ExpressLogo,
+    },
+
+    {
+      name: "MongoDB",
+      description: "NoSQL schema & document oriented database solution",
+      logo: MongoDBLogo,
+    },
+    {
+      name: "Gatsby.js",
+      description:
+        "Static-Site Generator for programmatically creating websites",
+      logo: GatsbyLogo,
+    },
+    {
+      name: "GraphQL",
+      description: "Language for querying and manipulating data from APIs",
+      logo: GraphQLLogo,
+    },
+    {
+      name: "Git",
+      description: "Version control system for managing source code",
+      logo: GitLogo,
+    },
+  ]
+  return <ToolsSection title="Development Tools" tools={webTools} />
 }
-
-const Tools = styled.section`
-  display: grid;
-  grid-template-columns: calc(25% - 0.5rem) calc(75% - 0.5rem);
-  grid-gap: 1rem;
-  width: 100%;
-  margin-bottom: 4rem;
-`
-
-const ToolHeader = styled.h3`
-  border-right: 1px solid ${colors.gray30};
-`
-
-const Grid = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  grid-gap: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid pink;
-`
-
-const Tool = styled.div`
-  flex-basis: calc(33.3% - 0.5rem);
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid ${colors.gray20};
-  padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: 0.75rem;
-
-  & h5 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  & p {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 0.875rem;
-    color: ${colors.gray60};
-  }
-`
 
 export default WebTools

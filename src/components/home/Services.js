@@ -39,6 +39,7 @@ const Line = styled.svg`
   position: absolute;
   top: 4rem;
   width: 1rem;
+  z-index: 3;
   height: 100%;
 
   & line {

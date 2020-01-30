@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { colors } from "../../utils/colors"
+import { breakpoints } from "../../utils/breakpoints"
 
 const SkillsSection = ({ skills, id }) => {
   // This component takes in a single skills object. The object
@@ -15,7 +16,10 @@ const SkillsSection = ({ skills, id }) => {
 
   return (
     <Section id={id}>
-      <SectionTitle>{sectionTitle}</SectionTitle>
+      <TitleCell>
+        <SectionTitle>{sectionTitle}</SectionTitle>
+      </TitleCell>
+
       <Columns>
         {columns.map(column => (
           <Column>
@@ -33,12 +37,19 @@ const SkillsSection = ({ skills, id }) => {
 }
 
 const Section = styled.section`
-  display: grid;
-  grid-template-columns: calc(25% - 0.5rem) calc(75% - 0.5rem);
-  grid-gap: 1rem;
-  padding-top: 4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  @media (min-width: ${breakpoints.desktop.small}) {
+    display: grid;
+    grid-template-columns: calc(25% - 0.5rem) calc(75% - 0.5rem);
+    grid-gap: 1rem;
+    padding-top: 4rem;
+  }
 `
+
+const TitleCell = styled.div`
+  width: 100%;
+`
+
 const SectionTitle = styled.h2`
   position: relative;
   font-size: 2rem;
@@ -48,24 +59,41 @@ const SectionTitle = styled.h2`
     position: absolute;
     content: " ";
     width: 20%;
-    height: 2px;
-    bottom: 7.75rem;
+    height: 4px;
+    bottom: -4px;
     left: 0rem;
     background-color: ${colors.gray30};
+  }
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    &:after {
+      width: 10%;
+    }
+
+    @media (min-width: ${breakpoints.desktop.small}) {
+      &:after {
+        width: 20%;
+      }
+    }
   }
 `
 
 const Columns = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   background-color: #fff;
   border: 1px solid ${colors.gray20};
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    flex-direction: row;
+  }
 `
 
 const Column = styled.div`
   flex-basis: 33.3%;
 
-  border-right: 1px solid ${colors.gray20};
+  border-bottom: 1px solid ${colors.gray20};
   padding: 1rem;
   font-family: "Helvetica Neue", sans-serif;
 
@@ -77,8 +105,19 @@ const Column = styled.div`
     font-size: 0.875rem;
     color: ${colors.gray60};
   }
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    border-bottom: none;
+    padding: 0.5rem;
+    border-right: 1px solid ${colors.gray20};
+  }
 `
-const ColumnHeader = styled.h4``
+const ColumnHeader = styled.h4`
+  padding: 0rem;
+  @media (min-width: ${breakpoints.tablet.small}) {
+    padding: 0.5rem;
+  }
+`
 
 const ColumnItems = styled.ul``
 

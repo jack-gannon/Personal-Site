@@ -22,6 +22,9 @@ class IndexPage extends React.Component {
             title="Home"
             keywords={[`blog`, `gatsby`, `javascript`, `react`]}
           />
+          <FeaturedProjects />
+          <Services />
+          <FromTheBlog />
         </Layout>
       </>
     )

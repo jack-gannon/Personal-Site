@@ -77,7 +77,6 @@ class Service extends React.Component {
 const ServiceWrapper = styled.div.attrs(props => ({
   reverse: props.reverse,
 }))`
-  border: 1px solid ${colors.gray30};
   width: calc(100% - 2rem);
   max-width: 100vw;
   display: flex;
@@ -144,11 +143,11 @@ const Left = styled.div.attrs(props => ({
 const Right = styled.div.attrs(props => ({
   reverse: props.reverse,
 }))`
-  transition: background-color 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
   padding: 1rem;
 
   &.inactive {
-    background-color: ${colors.gray10};
+    opacity: 0.3;
   }
 
   @media only screen and (min-width: ${breakpoints.tablet.medium}) {
@@ -156,7 +155,7 @@ const Right = styled.div.attrs(props => ({
     margin-right: 0rem;
 
     &.active {
-      background-color: #fff;
+      opacity: 1;
     }
   }
 
@@ -182,29 +181,17 @@ const ServiceTitle = styled.h3.attrs(props => ({
   font-size: 2rem;
   transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 
-  :before {
-    content: " ";
-    position: absolute;
-    width: 0.75rem;
-    height: 0.75rem;
-    left: -1.925rem;
-    top: 0.35em;
-    border-radius: 8px;
-    border: 1px solid #fff;
-    background-color: ${colors.gray60};
-    transform: scale(0, 0);
-    transition: transform 0.25s ease;
-  }
-
   :after {
     content: " ";
     position: absolute;
     bottom: -1rem;
     left: 0rem;
-    width: 0%;
+    width: 20%;
     height: 4px;
     background-color: ${colors.primary};
-    transition: width 0.5s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: ${props => (props.reverse ? "right" : "left")};
+    transition: transform 0.5s ease-in-out;
   }
 
   &.inactive {
@@ -214,24 +201,13 @@ const ServiceTitle = styled.h3.attrs(props => ({
   &.active {
     opacity: 1;
 
-    :before {
-      transform: scale(1, 1);
-    }
-
     :after {
-      width: 20%;
+      transform: scaleX(1);
     }
   }
 
   @media only screen and (min-width: ${breakpoints.tablet.medium}) {
     text-align: ${props => (props.reverse ? "right" : "left")};
-    :before {
-      width: 1rem;
-      height: 1rem;
-      left: ${props => (props.reverse ? "auto" : "-1.5rem")};
-      right: ${props => (props.reverse ? "-1.5rem" : "auto")};
-    }
-
     :after {
       left: ${props => (props.reverse ? "auto" : "0rem")};
       right: ${props => (props.reverse ? "0rem" : "auto")};
@@ -250,10 +226,6 @@ const ServiceTitle = styled.h3.attrs(props => ({
 
   @media only screen and (min-width: ${breakpoints.desktop.medium}) {
     font-size: 3rem;
-    :before {
-      left: ${props => (props.reverse ? "auto" : "calc(-4.45rem - 1px)")};
-      right: ${props => (props.reverse ? "calc(-4.5rem - 1px)" : "auto")};
-    }
   }
 `
 

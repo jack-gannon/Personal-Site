@@ -9,7 +9,7 @@ const WebSkills = () => {
       {
         colHeader: "Front-End Development",
         colItems: [
-          "HTML / CSS / JavaScript",
+          "Client-Side Development",
           "Responsive Design",
           "Accessibility",
         ],

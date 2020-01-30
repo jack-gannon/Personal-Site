@@ -56,11 +56,11 @@ const slideLeft = keyframes`
 
 const slideRight = keyframes`
 from {
-  margin-left: 4rem;
+  transform: translateX(-4rem);
   opacity: 0;
 }
 to {
-  margin-left: 0rem;
+  transform: translateX(0rem);
   opacity: 1;
 }
 `
@@ -68,20 +68,20 @@ to {
 const elongate = keyframes`
 0% {
   left: 36rem;
-  width: 1rem;
+  transform: scaleX(.25);
 }
 30% {
-  width: .5rem;
+  transform: scaleX(.0125);
 }
 40% {
   left: 0rem;
-  width: 0em;
+  transform: scaleX(0);
 }
 50% {
-  width: 1.125em;
+  transform: scaleX(1);
 }
 100% {
-  width: 1.125em;
+  transform: scaleX(1);
 }
 `
 
@@ -150,6 +150,7 @@ const Title = styled.h1`
     background-color: ${colors.primary};
     width: 1.125em;
     height: 4px;
+    transform-origin: left;
     animation: ${elongate} 1.5s ease-in-out;
   }
 
@@ -222,7 +223,7 @@ const PrimaryButton = styled.button`
   }
 
   @media only screen and (min-width: ${breakpoints.desktop.large}) {
-    bottom: 14rem;
+    bottom: 13rem;
   }
 `
 

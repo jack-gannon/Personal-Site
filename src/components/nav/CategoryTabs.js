@@ -7,7 +7,7 @@ import { breakpoints } from "../../utils/breakpoints"
 
 const CategoryTabs = ({ location, categories }) => {
   return (
-    <ButtonPanel>
+    <TabPanel>
       {categories.map(category => {
         return (
           <Tab
@@ -20,7 +20,7 @@ const CategoryTabs = ({ location, categories }) => {
           </Tab>
         )
       })}
-    </ButtonPanel>
+    </TabPanel>
   )
 }
 
@@ -81,16 +81,18 @@ const Tab = styled(Link).attrs(props => ({
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1rem;
+    margin-right: 3rem;
   }
 `
 
-const ButtonPanel = styled.div`
+const TabPanel = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
 
   @media (min-width: ${breakpoints.tablet.small}) {
-    width: calc(50% - 0.5rem);
+    width: 70%;
+    justify-content: flex-start;
   }
 `
 
