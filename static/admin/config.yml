@@ -24,8 +24,8 @@ collections:
           label: Featured Image,
           widget: object,
           fields: 
-           - { label: Image, name: image, widget: image, default: ../assets/placeholder.png}
-           - { label: Alt Text, name: alt_text, widget: String }
+            - { label: Image, name: image, widget: image, default: ../assets/placeholder.png}
+            - { label: Alt Text, name: alt_text, widget: String }
         }
       - { name: body, label: Body, widget: markdown }
   - name: portfolio
