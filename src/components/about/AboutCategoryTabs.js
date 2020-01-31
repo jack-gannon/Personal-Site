@@ -7,17 +7,17 @@ const AboutCategoryTabs = () => {
     {
       name: "Personal",
       path: "/about/",
-      color: colors.primary,
+      color: colors.gray30,
     },
     {
       name: "Skills & Services",
       path: "/about/skills-services",
-      color: colors.secondary,
+      color: colors.gray30,
     },
     {
       name: "Contact",
       path: "/about/contact",
-      color: colors.tertiaryMedium,
+      color: colors.gray30,
     },
   ]
   return (

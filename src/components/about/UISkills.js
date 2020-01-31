@@ -20,7 +20,7 @@ const UISkills = () => {
       },
     ],
   }
-  return <SkillsSection skills={uiSkills} id="ui" />
+  return <SkillsSection skills={uiSkills} id="ui-skills" />
 }
 
 export default UISkills

@@ -1,8 +1,9 @@
 import React from "react"
 import SlideWrapper from "./SlideWrapper"
-import IntroSlide from "./IntroSlide"
-import FeaturedProjectsSlide from "./FeaturedProjectsSlide"
-import BlogSlide from "./BlogSlide"
+import IntroSlide from "./slides/IntroSlide"
+import FeaturedProjectsSlide from "./slides/FeaturedProjectsSlide"
+import BlogSlide from "./slides/BlogSlide"
+import WhatIDoSlide from "./slides/WhatIDoSlide"
 import SlideControls from "./SlideControls"
 import { CSSTransition } from "react-transition-group"
 
@@ -18,6 +19,7 @@ class SlideDeck extends React.Component {
           component: <FeaturedProjectsSlide />,
           theme: "light",
         },
+        { name: "what I do", component: <WhatIDoSlide />, theme: "light" },
         { name: "from the blog", component: <BlogSlide />, theme: "light" },
       ],
       transitionDirection: "forward",

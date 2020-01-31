@@ -85,7 +85,7 @@ const Tab = styled(Link).attrs(props => ({
   }
 `
 
-const TabPanel = styled.div`
+const TabPanel = styled.nav`
   display: flex;
   width: 100%;
   justify-content: space-between;

@@ -10,8 +10,11 @@ import PortfolioCategoryTabs from "./portfolio/PortfolioCategoryTabs"
 import AboutCategoryTabs from "./about/AboutCategoryTabs"
 import { breakpoints } from "../utils/breakpoints"
 import SlideDeck from "./home/SlideDeck"
-
 import { rhythm } from "../utils/typography"
+import BlogPostHeader from "./layout/headers/BlogPostHeader"
+import HeaderContainer from "./layout/headers/HeaderContainer"
+import MainContainer from "./layout/main/MainContainer"
+import Footer from "./layout/footers/Footer"
 
 class Layout extends React.Component {
   constructor(props) {
@@ -40,7 +43,15 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { location, children, fullWidth = false } = this.props
+    const {
+      location,
+      children,
+      fullWidth = false,
+      articleLayout = false,
+      asideContents = null,
+      post,
+      avatar,
+    } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const blogCategory = `${__PATH_PREFIX__}/blog/category/`
@@ -49,6 +60,7 @@ class Layout extends React.Component {
     const portfolioCategory = `${__PATH_PREFIX__}/portfolio/category/`
 
     let header
+    let footer = <Footer />
 
     if (location.pathname === rootPath) {
       header = (
@@ -59,12 +71,7 @@ class Layout extends React.Component {
             handleLight={this.handleLight}
             handleDark={this.handleDark}
           />
-          <SlideDeck
-            handleDark={this.handleDark}
-            handleLight={this.handleLight}
-            navIsDark={this.state.navIsDark}
-            orientation="vertical"
-          />
+
           {/* <Hero /> */}
         </>
         // <h1
@@ -86,12 +93,14 @@ class Layout extends React.Component {
         //   </Link>
         // </h1>
       )
+
+      footer = null
     } else if (
       location.pathname === blogPath ||
       location.pathname.startsWith(blogCategory)
     ) {
       header = (
-        <>
+        <HeaderContainer>
           <Navigation
             defaultToDark={false}
             navIsDark={this.state.navIsDark}
@@ -100,14 +109,30 @@ class Layout extends React.Component {
           />
           <PageTitle>Blog</PageTitle>
           <BlogCategoryTabs />
-        </>
+        </HeaderContainer>
+      )
+    } else if (
+      location.pathname !== blogPath &&
+      !location.pathname.startsWith(blogCategory) &&
+      location.pathname.startsWith(blogPath)
+    ) {
+      header = (
+        <HeaderContainer>
+          <Navigation
+            defaultToDark={false}
+            navIsDark={this.state.navIsDark}
+            handleLight={this.handleLight}
+            handleDark={this.handleDark}
+          />
+          <BlogPostHeader post={post} avatar={avatar} />
+        </HeaderContainer>
       )
     } else if (
       location.pathname === aboutPath ||
       location.pathname.startsWith(aboutPath)
     ) {
       header = (
-        <>
+        <HeaderContainer>
           <Navigation
             defaultToDark={false}
             navIsDark={this.state.navIsDark}
@@ -116,7 +141,7 @@ class Layout extends React.Component {
           />
           <PageTitle>About</PageTitle>
           <AboutCategoryTabs />
-        </>
+        </HeaderContainer>
         //
         //   style={{
         //     fontFamily: `Montserrat, sans-serif`,
@@ -140,7 +165,7 @@ class Layout extends React.Component {
       location.pathname.startsWith(portfolioCategory)
     ) {
       header = (
-        <>
+        <HeaderContainer>
           <Navigation
             defaultToDark={false}
             navIsDark={this.state.navIsDark}
@@ -149,7 +174,7 @@ class Layout extends React.Component {
           />
           <PageTitle>Portfolio</PageTitle>
           <PortfolioCategoryTabs />
-        </>
+        </HeaderContainer>
         //
         //   style={{
         //     fontFamily: `Montserrat, sans-serif`,
@@ -170,50 +195,82 @@ class Layout extends React.Component {
       )
     } else {
       header = (
-        <>
+        <HeaderContainer>
           <Navigation
             defaultToDark={false}
             navIsDark={this.state.navIsDark}
             handleLight={this.handleLight}
             handleDark={this.handleDark}
           />
-        </>
+        </HeaderContainer>
       )
     }
     return (
-      <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: fullWidth ? "100vw" : rhythm(40),
-            padding: fullWidth ? "0" : `${rhythm(1.5)} 1rem`,
-          }}
+      <>
+        {header}
+        <BodyContainer
+          fullWidth={fullWidth}
+          articleLayout={articleLayout}
+          asideContents={asideContents}
         >
-          <header style={{ position: "relative" }}>{header}</header>
-          <main
-            style={{
-              marginBottom: "8rem",
-              marginTop: "4rem",
-              minHeight: "100vh",
-            }}
-          >
-            {children}
-          </main>
-        </div>
-        <Footer>
-          <img
-            src={Logo}
-            style={{ width: "4rem", marginTop: "1rem", marginBottom: ".5rem" }}
-            alt="Jack Gannon Logo"
-          />
-          <SocialIconPanelFooter />
-          <Legal>© {new Date().getFullYear()} Jack Gannon</Legal>
-        </Footer>
-      </Wrapper>
+          <main>{children}</main>
+          <aside>{asideContents}</aside>
+        </BodyContainer>
+        {footer}
+      </>
+      // <Wrapper>
+      //   <div
+      //     style={{
+      //       marginLeft: `auto`,
+      //       marginRight: `auto`,
+      //       maxWidth: fullWidth ? "100vw" : rhythm(40),
+      //       padding: fullWidth ? "0" : `${rhythm(1.5)} 1rem`,
+      //     }}
+      //   >
+      //     <header style={{ position: "relative" }}>{header}</header>
+      //     <main
+      //       style={{
+      //         marginBottom: "8rem",
+      //         marginTop: "4rem",
+      //         minHeight: "100vh",
+      //       }}
+      //     >
+      //       {children}
+      //     </main>
+      //   </div>
+      //   <Footer>
+      //     <img
+      //       src={Logo}
+      //       style={{ width: "4rem", marginTop: "1rem", marginBottom: ".5rem" }}
+      //       alt="Jack Gannon Logo"
+      //     />
+      //     <SocialIconPanelFooter />
+      //     <Legal>© {new Date().getFullYear()} Jack Gannon</Legal>
+      //   </Footer>
+      // </Wrapper>
     )
   }
 }
+
+const BodyContainer = styled.div.attrs(props => ({
+  fullWidth: props.fullWidth,
+}))`
+  margin-left: ${props => (props.fullWidth ? "0rem" : "auto")};
+  margin-right: ${props => (props.fullWidth ? "0rem" : "auto")};
+  padding: ${props => (props.fullWidth ? "0rem" : "1rem")};
+  width: 100%;
+  max-width: ${props => (props.fullWidth ? "100vw" : rhythm(40))};
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    & main {
+      width: ${props => (props.articleLayout ? "67%" : "100%")};
+      font-size: ${props => (props.articleLayout ? "18px" : "16px")};
+    }
+  }
+`
+
 const PageTitle = styled.h3`
   margin-top: ${rhythm(1)};
   margin-bottom: ${rhythm(0.25)};
@@ -222,25 +279,6 @@ const PageTitle = styled.h3`
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 4rem;
   }
-`
-
-const Wrapper = styled.div`
-  position: relative;
-  background-color: ${colors.gray10};
-`
-
-const Footer = styled.footer`
-  width: 100vw;
-  text-align: center;
-
-  background-color: ${colors.gray20};
-`
-
-const Legal = styled.p`
-  margin-top: 1rem;
-  margin-bottom: 0rem;
-  padding-bottom: 1rem;
-  font-family: "Helvetica Neue", sans-serif;
 `
 
 export default Layout

@@ -1,8 +1,8 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-import { rhythm } from "../../utils/typography"
-import { colors } from "../../utils/colors"
-import { breakpoints } from "../../utils/breakpoints"
+import { rhythm } from "../../../utils/typography"
+import { colors } from "../../../utils/colors"
+import { breakpoints } from "../../../utils/breakpoints"
 
 const IntroSlide = () => {
   return (

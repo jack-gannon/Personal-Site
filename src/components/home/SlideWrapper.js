@@ -20,7 +20,6 @@ const Slide = styled.div.attrs(props => ({
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  top: -4rem;
   overflow: hidden;
   z-index: 1;
   background-color: ${colors.gray30};

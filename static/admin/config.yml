@@ -17,7 +17,7 @@ collections:
       - { name: title, label: Title }
       - { name: author, label: Author, default: "Jack Gannon" }
       - { name: category, label: Category }
-      - { name: tags, label: Tags }
+      - { name: tags, label: Tags, widget: list }
       - { name: description, label: Description }
       - {
           name: thumbnail,
@@ -40,11 +40,17 @@ collections:
       - {
           name: project-images,
           label: Project Images,
-          widget: image,
-          media_library:
-            {
-              name: cloudinary,
-              config: { cloud_name: dthoxmity, api_key: 144732167219663 },
-            },
+          widget: list,
+          field: { label: Image, name: image, widget: image },
         }
+      # - {
+      #     name: project-images,
+      #     label: Project Images,
+      #     widget: image,
+      #     media_library:
+      #       {
+      #         name: cloudinary,
+      #         config: { cloud_name: dthoxmity, api_key: 144732167219663 },
+      #       },
+      #   }
       - { name: body, label: Body, widget: markdown }

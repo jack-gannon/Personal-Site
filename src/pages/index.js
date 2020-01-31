@@ -2,10 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-import Services from "../components/home/Services"
-import FeaturedProjects from "../components/home/FeaturedProjects"
-import FromTheBlog from "../components/home/FromTheBlog"
+import SlideDeck from "../components/home/SlideDeck"
 
 class IndexPage extends React.Component {
   render() {
@@ -22,6 +19,7 @@ class IndexPage extends React.Component {
             title="Home"
             keywords={[`blog`, `gatsby`, `javascript`, `react`]}
           />
+          <SlideDeck />
         </Layout>
       </>
     )

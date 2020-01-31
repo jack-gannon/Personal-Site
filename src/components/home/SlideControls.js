@@ -54,12 +54,18 @@ const Controls = styled.nav`
 
 const Indicator = styled.p`
   position: absolute;
-  right: 12rem;
-  top: -5rem;
+  right: 1rem;
+  top: -12rem;
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 16rem;
+  font-size: 2rem;
   font-weight: 800;
   opacity: 0.1;
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    right: 12rem;
+    top: -5rem;
+    font-size: 16rem;
+  }
 `
 
 const Prev = styled.button``

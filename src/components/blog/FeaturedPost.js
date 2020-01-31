@@ -68,8 +68,6 @@ const FeaturedPost = ({ featuredPost }) => {
 const Container = styled.div`
   margin-left: -1rem;
   position: relative;
-  margin-top: ${rhythm(1)};
-  margin-bottom: ${rhythm(0.5)};
   border-bottom: 1px solid ${colors.gray30};
   width: 100vw;
 
@@ -108,7 +106,7 @@ const Details = styled.div`
   }
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
   margin-bottom: ${rhythm(0.5)};
   font-size: 1.875rem;
 

@@ -1,11 +1,13 @@
 import React from "react"
 import Image from "gatsby-image"
 import styled from "styled-components"
-import { colors } from "../../utils/colors"
-import { rhythm } from "../../utils/typography"
-import ArrowIcon from "../vectors/ArrowIcon"
+import { colors } from "../../../utils/colors"
+import { rhythm } from "../../../utils/typography"
+import { breakpoints } from "../../../utils/breakpoints"
+import ArrowIcon from "../../vectors/ArrowIcon"
 
-const BlogHeader = ({ author, date, title, avatar }) => {
+const BlogPostHeader = ({ post, avatar }) => {
+  const { title, author, date, description, thumbnail } = post.frontmatter
   return (
     <Container>
       <BackButton onClick={() => window.history.back()}>
@@ -24,6 +26,7 @@ const BlogHeader = ({ author, date, title, avatar }) => {
           </Published>
         </div>
       </BlogSubheader>
+      <StyledImage fluid={thumbnail.childImageSharp.fluid} />
     </Container>
   )
 }
@@ -32,7 +35,18 @@ const Container = styled.div``
 
 const Title = styled.h1`
   margin-top: ${rhythm(0.5)};
-  margin-bottom: ${rhythm(1 / 2)};
+  margin-bottom: ${rhythm(0.5)};
+
+  @media (min-width: ${breakpoints.tablet.medium}) {
+    font-size: 3rem;
+    width: 70%;
+    margin-top: ${rhythm(1)};
+    margin-bottom: ${rhythm(1)};
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    width: 50%;
+  }
 `
 
 const BlogSubheader = styled.div`
@@ -68,11 +82,9 @@ const Published = styled.p`
 const Date = styled.span``
 
 const BackButton = styled.button`
-  box-sizing: border-box;
   width: 3rem;
   height: 3rem;
   padding: 0.75rem;
-  margin-top: ${rhythm(0.5)};
   background-color: ${colors.gray20};
   border: none;
   border-radius: 50%;
@@ -93,4 +105,16 @@ const BackButton = styled.button`
   }
 `
 
-export default BlogHeader
+const StyledImage = styled(Image)`
+  height: auto;
+  width: 100vw;
+  margin-left: -1rem;
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    margin-left: 0rem;
+    width: 100%;
+    margin-bottom: ${rhythm(1.5)};
+  }
+`
+
+export default BlogPostHeader

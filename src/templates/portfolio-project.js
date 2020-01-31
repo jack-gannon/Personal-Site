@@ -13,37 +13,30 @@ class PortfolioProjectTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
+      <article>
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.excerpt}
+          />
 
-        {/* <StyledImage fluid={post.frontmatter.thumbnail.childImageSharp.fluid} /> */}
-        <BodyContainer>
+          {/* <StyledImage fluid={post.frontmatter.thumbnail.childImageSharp.fluid} /> */}
+
           <MDXRenderer>{post.body}</MDXRenderer>
-        </BodyContainer>
 
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
-      </Layout>
+          <hr
+            style={{
+              marginBottom: rhythm(1),
+            }}
+          />
+          <Bio />
+        </Layout>
+      </article>
     )
   }
 }
 
 export default PortfolioProjectTemplate
-
-const BodyContainer = styled.div`
-  width: 100%;
-
-  @media (min-width: 768px) {
-    width: 60%;
-  }
-`
 
 export const pageQuery = graphql`
   query PortfolioProjectBySlug($slug: String!) {

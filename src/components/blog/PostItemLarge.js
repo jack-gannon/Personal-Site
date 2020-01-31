@@ -102,7 +102,7 @@ const Category = styled.p`
   margin-bottom: 0rem;
 `
 
-const PostTitle = styled.h3`
+const PostTitle = styled.h2`
   font-size: 1.25rem;
   margin-top: 0rem;
   margin-bottom: 0.5rem;
