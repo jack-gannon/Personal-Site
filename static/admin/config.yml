@@ -19,9 +19,9 @@ collections:
       - { name: category, label: Category }
       - { name: tags, label: Tags, widget: list }
       - { name: description, label: Description }
-      - name: thumbnail,
-        label: Featured Image,
-        widget: object,
+      - name: thumbnail
+        label: Featured Image
+        widget: object
         fields:
           - {
               name: image,
