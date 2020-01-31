@@ -23,14 +23,9 @@ collections:
           name: thumbnail,
           label: Featured Image,
           widget: object,
-          fields:
-            {
-              label: Image,
-              name: image,
-              widget: image,
-              default: ../assets/placeholder.png,
-            }
-          { label: Alt Text, name: alt_text, widget: String }
+          fields: 
+           - { label: Image, name: image, widget: image, default: ../assets/placeholder.png}
+           - { label: Alt Text, name: alt_text, widget: String }
         }
       - { name: body, label: Body, widget: markdown }
   - name: portfolio
@@ -49,8 +44,8 @@ collections:
           label: Project Images,
           widget: list,
           fields: 
-            { label: Image, name: image, widget: image }
-            { label: Alt Text, name: alt_text, widget: string }
+           - { label: Image, name: image, widget: image }
+           - { label: Alt Text, name: alt_text, widget: string }
         }
       # - {
       #     name: project-images,
