@@ -16,14 +16,21 @@ collections:
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: author, label: Author, default: "Jack Gannon" }
-      - { name: category, label: Category }
+      - { name: category, label: Category, widget: select, options: ["Personal", "Design", "Development"] }
       - { name: tags, label: Tags, widget: list }
       - { name: description, label: Description }
       - {
           name: thumbnail,
           label: Featured Image,
-          widget: image,
-          default: ../assets/placeholder.png,
+          widget: object,
+          fields:
+            - {
+              label: Image,
+              name: image,
+              widget: image,
+              default: ../assets/placeholder.png,
+            }
+          - { label: Alt Text, name: alt_text, widget: String }
         }
       - { name: body, label: Body, widget: markdown }
   - name: portfolio
@@ -41,7 +48,9 @@ collections:
           name: project-images,
           label: Project Images,
           widget: list,
-          field: { label: Image, name: image, widget: image },
+          fields: 
+            - { label: Image, name: image, widget: image }
+            - { label: Alt Text, name: alt_text, widget: string }
         }
       # - {
       #     name: project-images,
