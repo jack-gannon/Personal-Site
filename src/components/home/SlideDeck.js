@@ -33,6 +33,10 @@ class SlideDeck extends React.Component {
     this.handleJumpToIndex = this.handleJumpToIndex.bind(this)
   }
 
+  componentDidMount = () => {
+    this.props.handleDark()
+  }
+
   handleIncrement = () => {
     // If the slide is the last in the group, then
     // the index will reset to the beginning. If not,
@@ -91,7 +95,7 @@ class SlideDeck extends React.Component {
   // makes the change if needed based on methods
   // passed down from props.
   handleNavColor = nextColor => {
-    let currentColor = this.props.navIsDark
+    let currentColor = this.props.isDark ? "dark" : "light"
     if (nextColor === currentColor) {
       return
     }
@@ -124,8 +128,9 @@ class SlideDeck extends React.Component {
           handlePreviousPage={this.handlePreviousPage}
           currentSlideIndex={this.state.currentSlideIndex}
           handleJumpToIndex={this.handleJumpToIndex}
-          isDark={this.props.navIsDark}
+          isDark={this.props.isDark}
         />
+        )}
       </>
     )
   }

@@ -2,7 +2,7 @@ import React from "react"
 import throttle from "lodash.throttle"
 import Navbar from "./Navbar"
 
-export const NavContext = React.createContext()
+import { NavConsumer } from "./nav-context"
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class Navigation extends React.Component {
     this.state = {
       showNav: true,
     }
+
     this.handleNav = this.handleNav.bind(this)
     // this.handleDark = this.handleDark.bind(this)
     // this.handleLight = this.handleLight.bind(this)
@@ -32,16 +33,9 @@ class Navigation extends React.Component {
     }))
   }
 
-  // handleDark() {
-  //   this.setState(state => ({
-  //     isDark: true,
-  //   }))
-  // }
-
   componentDidMount() {
     this.prev = window.scrollY
     window.addEventListener("scroll", this.throttleNav)
-    this.props.defaultToDark && this.props.handleDark()
   }
 
   componentWillUnmount() {
@@ -51,16 +45,16 @@ class Navigation extends React.Component {
 
   handleNav = e => {
     // Handle dark or light theme - index page only
-    if (this.props.defaultToDark) {
-      let heroHeight = window.screen.height * 0.9
-      if (window.scrollY > heroHeight) {
-        this.props.handleLight()
-      } else {
-        this.props.handleDark()
-      }
-    } else {
-      this.props.handleLight()
-    }
+    // if (this.props.defaultToDark) {
+    //   let heroHeight = window.screen.height * 0.9
+    //   if (window.scrollY > heroHeight) {
+    //     this.handleLight()
+    //   } else {
+    //     this.handleDark()
+    //   }
+    // } else {
+    //   this.props.handleLight()
+    // }
 
     // Handle scroll activated nav toggle
     if (this.prev > window.scrollY || window.scrollY < 16) {
@@ -74,10 +68,14 @@ class Navigation extends React.Component {
   render() {
     return (
       <>
-        <Navbar
-          color={this.props.navIsDark ? "dark" : "light"}
-          showNav={this.state.showNav}
-        />
+        <NavConsumer>
+          {({ isDark }) => (
+            <Navbar
+              color={isDark ? "dark" : "light"}
+              showNav={this.state.showNav}
+            />
+          )}
+        </NavConsumer>
       </>
     )
   }

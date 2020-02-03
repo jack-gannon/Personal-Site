@@ -1,46 +1,26 @@
 import React from "react"
 import styled from "styled-components"
-import { colors } from "../utils/colors"
-import Hero from "./home/Hero"
+
 import Navigation from "./nav/Navigation"
-import Logo from "../../content/assets/logo.svg"
-import SocialIconPanelFooter from "./vectors/social-icons/SocialIconPanelFooter"
+
 import BlogCategoryTabs from "./blog/BlogCategoryTabs"
 import PortfolioCategoryTabs from "./portfolio/PortfolioCategoryTabs"
 import AboutCategoryTabs from "./about/AboutCategoryTabs"
 import { breakpoints } from "../utils/breakpoints"
-import SlideDeck from "./home/SlideDeck"
+
 import { rhythm } from "../utils/typography"
 import BlogPostHeader from "./layout/headers/BlogPostHeader"
 import HeaderContainer from "./layout/headers/HeaderContainer"
-import MainContainer from "./layout/main/MainContainer"
+
 import Footer from "./layout/footers/Footer"
 
 class Layout extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      navIsDark: false,
-    }
-
-    this.handleDark = this.handleDark.bind(this)
-    this.handleLight = this.handleLight.bind(this)
   }
 
   // These handle the appearance of the navbar based on
   // the page content
-
-  handleDark() {
-    this.setState(state => ({
-      navIsDark: true,
-    }))
-  }
-
-  handleLight() {
-    this.setState(state => ({
-      navIsDark: false,
-    }))
-  }
 
   render() {
     const {
@@ -65,12 +45,7 @@ class Layout extends React.Component {
     if (location.pathname === rootPath) {
       header = (
         <>
-          <Navigation
-            defaultToDark={true}
-            navIsDark={this.state.navIsDark}
-            handleLight={this.handleLight}
-            handleDark={this.handleDark}
-          />
+          <Navigation defaultToDark={true} />
 
           {/* <Hero /> */}
         </>
@@ -101,12 +76,7 @@ class Layout extends React.Component {
     ) {
       header = (
         <HeaderContainer>
-          <Navigation
-            defaultToDark={false}
-            navIsDark={this.state.navIsDark}
-            handleLight={this.handleLight}
-            handleDark={this.handleDark}
-          />
+          <Navigation defaultToDark={false} />
           <PageTitle>Blog</PageTitle>
           <BlogCategoryTabs />
         </HeaderContainer>
@@ -118,12 +88,7 @@ class Layout extends React.Component {
     ) {
       header = (
         <HeaderContainer>
-          <Navigation
-            defaultToDark={false}
-            navIsDark={this.state.navIsDark}
-            handleLight={this.handleLight}
-            handleDark={this.handleDark}
-          />
+          <Navigation defaultToDark={false} />
           <BlogPostHeader post={post} avatar={avatar} />
         </HeaderContainer>
       )
@@ -133,12 +98,7 @@ class Layout extends React.Component {
     ) {
       header = (
         <HeaderContainer>
-          <Navigation
-            defaultToDark={false}
-            navIsDark={this.state.navIsDark}
-            handleLight={this.handleLight}
-            handleDark={this.handleDark}
-          />
+          <Navigation defaultToDark={false} />
           <PageTitle>About</PageTitle>
           <AboutCategoryTabs />
         </HeaderContainer>
@@ -166,12 +126,7 @@ class Layout extends React.Component {
     ) {
       header = (
         <HeaderContainer>
-          <Navigation
-            defaultToDark={false}
-            navIsDark={this.state.navIsDark}
-            handleLight={this.handleLight}
-            handleDark={this.handleDark}
-          />
+          <Navigation defaultToDark={false} />
           <PageTitle>Portfolio</PageTitle>
           <PortfolioCategoryTabs />
         </HeaderContainer>
@@ -196,12 +151,7 @@ class Layout extends React.Component {
     } else {
       header = (
         <HeaderContainer>
-          <Navigation
-            defaultToDark={false}
-            navIsDark={this.state.navIsDark}
-            handleLight={this.handleLight}
-            handleDark={this.handleDark}
-          />
+          <Navigation defaultToDark={false} />
         </HeaderContainer>
       )
     }
@@ -255,6 +205,7 @@ class Layout extends React.Component {
 const BodyContainer = styled.div.attrs(props => ({
   fullWidth: props.fullWidth,
 }))`
+  position: relative;
   margin-left: ${props => (props.fullWidth ? "0rem" : "auto")};
   margin-right: ${props => (props.fullWidth ? "0rem" : "auto")};
   padding: ${props => (props.fullWidth ? "0rem" : "1rem")};
