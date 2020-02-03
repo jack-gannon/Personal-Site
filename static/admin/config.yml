@@ -17,7 +17,7 @@ collections:
       - { name: title, label: Title }
       - { name: author, label: Author, default: "Jack Gannon" }
       - { name: category, label: Category }
-      - { name: tags, label: Tags, widget: list }
+      - { name: tags, label: Tags, widget: list, default: ["Jack Gannon"] }
       - { name: description, label: Description }
       - name: thumbnail
         label: Featured Image
