@@ -39,7 +39,7 @@ const WebTools = () => {
     },
     {
       name: "Redux",
-      description: "Version management tool and code repository",
+      description: "JavaScript library for managing application-level state",
       logo: ReduxLogo,
     },
     {
@@ -54,7 +54,7 @@ const WebTools = () => {
     },
     {
       name: "Express.js",
-      description: "Node.js framework for building APIs and template engines",
+      description: "Node.js framework for building APIs and web applications",
       logo: ExpressLogo,
     },
 

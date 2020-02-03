@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PostItemLarge from "./PostItemLarge"
+import { breakpoints } from "../../utils/breakpoints"
 
 function BlogPostCollection({ posts }) {
   return (
@@ -13,17 +14,15 @@ function BlogPostCollection({ posts }) {
 }
 
 const Container = styled.div`
-  margin: 20px 0 40px;
-
-  @media (min-width: 760px) {
+  @media (min-width: ${breakpoints.tablet.small}) {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     justify-content: start;
     margin-top: 1rem;
   }
 
-  @media (min-width: 960px) {
+  @media (min-width: ${breakpoints.desktop.small}) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;

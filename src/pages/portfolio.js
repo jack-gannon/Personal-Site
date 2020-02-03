@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Image from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -15,9 +16,10 @@ class Portfolio extends React.Component {
         <div style={{ margin: "20px 0 40px" }}></div>
         <ul>
           {projects.map(project => {
-            const { title, description } = project.node.frontmatter
+            const { title, description, thumbnail } = project.node.frontmatter
             return (
               <li key={title}>
+                <Image fluid={thumbnail.childImageSharp.fluid} />
                 <p>{title}</p>
                 <p>{description}</p>
               </li>
@@ -52,6 +54,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 540) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

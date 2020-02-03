@@ -8,33 +8,19 @@ import PostCollection from "../components/blog/PostCollection"
 class Blog extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      activeCategory: "all",
-    }
-    this.handleSelectCategory = this.handleSelectCategory.bind(this)
-  }
-
-  handleSelectCategory(category) {
-    this.setState(state => ({
-      activeCategory: category,
-    }))
   }
 
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMdx.edges
-    const featuredPost = data.allMdx.edges[0].node
+    const allPosts = data.allPosts.edges
+    const featuredPost = data.featuredPost.edges[0].node
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
         <FeaturedPost featuredPost={featuredPost} />
-        <PostCollection
-          posts={posts.filter((post, index) => {
-            return index !== 0
-          })}
-        />
+        <PostCollection posts={allPosts} />
       </Layout>
     )
   }
@@ -43,14 +29,15 @@ class Blog extends React.Component {
 export default Blog
 
 export const blogQuery = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
       }
     }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+    featuredPost: allMdx(
+      sort: { order: DESC, fields: frontmatter___date }
+      limit: 1
       filter: { frontmatter: { content_type: { eq: "blog" } } }
     ) {
       edges {
@@ -60,13 +47,42 @@ export const blogQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
-            description
+            date(formatString: "MMMM DD, YYYY")
             category
+            author
+            description
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 834) {
+                fluid(maxWidth: 1246) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allPosts: allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      skip: 1
+      filter: { frontmatter: { content_type: { eq: "blog" } } }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            category
+            author
+            description
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 1246) {
                   ...GatsbyImageSharpFluid
                 }
               }

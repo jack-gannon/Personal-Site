@@ -8,10 +8,12 @@ import styled from "styled-components"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import { breakpoints } from "../utils/breakpoints"
+import RelatedPosts from "../components/blog/RelatedPosts"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.mdx
+    const post = this.props.data.post
+    const relatedPosts = this.props.data.relatedPosts.edges
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
@@ -22,12 +24,12 @@ class BlogPostTemplate extends React.Component {
           title={siteTitle}
           post={post}
           avatar={this.props.data.avatar.childImageSharp.fixed}
-          asideContents={<p>Testingggg</p>}
           articleLayout={true}
         >
           <SEO
             title={post.frontmatter.title}
             description={post.frontmatter.description || post.excerpt}
+            ogImage={post.frontmatter.thumbnail.publicURL}
           />
           {/* <BlogHeader
           title={post.frontmatter.title}
@@ -35,9 +37,7 @@ class BlogPostTemplate extends React.Component {
           date={post.frontmatter.date}
           avatar={this.props.data.avatar.childImageSharp.fixed}
         /> */}
-          <ArticleMainWrapper>
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </ArticleMainWrapper>
+          <MDXRenderer>{post.body}</MDXRenderer>
 
           {/* <ul
             style={{
@@ -71,13 +71,8 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate
 
-const ArticleMainWrapper = styled.div`
-  @media (min-width: ${breakpoints.tablet.small}) {
-  }
-`
-
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $category: String) {
     avatar: file(absolutePath: { regex: "/avatar-pic.jpg/" }) {
       childImageSharp {
         fixed(width: 50, height: 50) {
@@ -91,19 +86,48 @@ export const pageQuery = graphql`
         author
       }
     }
-    mdx(fields: { slug: { eq: $slug } }) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       body
       frontmatter {
         title
         author
+        category
         date(formatString: "MMMM DD, YYYY")
         description
         thumbnail {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1246) {
               ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    relatedPosts: allMdx(
+      filter: { frontmatter: { category: { eq: $category } } }
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 80)
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            author
+            category
+            date(formatString: "MMMM DD, YYYY")
+            description
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 120) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
         }

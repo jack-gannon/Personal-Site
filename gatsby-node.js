@@ -25,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                category
                 content_type
               }
             }
@@ -88,6 +89,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: blogPost,
           context: {
             slug: content.node.fields.slug,
+            category: content.node.frontmatter.category,
             previous,
             next,
           },
