@@ -6,6 +6,7 @@ import BlogSlide from "./slides/BlogSlide"
 import WhatIDoSlide from "./slides/WhatIDoSlide"
 import SlideControls from "./SlideControls"
 import { CSSTransition } from "react-transition-group"
+import ScrollWrapper from "../ScrollWrapper"
 
 class SlideDeck extends React.Component {
   constructor(props) {
@@ -105,32 +106,37 @@ class SlideDeck extends React.Component {
   render() {
     return (
       <>
-        {this.state.slideCollection.map((slide, index) => (
-          <CSSTransition
-            key={slide.name}
-            in={this.state.currentSlideIndex === index}
-            classNames="fade"
-            timeout={1000}
-            unmountOnExit
-            onEntering={() => this.handleNavColor(slide.theme)}
-          >
-            <SlideWrapper
-              direction={this.state.transitionDirection}
-              orientation={this.props.orientation}
+        <ScrollWrapper
+          onScrollUp={() => this.handlePreviousPage()}
+          onScrollDown={() => this.handleNextPage()}
+        >
+          {this.state.slideCollection.map((slide, index) => (
+            <CSSTransition
+              key={slide.name}
+              in={this.state.currentSlideIndex === index}
+              classNames="fade"
+              timeout={1000}
+              unmountOnExit
+              onEntering={() => this.handleNavColor(slide.theme)}
             >
-              {slide.component}
-            </SlideWrapper>
-          </CSSTransition>
-        ))}
-        <SlideControls
-          slides={this.state.slideCollection}
-          handleNextPage={this.handleNextPage}
-          handlePreviousPage={this.handlePreviousPage}
-          currentSlideIndex={this.state.currentSlideIndex}
-          handleJumpToIndex={this.handleJumpToIndex}
-          isDark={this.props.isDark}
-        />
-        )}
+              <SlideWrapper
+                direction={this.state.transitionDirection}
+                orientation={this.props.orientation}
+              >
+                {slide.component}
+              </SlideWrapper>
+            </CSSTransition>
+          ))}
+          <SlideControls
+            slides={this.state.slideCollection}
+            handleNextPage={this.handleNextPage}
+            handlePreviousPage={this.handlePreviousPage}
+            currentSlideIndex={this.state.currentSlideIndex}
+            handleJumpToIndex={this.handleJumpToIndex}
+            isDark={this.props.isDark}
+          />
+          )}
+        </ScrollWrapper>
       </>
     )
   }
