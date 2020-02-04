@@ -12,7 +12,12 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
-      - { name: content_type, label: Content Type, default: Blog Post }
+      - {
+          name: content_type,
+          label: Content Type,
+          widget: hidden,
+          default: Blog Post,
+        }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: author, label: Author, default: "Jack Gannon" }
@@ -37,7 +42,12 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
-      - { name: content_type, label: Content Type, default: Portfolio Project }
+      - {
+          name: content_type,
+          label: Content Type,
+          widget: hidden,
+          default: Portfolio Project,
+        }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: description, label: Description }
@@ -58,4 +68,46 @@ collections:
       #         config: { cloud_name: dthoxmity, api_key: 144732167219663 },
       #       },
       #   }
+      - name: tools
+        label: Tools
+        widget: select
+        multiple: true
+        options:
+          - { label: React, name: React, logo: ../assets/logos/react.svg }
+          - { label: Redux, name: Redux, logo: ../assets/logos/redux.svg }
+          - { label: webpack, name: webpack, logo: ../assets/logos/webpack.svg }
+          - { label: Sketch, name: Sketch, logo: ../assets/logos/sketch.svg }
+          - { label: Node.js, name: Node.js, logo: ../assets/logos/node.svg }
+          - {
+              label: JavaScript,
+              name: JavaScript,
+              logo: ../assets/logos/javascript.svg,
+            }
+          - { label: GraphQL, name: GraphQL, logo: ../assets/logos/graphql.svg }
+          - { label: MongoDB, name: MongoDB, logo: ../assets/logos/mongodb.svg }
+          - { label: HTML5, name: HTML5, logo: ../assets/logos/html5.svg }
+          - { label: CSS3, name: CSS3, logo: ../assets/logos/css3.svg }
+          - { label: Figma, name: Figma, logo: ../assets/logos/figma.svg }
+          - {
+              label: Gatsby.js,
+              name: Gatsby.js,
+              logo: ../assets/logos/gatsby.svg,
+            }
+          - {
+              label: Express.js,
+              name: Express.js,
+              logo: ../assets/logos/express.svg,
+            }
+          - {
+              label: CSS Modules,
+              name: CSS Modules,
+              logo: ../assets/logos/cssmodules.svg,
+            }
+          - {
+              label: Styled-Components,
+              name: Styled-Components,
+              logo: ../assets/logos/styledcomponents.svg,
+            }
+          - { label: Sass, name: Sass, logo: ../assets/logos/sass.svg }
+
       - { name: body, label: Body, widget: markdown }

@@ -15,7 +15,7 @@ class Navigation extends React.Component {
     // this.handleDark = this.handleDark.bind(this)
     // this.handleLight = this.handleLight.bind(this)
     // Tracks instance of the event, prevents memory leak
-    this.throttleNav = throttle(this.handleNav, 500)
+    this.throttleNav = throttle(this.handleNav, 1000)
 
     this.handleHideNav = this.handleHideNav.bind(this)
     this.handleShowNav = this.handleShowNav.bind(this)

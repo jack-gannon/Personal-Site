@@ -9,27 +9,31 @@ import { rhythm } from "../utils/typography"
 
 class PortfolioProjectTemplate extends React.Component {
   render() {
-    const post = this.props.data.mdx
+    const project = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
       <article>
-        <Layout location={this.props.location} title={siteTitle}>
+        <Layout
+          location={this.props.location}
+          title={siteTitle}
+          project={project}
+          articleLayout={true}
+        >
           <SEO
-            title={post.frontmatter.title}
-            description={post.frontmatter.description || post.excerpt}
+            title={project.frontmatter.title}
+            description={project.frontmatter.description || project.excerpt}
           />
 
           {/* <StyledImage fluid={post.frontmatter.thumbnail.childImageSharp.fluid} /> */}
 
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer>{project.body}</MDXRenderer>
 
           <hr
             style={{
               marginBottom: rhythm(1),
             }}
           />
-          <Bio />
         </Layout>
       </article>
     )

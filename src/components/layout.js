@@ -10,6 +10,7 @@ import { breakpoints } from "../utils/breakpoints"
 
 import { rhythm } from "../utils/typography"
 import BlogPostHeader from "./layout/headers/BlogPostHeader"
+import PortfolioProjectHeader from "./layout/headers/PortfolioProjectHeader"
 import HeaderContainer from "./layout/headers/HeaderContainer"
 
 import Footer from "./layout/footers/Footer"
@@ -31,6 +32,7 @@ class Layout extends React.Component {
       asideContents = null,
       post,
       avatar,
+      project,
     } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
@@ -148,6 +150,17 @@ class Layout extends React.Component {
         //   </Link>
         // </h3>
       )
+    } else if (
+      location.pathname !== portfolioPath &&
+      !location.pathname.startsWith(portfolioCategory) &&
+      location.pathname.startsWith(portfolioPath)
+    ) {
+      header = (
+        <HeaderContainer>
+          <Navigation defaultToDark={false} />
+          <PortfolioProjectHeader project={project} avatar={avatar} />
+        </HeaderContainer>
+      )
     } else {
       header = (
         <HeaderContainer>
@@ -202,9 +215,7 @@ class Layout extends React.Component {
   }
 }
 
-const BodyContainer = styled.div.attrs(props => ({
-  fullWidth: props.fullWidth,
-}))`
+const BodyContainer = styled.div.attrs(props => ({}))`
   position: relative;
   margin-left: ${props => (props.fullWidth ? "0rem" : "auto")};
   margin-right: ${props => (props.fullWidth ? "0rem" : "auto")};

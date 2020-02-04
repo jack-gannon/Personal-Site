@@ -1,8 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ProjectCollection from "../components/portfolio/ProjectCollection"
 
 class Portfolio extends React.Component {
   render() {
@@ -13,19 +14,7 @@ class Portfolio extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Portfolio" />
-        <div style={{ margin: "20px 0 40px" }}></div>
-        <ul>
-          {projects.map(project => {
-            const { title, description, thumbnail } = project.node.frontmatter
-            return (
-              <li key={title}>
-                <Image fluid={thumbnail.childImageSharp.fluid} />
-                <p>{title}</p>
-                <p>{description}</p>
-              </li>
-            )
-          })}
-        </ul>
+        <ProjectCollection projects={projects} />
       </Layout>
     )
   }

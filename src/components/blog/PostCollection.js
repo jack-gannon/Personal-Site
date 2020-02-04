@@ -14,12 +14,13 @@ function BlogPostCollection({ posts }) {
 }
 
 const Container = styled.div`
+  margin-top: 1rem;
+
   @media (min-width: ${breakpoints.tablet.small}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     justify-content: start;
-    margin-top: 1rem;
   }
 
   @media (min-width: ${breakpoints.desktop.small}) {
