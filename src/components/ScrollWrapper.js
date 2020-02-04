@@ -32,8 +32,8 @@ class ScrollWrapper extends Component {
     return (
       <>
         <Swipeable
-          onSwipedUp={() => this.props.onScrollUp()}
-          onSwipedDown={() => this.props.onScrollDown()}
+          onSwipedUp={() => this.props.onScrollDown()}
+          onSwipedDown={() => this.props.onScrollUp()}
         >
           {this.props.children}
         </Swipeable>
