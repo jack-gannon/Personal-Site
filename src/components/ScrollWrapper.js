@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import throttle from "lodash.throttle"
-import debounce from "lodash.debounce"
+import { Swipeable } from "react-swipeable"
 
 class ScrollWrapper extends Component {
   constructor(props) {
@@ -29,7 +29,16 @@ class ScrollWrapper extends Component {
   }
 
   render() {
-    return <>{this.props.children}</>
+    return (
+      <>
+        <Swipeable
+          onSwipedUp={() => this.props.onScrollUp()}
+          onSwipedDown={() => this.props.onScrollDown()}
+        >
+          {this.props.children}
+        </Swipeable>
+      </>
+    )
   }
 }
 
