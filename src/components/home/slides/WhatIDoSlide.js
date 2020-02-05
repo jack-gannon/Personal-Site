@@ -68,6 +68,7 @@ const Slide = styled.section`
   height: 100%;
   width: 100%;
   background-color: ${colors.gray10};
+  opacity: 0.4;
 
   @media (min-width: ${breakpoints.tablet.small}) {
     justify-content: center;

@@ -16,7 +16,6 @@ const Slide = styled.div.attrs(props => ({
   orientation: props.orientation,
 }))`
   position: absolute;
-  top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
