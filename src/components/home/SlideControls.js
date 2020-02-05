@@ -56,9 +56,9 @@ const Controls = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  right: 0.5rem;
-  bottom: 30vh;
-  height: 40vh;
+  right: 0.25rem;
+  top: 3rem;
+  height: calc(${window.innerHeight}px - 3rem);
   z-index: 2;
 
   @media (min-width: ${breakpoints.tablet.small}) {
@@ -119,11 +119,14 @@ const Step = styled.button`
 `
 
 const Selectors = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  bottom: 4rem;
+  display: none;
+  @media (min-width: ${breakpoints.tablet.small}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    bottom: 4rem;
+  }
 `
 
 const Selector = styled.button`

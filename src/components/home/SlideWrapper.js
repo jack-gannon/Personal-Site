@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 import { colors } from "../../utils/colors"
+import { breakpoints } from "../../utils/breakpoints"
 
 const SlideWrapper = ({ children, direction, orientation }) => {
   return (
@@ -19,7 +20,7 @@ const Slide = styled.div.attrs(props => ({
   flex-direction: column;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: ${window.innerHeight}px;
   overflow: hidden;
   z-index: 1;
   background-color: ${colors.gray30};
@@ -106,13 +107,21 @@ const Slide = styled.div.attrs(props => ({
     }
   }
 
+  @media (min-width ${breakpoints.tablet.small}) {
+    height: 100vh;
+  }
+
 `
 
 const Contents = styled.div`
   position: absolute;
   top: 0rem;
   right: 0rem;
-  height: 100vh;
+  height: ${window.innerHeight}px;
   width: 100vw;
+
+  @media (min-width ${breakpoints.tablet.small}) {
+    height: 100vh;
+  }
 `
 export default SlideWrapper
