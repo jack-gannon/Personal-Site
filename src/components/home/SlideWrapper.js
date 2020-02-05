@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 import { colors } from "../../utils/colors"
@@ -16,11 +16,12 @@ const Slide = styled.div.attrs(props => ({
   orientation: props.orientation,
 }))`
   position: absolute;
+  top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100vw;
-  height: ${window.innerHeight}px;
+  height: 100vh;
   overflow: hidden;
   z-index: 1;
   background-color: ${colors.gray30};
@@ -113,11 +114,11 @@ const Slide = styled.div.attrs(props => ({
 
 `
 
-const Contents = styled.div`
+const Contents = styled.div.attrs(props => ({}))`
   position: absolute;
   top: 0rem;
   right: 0rem;
-  height: ${window.innerHeight}px;
+  height: 100%;
   width: 100vw;
 
   @media (min-width ${breakpoints.tablet.small}) {

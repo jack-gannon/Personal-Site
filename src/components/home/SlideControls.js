@@ -52,16 +52,16 @@ const SlideControls = ({
 }
 
 const Controls = styled.nav`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  right: 0.25rem;
-  top: 3rem;
-  height: calc(${window.innerHeight}px - 3rem);
+  display: none;
   z-index: 2;
 
   @media (min-width: ${breakpoints.tablet.small}) {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 6rem);
+    z-index: 2;
     right: 2rem;
     top: 4rem;
     height: 80vh;
