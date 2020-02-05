@@ -15,12 +15,13 @@ class SlideDeck extends React.Component {
       currentSlideIndex: 0,
       slideCollection: [
         { name: "intro", component: <IntroSlide />, theme: "dark" },
+        { name: "what I do", component: <WhatIDoSlide />, theme: "light" },
         {
           name: "featured projects",
           component: <FeaturedProjectsSlide />,
           theme: "light",
         },
-        { name: "what I do", component: <WhatIDoSlide />, theme: "light" },
+
         { name: "from the blog", component: <BlogSlide />, theme: "light" },
       ],
       transitionDirection: "forward",

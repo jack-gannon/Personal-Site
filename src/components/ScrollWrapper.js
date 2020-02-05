@@ -7,7 +7,7 @@ class ScrollWrapper extends Component {
     super(props)
 
     // Tracks instance of the event, prevents memory leak
-    this.throttleScroll = throttle(this.handleScroll, 1500, { trailing: false })
+    this.throttleScroll = throttle(this.handleScroll, 1750, { trailing: false })
   }
 
   componentDidMount() {
@@ -34,6 +34,7 @@ class ScrollWrapper extends Component {
         <Swipeable
           onSwipedUp={() => this.props.onScrollDown()}
           onSwipedDown={() => this.props.onScrollUp()}
+          preventDefaultTouchMoveEvent={true}
         >
           {this.props.children}
         </Swipeable>

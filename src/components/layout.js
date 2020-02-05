@@ -130,7 +130,6 @@ class Layout extends React.Component {
         <HeaderContainer>
           <Navigation defaultToDark={false} />
           <PageTitle>Portfolio</PageTitle>
-          <PortfolioCategoryTabs />
         </HeaderContainer>
         //
         //   style={{

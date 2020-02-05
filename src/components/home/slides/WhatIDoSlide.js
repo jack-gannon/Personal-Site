@@ -117,7 +117,7 @@ const ServiceHeader = styled.h3`
   &:after {
     content: " ";
     position: absolute;
-    bottom: -0.5rem;
+    bottom: -0.4rem;
     left: 0rem;
     width: 100%;
     height: 1px;
@@ -128,11 +128,13 @@ const ServiceHeader = styled.h3`
 const Description = styled.p`
   width: 100%;
   font-size: 0.875rem;
+  line-height: 1.5rem;
   text-align: justify;
   margin-bottom: 0rem;
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1.2rem;
+    line-height: 2.25rem;
   }
 `
 

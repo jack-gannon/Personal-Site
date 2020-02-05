@@ -139,6 +139,7 @@ const Nav = styled.nav.attrs(props => ({
   z-index: 5;
   width: 100vw;
   height: 3rem;
+  will-change: top, background-color, border-bottom;
   background-color: ${props =>
     props.color === "dark" ? colors.gray80 : colors.gray10};
   border-bottom: 1px solid

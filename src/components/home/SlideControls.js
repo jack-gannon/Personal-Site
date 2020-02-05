@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
+import ArrowIcon from "../vectors/ArrowIcon"
 
 const SlideControls = ({
   slides,
@@ -14,7 +15,14 @@ const SlideControls = ({
   return (
     <Controls>
       <Indicator>{`0${currentSlideIndex + 1}`}</Indicator>
-      <Prev onClick={() => handlePreviousPage()}>Back</Prev>
+      <Step
+        onClick={() => handlePreviousPage()}
+        className={isDark ? "light" : "dark"}
+      >
+        <svg viewBox="0 0 100 100">
+          <polyline points="6,72 50,28 94,72 " />
+        </svg>
+      </Step>
       <Selectors>
         {slides.map((slide, index) => (
           <Selector
@@ -31,7 +39,14 @@ const SlideControls = ({
           </Selector>
         ))}
       </Selectors>
-      <Next onClick={() => handleNextPage()}>Next</Next>
+      <Step
+        onClick={() => handleNextPage()}
+        className={isDark ? "light" : "dark"}
+      >
+        <svg viewBox="0 0 100 100">
+          <polyline points="94,28 50,72 6,28 " />
+        </svg>
+      </Step>
     </Controls>
   )
 }
@@ -41,8 +56,9 @@ const Controls = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  right: 0rem;
-  top: 25vh;
+  right: 0.5rem;
+  bottom: 30vh;
+  height: 40vh;
   z-index: 2;
 
   @media (min-width: ${breakpoints.tablet.small}) {
@@ -68,9 +84,39 @@ const Indicator = styled.p`
   }
 `
 
-const Prev = styled.button``
+const Step = styled.button`
+  border: none;
+  padding: 0.4rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: transparent;
 
-const Next = styled.button``
+  & svg {
+    width: 1.25rem;
+    fill: none;
+    stroke: ${colors.gray80};
+    stroke-width: 8px;
+    transition: stroke 1s ease;
+  }
+
+  &.dark {
+    & svg {
+      stroke: ${colors.gray80};
+    }
+  }
+
+  &.light {
+    svg {
+      stroke: ${colors.gray20};
+    }
+  }
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    & svg {
+      stroke-width: 16px;
+    }
+  }
+`
 
 const Selectors = styled.div`
   display: flex;
@@ -82,15 +128,15 @@ const Selectors = styled.div`
 
 const Selector = styled.button`
   background: transparent;
-  height: 3rem;
-  padding: 0.75rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border: none;
 
   & svg {
     width: 1.25rem;
     fill: none;
     stroke: ${colors.gray80};
     stroke-width: 8px;
-    border: 1px solid purple;
     transition: stroke 1s ease;
 
     .inner {

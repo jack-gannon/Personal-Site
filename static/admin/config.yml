@@ -58,16 +58,6 @@ collections:
         fields:
           - { name: project_image, label: Project Image, widget: image }
           - { name: alt_text, label: Alt Text, widget: string }
-      # - {
-      #     name: project-images,
-      #     label: Project Images,
-      #     widget: image,
-      #     media_library:
-      #       {
-      #         name: cloudinary,
-      #         config: { cloud_name: dthoxmity, api_key: 144732167219663 },
-      #       },
-      #   }
       - name: tools
         label: Tools
         widget: select

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled, { keyframes } from "styled-components"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
@@ -11,13 +12,13 @@ const FeaturedProjectsSlide = () => {
         <IntroHeader>Featured Projects</IntroHeader>
 
         <Grid>
-          <Project>
+          <Project to="/portfolio/">
             <img src="./GatsbyScene.svg" alt="Gatsby Scene" />
           </Project>
-          <Project>
+          <Project to="/portfolio/">
             <img src="./GatsbyScene.svg" alt="Gatsby Scene" />
           </Project>
-          <Project>
+          <Project to="/portfolio/">
             <img src="./GatsbyScene.svg" alt="Gatsby Scene" />
           </Project>
         </Grid>
@@ -40,7 +41,7 @@ const fadeIn = keyframes`
 const Slide = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   height: 100%;
   width: 100%;
   background-color: ${colors.gray10};
@@ -52,18 +53,21 @@ const Slide = styled.section`
 
 const Grid = styled.div`
   margin-bottom: 1rem;
+  width: 65%;
   @media (min-width: ${breakpoints.tablet.small}) {
+    width: 100%;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
   }
 `
 
-const Project = styled.div`
-  width: 65%;
+const Project = styled(Link)`
+  display: block;
   margin-bottom: 1rem;
-  background-color: ${colors.gray30};
+  line-height: 0rem;
   border-radius: 2px;
+  border: 1px solid pink;
   opacity: 0;
   transition: all 0.25s ease;
   animation: ${fadeIn} 0.5s ease;
@@ -80,6 +84,19 @@ const Project = styled.div`
   &:last-child {
     animation-delay: 1.25s;
     margin-bottom: 0rem;
+  }
+
+  & img {
+    width: 100%;
+    height: auto;
+    border: 1px solid purple;
+    margin-bottom: 0rem;
+    transition: transform 0.25s ease, opacity 0.125s ease;
+
+    &:hover {
+      transform: translateY(-0.5rem);
+      opacity: 0.8;
+    }
   }
 
   @media (min-width: ${breakpoints.tablet.small}) {

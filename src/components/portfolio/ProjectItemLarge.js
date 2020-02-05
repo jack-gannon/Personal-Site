@@ -19,7 +19,7 @@ const ProjectItemLarge = ({ project }) => {
 
 const Project = styled.div``
 
-const Title = styled.h2``
+const Title = styled.h3``
 
 const Description = styled.p``
 
