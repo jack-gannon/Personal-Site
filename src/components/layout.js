@@ -28,6 +28,7 @@ class Layout extends React.Component {
       location,
       children,
       fullWidth = false,
+      fullHeight = false,
       articleLayout = false,
       asideContents = null,
       post,
@@ -172,6 +173,7 @@ class Layout extends React.Component {
         {header}
         <BodyContainer
           fullWidth={fullWidth}
+          fullHeight={fullHeight}
           articleLayout={articleLayout}
           asideContents={asideContents}
         >
@@ -221,7 +223,7 @@ const BodyContainer = styled.div.attrs(props => ({}))`
   padding: ${props => (props.fullWidth ? "0rem" : "1rem")};
   width: 100%;
   max-width: ${props => (props.fullWidth ? "100vw" : rhythm(40))};
-  min-height: 100vh;
+  min-height: ${props => (props.fullHeight ? "100vh" : "70vh")};
   overflow-x: hidden;
 
   @media (min-width: ${breakpoints.desktop.small}) {

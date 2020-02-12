@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/layout"
+import styled from "styled-components"
 import SEO from "../../components/seo"
 import WebSkills from "../../components/about/WebSkills"
 import WebTools from "../../components/about/WebTools"
@@ -16,6 +17,7 @@ class About extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="About" />
+        <PageTitle>Skills & Services</PageTitle>
         <WebSkills />
         <WebTools />
         <UXSkills />
@@ -25,6 +27,13 @@ class About extends React.Component {
     )
   }
 }
+
+const PageTitle = styled.h2`
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 0.175em;
+  font-weight: 600;
+`
 
 export default About
 

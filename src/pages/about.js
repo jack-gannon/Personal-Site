@@ -20,6 +20,7 @@ class About extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="About" />
+        <PageTitle>Personal</PageTitle>
         <Personal>
           <ImageGallery images={aboutImages} />
           <Text>
@@ -68,6 +69,13 @@ class About extends React.Component {
     )
   }
 }
+
+const PageTitle = styled.h2`
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 0.175em;
+  font-weight: 600;
+`
 
 const Personal = styled.article`
   @media (min-width: ${breakpoints.desktop.small}) {

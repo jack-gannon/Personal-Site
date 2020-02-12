@@ -16,6 +16,7 @@ class IndexPage extends React.Component {
             location={this.props.location}
             title={siteTitle}
             fullWidth={true}
+            fullHeight={true}
           >
             <SEO
               title="Home"

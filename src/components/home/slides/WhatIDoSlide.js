@@ -68,7 +68,6 @@ const Slide = styled.section`
   height: 100%;
   width: 100%;
   background-color: ${colors.gray10};
-  opacity: 0.4;
 
   @media (min-width: ${breakpoints.tablet.small}) {
     justify-content: center;
@@ -142,13 +141,13 @@ const Description = styled.p`
 const Contents = styled.div`
   width: 80%;
   height: calc(100% - 12rem);
-  border: 1px solid pink;
   margin-left: 1rem;
 
   @media (min-width: ${breakpoints.tablet.small}) {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    height: auto;
     max-width: ${rhythm(40)};
   }
 `

@@ -31,12 +31,12 @@ const Logo = ({ color, width, type }) => {
   `
 
   const StyledPolyline = styled.polyline`
-    stroke-width: 3px;
+    stroke-width: 2.5px;
     stroke: ${color === "dark" ? "#4d4d4d" : "#eaeaea"};
   `
 
   const StyledLine = styled.line`
-    stroke-width: 3px;
+    stroke-width: 2.5px;
     stroke: ${color === "dark" ? "#4d4d4d" : "#eaeaea"};
   `
 
