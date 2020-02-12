@@ -7,12 +7,20 @@ import ArrowIcon from "../vectors/ArrowIcon"
 import { breakpoints } from "../../utils/breakpoints"
 
 const PostItemLarge = ({ post }) => {
-  const { thumbnail, title, category, date, description } = post.frontmatter
-  const { slug } = post.fields
+  const {
+    thumbnail,
+    title,
+    category,
+    date,
+    description,
+  } = post.childMdx.frontmatter
+  const { slug } = post.childMdx.fields
   const imgFluid = thumbnail.childImageSharp.fluid
   return (
     <Post>
-      <Thumbnail fluid={imgFluid} />
+      <ImageLink to={`blog${slug}`}>
+        <Thumbnail fluid={imgFluid} />
+      </ImageLink>
       <Details>
         <Info>
           <Category category={category}>{category}</Category> |
@@ -62,10 +70,24 @@ const Post = styled.div`
   }
 `
 
+const ImageLink = styled(Link)`
+  display: block;
+  height: 100%;
+  max-height: 12rem;
+  width: 100%;
+  &:hover {
+    & * {
+      opacity: 0.9;
+    }
+  }
+`
+
 const Thumbnail = styled(Image)`
   height: 100%;
   max-height: 12rem;
   width: 100%;
+  transition: opacity 0.125s ease;
+
   @media (min-width: 960px) {
   }
 `

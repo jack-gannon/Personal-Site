@@ -16,7 +16,9 @@ const FeaturedPost = ({ featuredPost }) => {
   const { fields } = featuredPost
   return (
     <Container>
-      <MainImage fluid={thumbnail.childImageSharp.fluid} />
+      <MainImageLink to={`blog${fields.slug}`}>
+        <MainImage fluid={thumbnail.childImageSharp.fluid} />
+      </MainImageLink>
       <Details>
         <Title>
           <Link to={`blog${fields.slug}`}>{title}</Link>
@@ -82,9 +84,18 @@ const Container = styled.div`
   }
 `
 
+const MainImageLink = styled(Link)`
+  &:hover {
+    & * {
+      opacity: 0.9;
+    }
+  }
+`
+
 const MainImage = styled(Image)`
   width: 100vw;
   height: ${rhythm(16)};
+  transition: opacity 0.125s ease;
 
   @media (min-width: 960px) {
     margin-left: 0rem;

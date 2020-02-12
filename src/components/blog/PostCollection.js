@@ -3,11 +3,11 @@ import styled from "styled-components"
 import PostItemLarge from "./PostItemLarge"
 import { breakpoints } from "../../utils/breakpoints"
 
-function BlogPostCollection({ posts }) {
+function BlogPostCollection({ posts = [] }) {
   return (
     <Container>
       {posts.map(({ node }, index) => {
-        return <PostItemLarge post={node} key={node.fields.slug} />
+        return <PostItemLarge post={node} key={node.childMdx.fields.slug} />
       })}
     </Container>
   )

@@ -22,7 +22,7 @@ class BlogCategoryTemplate extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMdx.edges
+    const posts = data.allFile.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -37,36 +37,43 @@ export default BlogCategoryTemplate
 
 export const blogQuery = graphql`
   query($category: String) {
-    site {
-      siteMetadata {
-        title
+    allFile(
+      sort: { fields: childMdx___frontmatter___date, order: DESC }
+      filter: {
+        sourceInstanceName: { eq: "blog" }
+        internal: { mediaType: { regex: "/text/" } }
+        childMdx: { frontmatter: { category: { eq: $category } } }
       }
-    }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
     ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            category
-            author
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 590) {
-                  ...GatsbyImageSharpFluid
+          id
+          childMdx {
+            frontmatter {
+              author
+              date
+              category
+              description
+              title
+              thumbnail {
+                childImageSharp {
+                  fluid(maxWidth: 1246) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }
+            fields {
+              slug
+            }
+            excerpt
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

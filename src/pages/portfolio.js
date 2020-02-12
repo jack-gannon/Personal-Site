@@ -9,7 +9,7 @@ class Portfolio extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const projects = data.allMdx.edges
+    const projects = data.allFile.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -29,24 +29,21 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { content_type: { eq: "portfolio" } } }
-    ) {
+    allFile(filter: { sourceInstanceName: { eq: "portfolio" } }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 540) {
-                  ...GatsbyImageSharpFluid
+          childMdx {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              description
+              thumbnail {
+                childImageSharp {
+                  fluid(maxWidth: 1246) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }

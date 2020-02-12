@@ -63,27 +63,32 @@ export const blogQuery = graphql`
         }
       }
     }
-    allPosts: allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+    allPosts: allFile(
+      sort: { fields: childMdx___frontmatter___date, order: DESC }
       skip: 1
-      filter: { frontmatter: { content_type: { eq: "blog" } } }
+      filter: {
+        sourceInstanceName: { eq: "blog" }
+        internal: { mediaType: { regex: "/text/" } }
+      }
     ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            category
-            author
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1246) {
-                  ...GatsbyImageSharpFluid
+          childMdx {
+            excerpt
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date(formatString: "MMMM DD, YYYY")
+              category
+              author
+              description
+              thumbnail {
+                childImageSharp {
+                  fluid(maxWidth: 1246) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }
