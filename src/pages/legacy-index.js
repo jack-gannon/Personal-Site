@@ -24,7 +24,7 @@ class IndexPage extends React.Component {
           />
           <FeaturedProjects />
           <Services />
-          <FromTheBlog />
+          {/* <FromTheBlog /> */}
         </Layout>
       </>
     )
