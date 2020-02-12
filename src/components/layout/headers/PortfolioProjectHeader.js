@@ -1,5 +1,6 @@
 import React from "react"
 import Image from "gatsby-image"
+import ImageGallery from "../../portfolio/ImageGallery"
 import styled from "styled-components"
 import { colors } from "../../../utils/colors"
 import { rhythm } from "../../../utils/typography"
@@ -9,12 +10,24 @@ import ArrowIcon from "../../vectors/ArrowIcon"
 const PortfolioProjectHeader = ({ project }) => {
   const {
     title,
-    author,
     description,
     thumbnail,
+    project_images,
     liveSiteLink = "http://jackgannon.io",
     githubLink = "http://github.com/jack-gannon",
   } = project.frontmatter
+
+  let projectImages
+
+  if (project_images) {
+    projectImages = project_images.map(image => ({
+      alt: image.alt_text,
+      src: image.project_image.publicURL,
+    }))
+  } else {
+    projectImages = null
+  }
+
   return (
     <Container>
       <BackButton onClick={() => window.history.back()}>
@@ -30,7 +43,11 @@ const PortfolioProjectHeader = ({ project }) => {
           <GitHubLink href={githubLink}>GitHub Repo</GitHubLink>
         ) : null}
       </ActionPanel>
-      <Image fluid={thumbnail.childImageSharp.fluid} />
+      {project_images ? (
+        <ImageGallery images={projectImages} />
+      ) : (
+        <Image fluid={thumbnail.childImageSharp.fluid} />
+      )}
     </Container>
   )
 }

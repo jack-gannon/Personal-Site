@@ -4,29 +4,53 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const blogCategory = path.resolve(`./src/templates/blog-category.js`)
-  const portfolioProject = path.resolve(`./src/templates/portfolio-project.js`)
-  const portfolioCategory = path.resolve(
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+  const blogCategoryTemplate = path.resolve(`./src/templates/blog-category.js`)
+  const portfolioProjectTemplate = path.resolve(
+    `./src/templates/portfolio-project.js`
+  )
+  const portfolioCategoryTemplate = path.resolve(
     `./src/templates/portfolio-category.js`
   )
 
   return graphql(
     `
       {
-        allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
+        blogPosts: allFile(
+          filter: {
+            sourceInstanceName: { eq: "blog" }
+            internal: { mediaType: { regex: "/text/" } }
+          }
         ) {
           edges {
             node {
-              fields {
-                slug
+              childMdx {
+                frontmatter {
+                  title
+                  category
+                }
+                fields {
+                  slug
+                }
               }
-              frontmatter {
-                title
-                category
-                content_type
+            }
+          }
+        }
+        portfolioProjects: allFile(
+          filter: {
+            sourceInstanceName: { eq: "portfolio" }
+            internal: { mediaType: { regex: "/text/" } }
+          }
+        ) {
+          edges {
+            node {
+              childMdx {
+                frontmatter {
+                  title
+                }
+                fields {
+                  slug
+                }
               }
             }
           }
@@ -49,7 +73,7 @@ exports.createPages = ({ graphql, actions }) => {
     blogCategories.forEach((category, index) => {
       createPage({
         path: `blog/category${category.path}`,
-        component: blogCategory,
+        component: blogCategoryTemplate,
         context: {
           slug: category.path,
           category: category.name,
@@ -68,7 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
     portfolioCategories.forEach((category, index) => {
       createPage({
         path: `portfolio/category${category.path}`,
-        component: portfolioCategory,
+        component: portfolioCategoryTemplate,
         context: {
           slug: category.path,
           category: category.name,
@@ -76,33 +100,35 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    // Create blog posts pages.
-    const allContent = result.data.allMdx.edges
-    allContent.forEach((content, index) => {
-      if (content.node.frontmatter.content_type === "blog") {
-        const previous =
-          index === allContent.length - 1 ? null : allContent[index + 1].node
-        const next = index === 0 ? null : allContent[index - 1].node
+    // Create Blog Post Pages
+    const blogPosts = result.data.blogPosts.edges
+    blogPosts.forEach((post, index) => {
+      const previous =
+        index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+      const next = index === 0 ? null : blogPosts[index - 1].node
 
-        createPage({
-          path: `blog${content.node.fields.slug}`,
-          component: blogPost,
-          context: {
-            slug: content.node.fields.slug,
-            category: content.node.frontmatter.category,
-            previous,
-            next,
-          },
-        })
-      } else if (content.node.frontmatter.content_type === "portfolio") {
-        createPage({
-          path: `portfolio${content.node.fields.slug}`,
-          component: portfolioProject,
-          context: {
-            slug: content.node.fields.slug,
-          },
-        })
-      }
+      createPage({
+        path: `blog${post.node.childMdx.fields.slug}`,
+        component: blogPostTemplate,
+        context: {
+          slug: post.node.childMdx.fields.slug,
+          category: post.node.childMdx.frontmatter.category,
+          previous,
+          next,
+        },
+      })
+    })
+
+    // Create Portfolio Project Pages
+    const portfolioProjects = result.data.portfolioProjects.edges
+    portfolioProjects.forEach(project => {
+      createPage({
+        path: `portfolio${project.node.childMdx.fields.slug}`,
+        component: portfolioProjectTemplate,
+        context: {
+          slug: project.node.childMdx.fields.slug,
+        },
+      })
     })
 
     return null

@@ -65,6 +65,11 @@ collections:
         options:
           - label: React
             value:
-              - { name: React, logo: ../assets/logos/react.svg }
+              - name: React
+                label: React
+                logo: ../assets/logos/react.svg
+                widget: object
+                fields:
+                  - { label: Description, name: description, widget: string }
 
       - { name: body, label: Body, widget: markdown }
