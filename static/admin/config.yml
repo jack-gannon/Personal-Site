@@ -12,12 +12,6 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
-      - {
-          name: content_type,
-          label: Content Type,
-          widget: hidden,
-          default: Blog Post,
-        }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: author, label: Author, default: "Jack Gannon" }
@@ -42,12 +36,6 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
-      - {
-          name: content_type,
-          label: Content Type,
-          widget: hidden,
-          default: Portfolio Project,
-        }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: description, label: Description }
@@ -60,16 +48,27 @@ collections:
           - { name: alt_text, label: Alt Text, widget: string }
       - name: tools
         label: Tools
-        widget: select
-        multiple: true
-        options:
-          - label: React
-            value:
-              - name: React
-                label: React
-                logo: ../assets/logos/react.svg
-                widget: object
-                fields:
-                  - { label: Description, name: description, widget: string }
+        widget: list
+        fields:
+          - { name: tool_logo, label: Logo, widget: image }
+          - { name: name, label: Name, widget: string }
+          - { name: description, label: Description, widget: string }
+      - name: credits
+        label: Credits
+        widget: list
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: role, label: Role, widget: string }
+      - name: client
+        label: Client
+        widget: object
+        fields:
+          - { name: client_name, label: Client Name, widget: string }
+          - {
+              name: is_personal,
+              label: Personal,
+              widget: boolean,
+              default: false,
+            }
 
       - { name: body, label: Body, widget: markdown }
