@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import Image from "gatsby-image"
+import { colors } from "../../utils/colors"
 
 const ProjectItemLarge = ({ project }) => {
   const { title, description, thumbnail } = project.childMdx.frontmatter
@@ -11,9 +12,9 @@ const ProjectItemLarge = ({ project }) => {
       <ImageLink to={`portfolio${slug}`}>
         <Thumbnail fluid={thumbnail.childImageSharp.fluid} />
       </ImageLink>
-      <Link to={`portfolio${slug}`}>
-        <Title>{title}</Title>
-      </Link>
+      <Title>
+        <TitleLink to={`portfolio${slug}`}>{title}</TitleLink>
+      </Title>
       <Description>{description}</Description>
     </Project>
   )
@@ -21,19 +22,24 @@ const ProjectItemLarge = ({ project }) => {
 
 const Project = styled.div``
 
-const ImageLink = styled(Link)`
-  &:hover {
-    & * {
-      opacity: 0.9;
-    }
-  }
-`
+const ImageLink = styled(Link)``
 
 const Thumbnail = styled(Image)`
   transition: opacity 0.125s ease;
 `
+const TitleLink = styled(Link)`
+  color: ${colors.gray80};
+  text-decoration: none;
 
-const Title = styled.h3``
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const Title = styled.h3`
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+`
 
 const Description = styled.p``
 

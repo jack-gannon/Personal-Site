@@ -89,6 +89,15 @@ const BackButton = styled.button`
   border: none;
   border-radius: 50%;
 
+  &:hover {
+    cursor: pointer;
+
+    svg line,
+    svg polyline {
+      stroke: ${colors.gray70};
+    }
+  }
+
   & svg {
     width: 1.5rem;
   }

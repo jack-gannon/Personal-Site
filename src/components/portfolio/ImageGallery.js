@@ -65,6 +65,13 @@ const SelectionItem = styled.button`
   margin-right: 0.5rem;
   transition: opacity 0.25s ease;
 
+  &:hover {
+    cursor: pointer;
+    img {
+      opacity: 0.8;
+    }
+  }
+
   &:last-child {
     margin-right: 0rem;
   }

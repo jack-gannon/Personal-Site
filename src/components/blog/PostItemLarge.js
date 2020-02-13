@@ -35,7 +35,7 @@ const PostItemLarge = ({ post }) => {
               ? {
                   __html: description,
                 }
-              : { __html: post.excerpt }
+              : { __html: post.childMdx.excerpt }
           }
         />
       </Details>
@@ -75,11 +75,6 @@ const ImageLink = styled(Link)`
   height: 100%;
   max-height: 12rem;
   width: 100%;
-  &:hover {
-    & * {
-      opacity: 0.9;
-    }
-  }
 `
 
 const Thumbnail = styled(Image)`

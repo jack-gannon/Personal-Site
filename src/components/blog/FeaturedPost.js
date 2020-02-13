@@ -84,13 +84,7 @@ const Container = styled.div`
   }
 `
 
-const MainImageLink = styled(Link)`
-  &:hover {
-    & * {
-      opacity: 0.9;
-    }
-  }
-`
+const MainImageLink = styled(Link)``
 
 const MainImage = styled(Image)`
   width: 100vw;

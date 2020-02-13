@@ -51,7 +51,7 @@ export const blogQuery = graphql`
           childMdx {
             frontmatter {
               author
-              date
+              date(formatString: "MMMM DD, YYYY")
               category
               description
               title
