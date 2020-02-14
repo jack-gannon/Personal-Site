@@ -1,10 +1,40 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
+import { graphql, StaticQuery } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 import HeroBackground from "../../../../content/assets/hero.jpg"
-import Typist from "react-typist"
+
+const BackgroundSection = ({ children, className }) => (
+  <StaticQuery
+    query={graphql`
+      query {
+        backgroundImage: file(name: { eq: "hero" }) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      const backgroundImageData = data.backgroundImage.childImageSharp.fluid
+      return (
+        <BackgroundImage
+          Tag="section"
+          className={className}
+          fluid={backgroundImageData}
+          backgroundColor={colors.gray90}
+        >
+          {children}
+        </BackgroundImage>
+      )
+    }}
+  />
+)
 
 const IntroSlide = () => {
   return (
@@ -62,14 +92,12 @@ const elongate = keyframes`
 }
 `
 
-const Slide = styled.section`
+const Slide = styled(BackgroundSection)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-color: ${colors.gray90};
-  background-image: url(${HeroBackground});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
