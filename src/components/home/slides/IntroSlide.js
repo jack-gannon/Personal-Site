@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
+import HeroBackground from "../../../../content/assets/hero.jpg"
 import Typist from "react-typist"
 
 const IntroSlide = () => {
@@ -68,6 +69,10 @@ const Slide = styled.section`
   height: 100%;
   width: 100%;
   background-color: ${colors.gray90};
+  background-image: url(${HeroBackground});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
 `
 
 const Contents = styled.div`

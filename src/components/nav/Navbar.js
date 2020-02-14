@@ -139,19 +139,18 @@ const Nav = styled.nav.attrs(props => ({
   z-index: 5;
   width: 100vw;
   height: 3rem;
-  will-change: top, background-color, border-bottom;
   background-color: ${props =>
     props.color === "dark" ? colors.gray80 : colors.gray10};
   border-bottom: 1px solid
     ${props => (props.color === "dark" ? colors.gray80 : colors.gray20)};
-  transition: top 0.5s ease, background-color 1s ease, border-color 1s ease;
+  transition: transform 0.5s ease;
 
   &.visible {
-    top: 0rem;
+    transform: translateY(0rem);
   }
 
   &.hidden {
-    top: -3rem;
+    transform: translateY(-3rem);
   }
 
   @media (min-width: ${breakpoints.desktop.small}) {
@@ -222,7 +221,6 @@ const LogoLink = styled(Link).attrs(props => ({
     props.color === "dark" ? colors.gray90 : colors.gray20};
   box-shadow: none;
   padding: 0.5rem 0.25rem;
-  transition: background-color 0.25s ease;
 
   & svg {
   }

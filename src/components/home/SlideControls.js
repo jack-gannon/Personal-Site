@@ -14,7 +14,6 @@ const SlideControls = ({
 }) => {
   return (
     <Controls>
-      <Indicator>{`0${currentSlideIndex + 1}`}</Indicator>
       <Step
         onClick={() => handlePreviousPage()}
         className={isDark ? "light" : "dark"}
