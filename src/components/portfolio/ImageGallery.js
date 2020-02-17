@@ -45,7 +45,7 @@ const Gallery = styled.div`
 
 const DisplayedImage = styled.img`
   width: 100%;
-  height: 40vh;
+  height: auto;
   margin-bottom: 0.5rem;
   border: 1px solid purple;
   object-fit: cover;
