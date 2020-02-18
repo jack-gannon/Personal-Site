@@ -57,6 +57,23 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        client {
+          client_name
+          is_personal
+        }
+        project_images {
+          alt_text
+          project_image {
+            childImageSharp {
+              mainImage: fluid(maxWidth: 1248) {
+                ...GatsbyImageSharpFluid
+              }
+              thumbImage: fluid(maxWidth: 88) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
         thumbnail {
           childImageSharp {
             fluid(maxWidth: 1248) {

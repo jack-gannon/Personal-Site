@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, StaticQuery, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
@@ -45,7 +45,7 @@ const IntroSlide = () => {
         <Subheader>
           I am a designer and developer based in Phoenix, AZ.
         </Subheader>
-        <Contact>Contact Me</Contact>
+        <Contact to="/about/contact/">Contact Me</Contact>
       </Contents>
     </Slide>
   )
@@ -184,21 +184,29 @@ const Subheader = styled.p`
   }
 `
 
-const Contact = styled.button`
+const Contact = styled(Link)`
   background-color: ${colors.primary};
   border: none;
   border-radius: 2px;
+  display: block;
   width: 9rem;
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 600;
   color: ${colors.gray80};
   text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
   letter-spacing: 0.05rem;
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
   animation: ${fadeIn} 0.25s ease;
   animation-delay: 2s;
   animation-fill-mode: both;
+
+  &:hover {
+    background-color: ${colors.primaryLight};
+    cursor: pointer;
+  }
 `
 
 export default IntroSlide

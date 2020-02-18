@@ -26,6 +26,10 @@ const ImageLink = styled(Link)``
 
 const Thumbnail = styled(Image)`
   transition: opacity 0.125s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `
 const TitleLink = styled(Link)`
   color: ${colors.gray80};
