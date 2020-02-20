@@ -31,7 +31,7 @@ export const pageQuery = graphql`
     }
     allFile(
       filter: { sourceInstanceName: { eq: "portfolio" } }
-      sort: { fields: childMdx___frontmatter___order, order: DESC }
+      sort: { fields: childMdx___frontmatter___index, order: ASC }
     ) {
       edges {
         node {

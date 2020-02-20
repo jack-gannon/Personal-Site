@@ -1,6 +1,6 @@
 ---
 path: design-simplified
-order: 4
+index: 4
 date: 2020-01-18T20:18:44.163Z
 title: Design Simplified
 description: Print & digital design system created for mortgage lender.
