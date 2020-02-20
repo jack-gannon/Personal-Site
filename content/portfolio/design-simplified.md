@@ -4,15 +4,15 @@ order: 4
 date: 2020-01-18T20:18:44.163Z
 title: Design Simplified
 description: Print & digital design system created for mortgage lender.
-thumbnail: ../assets/project_images/design_simplified/DS_1.png
+thumbnail: ../assets/project_images/design_simplified/DS_1.jpg
 role: Creative Manager
 project_images:
   - alt_text: isometric view of a collection of various graphics and images
     caption: Examples of flyer design modules
-    project_image: ../assets/project_images/design_simplified/DS_1.png
+    project_image: ../assets/project_images/design_simplified/DS_1.jpg
   - alt_text: three pairs of flyers and email graphics layed out in isometric angle
     caption: Examples of flyer & email templates
-    project_image: ../assets/project_images/design_simplified/DS_2.png
+    project_image: ../assets/project_images/design_simplified/DS_2.jpg
   - alt_text: an empty form with various fields against a gray background
     caption: Creative Request Form
     project_image: ../assets/project_images/design_simplified/DS_CRF.jpg

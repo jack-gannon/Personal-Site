@@ -12,7 +12,7 @@ project_images:
     project_image: ../assets/project_images/insurance_discourse/id_1.jpg
   - alt_text: Ugly gray box
     caption: An ugly gray box
-    project_image: ../assets/project_images/insurance_discourse/id_2.png
+    project_image: ../assets/project_images/insurance_discourse/id_2.jpg
   - alt_text: Ugly gray box
     caption: An ugly gray box
     project_image: ../assets/project_images/insurance_discourse/id_3.jpg

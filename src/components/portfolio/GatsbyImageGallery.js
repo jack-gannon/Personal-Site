@@ -28,6 +28,7 @@ const GatsbyImageGallery = ({ images }) => {
         alt={images[activeImgIndex].alt}
       />
       <CaptionToggle
+        title={showCaption ? "Hide Captions" : "Show Captions"}
         className={showCaption ? "active" : "inactive"}
         onClick={() => toggleShowCaption()}
       >
@@ -80,24 +81,25 @@ const DisplayedImage = styled(Image)`
 
 const CaptionToggle = styled.button`
   position: absolute;
-  box-sizing: border-box;
   border-radius: 4px;
-  top: 13.75rem;
+  top: 14rem;
   left: 0.25rem;
-  width: 2rem;
-  height: 2rem;
+  width: 2em;
+  height: 1.5em;
+  text-align: center;
   background-color: ${colors.gray10};
   border: 1px solid ${colors.gray30};
   z-index: 2;
-  font-size: 1.5rem;
+  font-size: 18px;
+  padding: 0.25em;
   line-height: 0rem;
 
   &.active {
-    width: 2rem;
+    width: 1.5em;
   }
 
   &.inactive {
-    width: 2.5rem;
+    width: 2em;
   }
 
   @media (min-width: ${breakpoints.tablet.medium}) {
@@ -106,7 +108,13 @@ const CaptionToggle = styled.button`
   }
 
   @media (min-width: ${breakpoints.desktop.small}) {
-    top: 35.75rem;
+    top: 36rem;
+
+    &.active {
+      height: 2em;
+      top: 35.5rem;
+      width: 2em;
+    }
   }
 
   &:hover {

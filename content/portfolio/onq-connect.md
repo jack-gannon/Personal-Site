@@ -4,19 +4,19 @@ order: 2
 date: 2020-01-18T20:18:44.163Z
 title: On Q Connect
 description: User experience design for mortgage lender intranet application.
-thumbnail: ../assets/project_images/onq_intranet/onq_intranet_wires.png
+thumbnail: ../assets/project_images/onq_intranet/onq_intranet_wires.jpg
 role: UX Designer
 project_images:
   - alt_text: isometric view of white wireframe documents against a blue background
     caption: On Q Connect wireframes
-    project_image: ../assets/project_images/onq_intranet/onq_intranet_wires.png
+    project_image: ../assets/project_images/onq_intranet/onq_intranet_wires.jpg
   - alt_text: white wireframe document titled Dashboard against blue background
     caption: Dashboard wireframe with calendar side-panel open
     project_image: ../assets/project_images/onq_intranet/onq_c1.jpg
   - alt_text: white wireframe document titled Documents against blue background
     caption: Documents file-browser wireframe
     project_image: ../assets/project_images/onq_intranet/onq_c2.jpg
-  - alt_text: diagram showing white wireframe documents against teal background with arrows between them
+  - alt_text: diagram showing white wireframe documents against blue-gray background with arrows between them
     caption: Top-level navigation user-flow
     project_image: ../assets/project_images/onq_intranet/onq_c3.jpg
 tools:
