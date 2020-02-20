@@ -32,7 +32,7 @@ const Grid = styled.div`
   @media (min-width: ${breakpoints.tablet.small}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     justify-content: start;
   }
 `

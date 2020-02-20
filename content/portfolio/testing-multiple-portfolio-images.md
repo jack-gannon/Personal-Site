@@ -1,5 +1,6 @@
 ---
 path: a-different-path
+order: 6
 date: 2020-02-17T22:37:59.156Z
 title: Testing Multiple Portfolio Images
 description: Lets see how we can query multiple images and make sure it works.

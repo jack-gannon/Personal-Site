@@ -25,6 +25,7 @@ class BlogPostTemplate extends React.Component {
           post={post}
           avatar={this.props.data.avatar.childImageSharp.fixed}
           articleLayout={true}
+          reverseMain={false}
         >
           <SEO
             title={post.frontmatter.title}

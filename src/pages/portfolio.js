@@ -29,7 +29,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allFile(filter: { sourceInstanceName: { eq: "portfolio" } }) {
+    allFile(
+      filter: { sourceInstanceName: { eq: "portfolio" } }
+      sort: { fields: childMdx___frontmatter___order, order: ASC }
+    ) {
       edges {
         node {
           childMdx {

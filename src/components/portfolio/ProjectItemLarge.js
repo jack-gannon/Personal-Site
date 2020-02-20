@@ -45,6 +45,8 @@ const Title = styled.h3`
   margin-bottom: 0.5rem;
 `
 
-const Description = styled.p``
+const Description = styled.p`
+  color: ${colors.gray60};
+`
 
 export default ProjectItemLarge

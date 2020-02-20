@@ -11,9 +11,14 @@ const GatsbyImageGallery = ({ images }) => {
 
   // Determines which image to display
   const [activeImgIndex, setActiveImgIndex] = useState(0)
+  const [showCaption, setShowCaption] = useState(false)
 
   const handleSelectImage = imageIndex => {
     setActiveImgIndex(imageIndex)
+  }
+
+  const toggleShowCaption = () => {
+    setShowCaption(!showCaption)
   }
 
   return (
@@ -22,7 +27,15 @@ const GatsbyImageGallery = ({ images }) => {
         fluid={images[activeImgIndex].mainImage}
         alt={images[activeImgIndex].alt}
       />
-      <Caption>{images[activeImgIndex].alt}</Caption>
+      <CaptionToggle
+        className={showCaption ? "active" : "inactive"}
+        onClick={() => toggleShowCaption()}
+      >
+        {showCaption ? "×" : "⋯"}
+      </CaptionToggle>
+      <Caption className={showCaption ? "active" : "inactive"}>
+        {images[activeImgIndex].caption}
+      </Caption>
       <SelectionPanel>
         {images.map((image, index) => (
           <SelectionItem
@@ -38,11 +51,14 @@ const GatsbyImageGallery = ({ images }) => {
   )
 }
 
-const Gallery = styled.div`
-  margin-bottom: 3rem;
+const Gallery = styled.figure`
+  position: relative;
+  display: block;
+  margin-bottom: 1rem;
   width: 100%;
 
   @media (min-width: ${breakpoints.tablet.medium}) {
+    margin-bottom: 1rem;
   }
 `
 
@@ -50,8 +66,8 @@ const DisplayedImage = styled(Image)`
   width: 100%;
   height: 16rem;
   margin-bottom: 0.5rem;
-  border: 1px solid purple;
   object-fit: cover;
+  border: 1px solid ${colors.gray20};
 
   @media (min-width: ${breakpoints.tablet.medium}) {
     height: 24rem;
@@ -62,18 +78,83 @@ const DisplayedImage = styled(Image)`
   }
 `
 
-const Caption = styled.p`
+const CaptionToggle = styled.button`
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 4px;
+  top: 13.75rem;
+  left: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: ${colors.gray10};
+  border: 1px solid ${colors.gray30};
+  z-index: 2;
+  font-size: 1.5rem;
+  line-height: 0rem;
+
+  &.active {
+    width: 2rem;
+  }
+
+  &.inactive {
+    width: 2.5rem;
+  }
+
+  @media (min-width: ${breakpoints.tablet.medium}) {
+    top: 24rem;
+    left: 0.25rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    top: 35.75rem;
+  }
+
+  &:hover {
+    opacity: 0.65;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline-color: ${colors.primary};
+  }
+`
+
+const Caption = styled.figcaption`
+  position: absolute;
+  top: 13.5rem;
+  right: 0rem;
+  width: 100%;
+  z-index: 1;
+  font-family: "Helvetica Neue", sans-serif;
   text-align: center;
-  font-size: 1.125rem;
-  font-style: italic;
-  margin-bottom: 1rem;
+  font-size: 0.875rem;
   color: ${colors.gray60};
+  background-color: ${colors.gray10};
+  border: 1px solid ${colors.gray20};
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+
+  &.active {
+    visibility: visibile;
+  }
+
+  &.inactive {
+    visibility: hidden;
+  }
+
+  @media (min-width: ${breakpoints.tablet.medium}) {
+    top: 24rem;
+    font-size: 1rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    top: 35.25rem;
+  }
 `
 
 const SelectionPanel = styled.div`
   display: flex;
   justify-content: center;
-  border: 1px solid red;
 `
 
 const SelectionItem = styled.button`
@@ -106,6 +187,10 @@ const SelectionItem = styled.button`
   @media (min-width: ${breakpoints.desktop.small}) {
     width: 6rem;
     height: 6rem;
+  }
+
+  &:focus {
+    outline-color: ${colors.primary};
   }
 `
 

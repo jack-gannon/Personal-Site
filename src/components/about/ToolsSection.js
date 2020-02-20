@@ -31,9 +31,7 @@ const Tools = styled.section`
   }
 `
 
-const ToolHeader = styled.h3`
-  border-right: 1px solid ${colors.gray30};
-`
+const ToolHeader = styled.h3``
 
 const Grid = styled.div`
   display: flex;
@@ -41,7 +39,6 @@ const Grid = styled.div`
   flex-wrap: none;
   padding-bottom: 0.5rem;
   overflow-x: scroll;
-  border-bottom: 1px solid pink;
 
   @media (min-width: ${breakpoints.desktop.small}) {
     justify-content: space-between;

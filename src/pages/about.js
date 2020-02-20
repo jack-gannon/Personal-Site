@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import ImageGallery from "../components/portfolio/ImageGallery"
+import GatsbyImageGallery from "../components/portfolio/GatsbyImageGallery"
 import { breakpoints } from "../utils/breakpoints"
 
 class About extends React.Component {
@@ -12,9 +12,25 @@ class About extends React.Component {
     const siteTitle = data.site.siteMetadata.title
 
     const aboutImages = [
-      { src: "../assets/avatar-pic.jpg", alt: "Me" },
-      { src: "../assets/placeholder.png", alt: "Placeholder" },
-      { src: "../assets/logo.svg", alt: "logo" },
+      {
+        mainImage: data.me.edges[0].node.childImageSharp.mainImage,
+        thumbImage: data.me.edges[0].node.childImageSharp.thumbImage,
+        alt: "man in collared shirt against white background",
+        caption: "Yours truly",
+      },
+      {
+        mainImage: data.cambodia.edges[0].node.childImageSharp.mainImage,
+        thumbImage: data.cambodia.edges[0].node.childImageSharp.thumbImage,
+        alt:
+          "man in sunglasses with backpack stands in front of overgrown jungle temple",
+        caption: "Me in Cambodia",
+      },
+      {
+        mainImage: data.wedding.edges[0].node.childImageSharp.mainImage,
+        thumbImage: data.wedding.edges[0].node.childImageSharp.thumbImage,
+        alt: "couple in formal attire kissing in beautiful old building",
+        caption: "My lovely wife and I getting hitched in Italy",
+      },
     ]
 
     return (
@@ -22,7 +38,7 @@ class About extends React.Component {
         <SEO title="About" />
         <PageTitle>Personal</PageTitle>
         <Personal>
-          <ImageGallery images={aboutImages} />
+          <GatsbyImageGallery images={aboutImages} />
           <Text>
             <h2>Biography</h2>
             <p>
@@ -101,17 +117,44 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    me: allFile(filter: { name: { eq: "me" } }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
+          childImageSharp {
+            mainImage: fluid(maxWidth: 1248) {
+              ...GatsbyImageSharpFluid
+            }
+            thumbImage: fluid(maxWidth: 88) {
+              ...GatsbyImageSharpFluid
+            }
           }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
+        }
+      }
+    }
+    cambodia: allFile(filter: { name: { eq: "cambodia" } }) {
+      edges {
+        node {
+          childImageSharp {
+            mainImage: fluid(maxWidth: 1248) {
+              ...GatsbyImageSharpFluid
+            }
+            thumbImage: fluid(maxWidth: 88) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    wedding: allFile(filter: { name: { eq: "wedding" } }) {
+      edges {
+        node {
+          childImageSharp {
+            mainImage: fluid(maxWidth: 1248) {
+              ...GatsbyImageSharpFluid
+            }
+            thumbImage: fluid(maxWidth: 88) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }

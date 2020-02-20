@@ -30,6 +30,7 @@ class Layout extends React.Component {
       fullWidth = false,
       fullHeight = false,
       articleLayout = false,
+      reverseMain = false,
       asideContents = null,
       post,
       avatar,
@@ -176,6 +177,7 @@ class Layout extends React.Component {
           fullHeight={fullHeight}
           articleLayout={articleLayout}
           asideContents={asideContents}
+          reverseMain={reverseMain}
         >
           <main>{children}</main>
           <aside>{asideContents}</aside>
@@ -216,7 +218,10 @@ class Layout extends React.Component {
   }
 }
 
-const BodyContainer = styled.div.attrs(props => ({}))`
+const BodyContainer = styled.div.attrs(props => ({
+  articleLayout: props.articleLayout,
+  reverseMain: props.reverseMain,
+}))`
   position: relative;
   margin-left: ${props => (props.fullWidth ? "0rem" : "auto")};
   margin-right: ${props => (props.fullWidth ? "0rem" : "auto")};
@@ -225,11 +230,21 @@ const BodyContainer = styled.div.attrs(props => ({}))`
   max-width: ${props => (props.fullWidth ? "100vw" : rhythm(40))};
   min-height: ${props => (props.fullHeight ? "100vh" : "70vh")};
   overflow-x: hidden;
+  display: ${props => (props.articleLayout ? "flex" : "block")};
+  flex-direction: ${props => (props.reverseMain ? "column-reverse" : "column")};
 
   @media (min-width: ${breakpoints.desktop.small}) {
+    flex-direction: ${props => (props.reverseMain ? "row-reverse" : "row")};
+    justify-content: space-between;
+    overflow-x: visibile;
+
     & main {
-      width: ${props => (props.articleLayout ? "67%" : "100%")};
       font-size: ${props => (props.articleLayout ? "18px" : "16px")};
+      flex-basis: 67%;
+    }
+
+    & aside {
+      flex-basis: calc(33% - 4rem);
     }
   }
 `

@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import PortfolioProjectDetails from "../components/portfolio/PortfolioProjectDetails"
 
 class PortfolioProjectTemplate extends React.Component {
   render() {
@@ -19,6 +20,15 @@ class PortfolioProjectTemplate extends React.Component {
           title={siteTitle}
           project={project}
           articleLayout={true}
+          reverseMain={true}
+          asideContents={[
+            <PortfolioProjectDetails
+              client={project.frontmatter.client}
+              tools={project.frontmatter.tools}
+              credits={project.frontmatter.credits}
+              role={project.frontmatter.role}
+            />,
+          ]}
         >
           <SEO
             title={project.frontmatter.title}
@@ -26,7 +36,7 @@ class PortfolioProjectTemplate extends React.Component {
           />
 
           {/* <StyledImage fluid={post.frontmatter.thumbnail.childImageSharp.fluid} /> */}
-
+          <h2>Overview</h2>
           <MDXRenderer>{project.body}</MDXRenderer>
 
           <hr
@@ -61,14 +71,16 @@ export const pageQuery = graphql`
           client_name
           is_personal
         }
+        role
         project_images {
           alt_text
+          caption
           project_image {
             childImageSharp {
-              mainImage: fluid(maxWidth: 1248) {
+              mainImage: fluid(maxWidth: 1248, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
-              thumbImage: fluid(maxWidth: 88) {
+              thumbImage: fluid(maxWidth: 88, quality: 90) {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -80,6 +92,20 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        tools {
+          name
+          tool_logo {
+            publicURL
+          }
+        }
+        actions {
+          action_text
+          url
+        }
+        credits {
+          name
+          role
         }
       }
     }

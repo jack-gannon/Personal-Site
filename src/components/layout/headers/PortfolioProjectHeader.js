@@ -14,9 +14,10 @@ const PortfolioProjectHeader = ({ project }) => {
     description,
     thumbnail,
     client,
+    tools,
+    actions,
+    credits,
     project_images,
-    liveSiteLink = "http://jackgannon.io",
-    githubLink = "http://github.com/jack-gannon",
   } = project.frontmatter
 
   let projectImages
@@ -25,6 +26,7 @@ const PortfolioProjectHeader = ({ project }) => {
     projectImages = project_images.map(image => ({
       alt: image.alt_text,
       mainImage: image.project_image.childImageSharp.mainImage,
+      caption: image.caption,
       thumbImage: image.project_image.childImageSharp.thumbImage,
     }))
   } else {
@@ -40,14 +42,15 @@ const PortfolioProjectHeader = ({ project }) => {
         <MainInfo>
           <Title>{title}</Title>
           <Description>{description}</Description>
-          <ActionPanel>
-            {liveSiteLink ? (
-              <LiveSiteLink href={liveSiteLink}>View Live Site</LiveSiteLink>
-            ) : null}
-            {githubLink ? (
-              <GitHubLink href={githubLink}>GitHub Repo</GitHubLink>
-            ) : null}
-          </ActionPanel>
+          {actions && (
+            <ActionPanel>
+              {actions.map(action => (
+                <a href={action.url} target="_blank" rel="noopener">
+                  {action.action_text}
+                </a>
+              ))}
+            </ActionPanel>
+          )}
         </MainInfo>
         <ImageSlot>
           {project_images ? (
@@ -56,7 +59,6 @@ const PortfolioProjectHeader = ({ project }) => {
             <Image fluid={thumbnail.childImageSharp.fluid} />
           )}
         </ImageSlot>
-        <PortfolioProjectDetails client={client} />
       </Container>
     </>
   )
@@ -74,7 +76,7 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      "main main details"
+      "main main main"
       "gallery gallery gallery";
   }
 `
@@ -105,6 +107,7 @@ const Title = styled.h1`
 const Description = styled.p`
   color: ${colors.gray60};
   font-family: "Helvetica Neue", sans-serif;
+  margin-bottom: 1rem;
   width: 80%;
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1.25rem;
@@ -137,7 +140,7 @@ const ActionPanel = styled.div`
   }
 
   @media (min-width: ${breakpoints.tablet.small}) {
-    width: 70%;
+    width: 50%;
     & a {
       flex-basis: calc(50% - 0.5rem);
 
@@ -145,6 +148,10 @@ const ActionPanel = styled.div`
         margin-right: 1rem;
       }
     }
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    width: 40%;
   }
 `
 
@@ -180,9 +187,5 @@ const BackButton = styled.button`
     stroke-width: 6px;
   }
 `
-
-const GitHubLink = styled.a``
-
-const LiveSiteLink = styled.a``
 
 export default PortfolioProjectHeader
