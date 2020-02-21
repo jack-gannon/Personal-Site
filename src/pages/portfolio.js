@@ -10,7 +10,6 @@ class Portfolio extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const projects = data.allFile.edges
-    console.log(pageQuery)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -24,7 +23,7 @@ class Portfolio extends React.Component {
 export default Portfolio
 
 export const pageQuery = graphql`
-  query {
+  query PortfolioQuery {
     site {
       siteMetadata {
         title
@@ -32,7 +31,7 @@ export const pageQuery = graphql`
     }
     allFile(
       filter: { sourceInstanceName: { eq: "portfolio" } }
-      sort: { fields: [childMdx___frontmatter___index], order: ASC }
+      sort: { fields: childMdx___frontmatter___index, order: ASC }
     ) {
       edges {
         node {
