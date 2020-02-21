@@ -41,6 +41,7 @@ export const pageQuery = graphql`
               slug
             }
             frontmatter {
+              index
               title
               description
               thumbnail {
