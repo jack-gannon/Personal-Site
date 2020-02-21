@@ -10,6 +10,7 @@ class Portfolio extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const projects = data.allFile.edges
+    console.log(pageQuery)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
