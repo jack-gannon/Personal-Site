@@ -5,6 +5,7 @@ import { breakpoints } from "../../utils/breakpoints"
 import { colors } from "../../utils/colors"
 
 const ProjectCollection = ({ projects }) => {
+  console.log(projects)
   return (
     <Section>
       <SectionTitle>Projects</SectionTitle>
