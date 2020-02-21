@@ -1,7 +1,6 @@
 ---
 path: onq-connect
 index: 2
-date: 2020-01-18T20:18:44.163Z
 title: On Q Connect
 description: User experience design for mortgage lender intranet application.
 thumbnail: ../assets/project_images/onq_intranet/onq_intranet_wires.jpg

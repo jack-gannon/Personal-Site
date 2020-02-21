@@ -1,7 +1,6 @@
 ---
 path: zesto
 index: 1
-date: 2020-02-18T20:18:44.163Z
 title: Zesto
 description: Web Application Built with React and The MealDB
 thumbnail: ../assets/project_images/zesto/zesto_1.jpg
