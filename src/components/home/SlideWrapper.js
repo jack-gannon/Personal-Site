@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
-import { rhythm } from "../../utils/typography"
 import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
 
@@ -88,7 +87,7 @@ const Slide = styled.div.attrs(props => ({
 
   &.fade-exit-active {
     opacity 0;
-    transition: opacity 1000ms, transform 1000ms;;
+    transition: opacity 1000ms, transform 1000ms;
 
     .backward {
       transform: ${props =>
@@ -110,6 +109,64 @@ const Slide = styled.div.attrs(props => ({
   @media (min-width ${breakpoints.tablet.small}) {
     height: 100vh;
   }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+  @media (min-resolution: 192dpi) {
+    &.fade-enter {
+      opacity: 0;
+  
+      .backward {
+        transform: none;
+        
+      }
+  
+      .forward {
+        transform: none;
+      }
+    }
+  
+    &.fade-enter-active {
+      opacity 1;
+      transition: opacity 1000ms;
+  
+      .backward {
+        transform: none;
+      }
+  
+      .forward {
+        transform: none;
+        transition: transform 1000ms;
+      }
+    }
+  
+    &.fade-exit {
+      opacity 1;
+  
+      .backward {
+        transform: none;
+      }
+  
+      .forward {
+        transform: none;
+        
+      }
+      
+    }
+  
+    &.fade-exit-active {
+      opacity 0;
+      transition: opacity 1000ms;
+  
+      .backward {
+        transform: none;
+      }
+  
+      .forward {
+        transform: none;
+      }
+    }
+  }
+}
 
 `
 

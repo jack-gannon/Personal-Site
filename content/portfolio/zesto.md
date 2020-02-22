@@ -3,7 +3,9 @@ path: zesto
 index: 1
 title: Zesto
 description: Web Application Built with React and The MealDB
-thumbnail: ../assets/project_images/zesto/zesto_1.jpg
+thumbnail:
+  src: ../assets/project_images/zesto/zesto_1.jpg
+  alt: Macbook pro against gray background with a screen that says find recipes with Zesto
 role: Designer & Developer
 project_images:
   - alt_text: Macbook pro against gray background with a screen that says find recipes with Zesto

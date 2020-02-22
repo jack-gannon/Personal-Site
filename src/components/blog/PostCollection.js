@@ -2,14 +2,21 @@ import React from "react"
 import styled from "styled-components"
 import PostItemLarge from "./PostItemLarge"
 import { breakpoints } from "../../utils/breakpoints"
+import EmptyState from "../layout/main/EmptyState"
 
 function BlogPostCollection({ posts = [] }) {
-  return (
+  return posts.length > 0 ? (
     <Container>
       {posts.map(({ node }, index) => {
         return <PostItemLarge post={node} key={node.childMdx.fields.slug} />
       })}
     </Container>
+  ) : (
+    <EmptyState
+      type="blog"
+      mainText="No Posts Here...Yet!"
+      bodyText="I am busy writing some more content. Check back again soon!"
+    />
   )
 }
 

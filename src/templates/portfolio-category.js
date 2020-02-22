@@ -56,11 +56,14 @@ export const blogQuery = graphql`
             author
             description
             thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 590) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 590, quality: 90) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
           }
         }

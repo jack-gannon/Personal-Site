@@ -1,9 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Bio from "../components/blog/bio"
 import Layout from "../components/layout"
-import styled from "styled-components"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import PortfolioProjectDetails from "../components/portfolio/PortfolioProjectDetails"
@@ -80,18 +78,21 @@ export const pageQuery = graphql`
               mainImage: fluid(maxWidth: 1248, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
-              thumbImage: fluid(maxWidth: 88, quality: 90) {
+              thumbImage: fluid(maxWidth: 140, quality: 90) {
                 ...GatsbyImageSharpFluid
               }
             }
           }
         }
         thumbnail {
-          childImageSharp {
-            fluid(maxWidth: 1248) {
-              ...GatsbyImageSharpFluid
+          src {
+            childImageSharp {
+              fluid(maxWidth: 590, quality: 90) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
+          alt
         }
         tools {
           name

@@ -4,7 +4,6 @@ import styled from "styled-components"
 import Navigation from "./nav/Navigation"
 
 import BlogCategoryTabs from "./blog/BlogCategoryTabs"
-import PortfolioCategoryTabs from "./portfolio/PortfolioCategoryTabs"
 import AboutCategoryTabs from "./about/AboutCategoryTabs"
 import { breakpoints } from "../utils/breakpoints"
 
@@ -16,13 +15,6 @@ import HeaderContainer from "./layout/headers/HeaderContainer"
 import Footer from "./layout/footers/Footer"
 
 class Layout extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  // These handle the appearance of the navbar based on
-  // the page content
-
   render() {
     const {
       location,
@@ -50,27 +42,7 @@ class Layout extends React.Component {
       header = (
         <>
           <Navigation defaultToDark={true} />
-
-          {/* <Hero /> */}
         </>
-        // <h1
-        //   style={{
-        //     ...scale(1.5),
-        //     marginBottom: rhythm(1.5),
-        //     marginTop: 0,
-        //   }}
-        // >
-        //   <Link
-        //     style={{
-        //       boxShadow: `none`,
-        //       textDecoration: `none`,
-        //       color: `inherit`,
-        //     }}
-        //     to={location.pathname === blogPath ? `/blog/` : `/`}
-        //   >
-        //     {title}
-        //   </Link>
-        // </h1>
       )
 
       footer = null
@@ -106,23 +78,6 @@ class Layout extends React.Component {
           <PageTitle>About</PageTitle>
           <AboutCategoryTabs />
         </HeaderContainer>
-        //
-        //   style={{
-        //     fontFamily: `Montserrat, sans-serif`,
-        //     marginTop: 0,
-        //   }}
-        // >
-        //   <Link
-        //     style={{
-        //       boxShadow: `none`,
-        //       textDecoration: `none`,
-        //       color: `inherit`,
-        //     }}
-        //     to={`/blog/`}
-        //   >
-        //     {title}
-        //   </Link>
-        // </h3>
       )
     } else if (
       location.pathname === portfolioPath ||
@@ -133,23 +88,6 @@ class Layout extends React.Component {
           <Navigation defaultToDark={false} />
           <PageTitle>Portfolio</PageTitle>
         </HeaderContainer>
-        //
-        //   style={{
-        //     fontFamily: `Montserrat, sans-serif`,
-        //     marginTop: 0,
-        //   }}
-        // >
-        //   <Link
-        //     style={{
-        //       boxShadow: `none`,
-        //       textDecoration: `none`,
-        //       color: `inherit`,
-        //     }}
-        //     to={`/blog/`}
-        //   >
-        //     {title}
-        //   </Link>
-        // </h3>
       )
     } else if (
       location.pathname !== portfolioPath &&
@@ -184,36 +122,6 @@ class Layout extends React.Component {
         </BodyContainer>
         {footer}
       </>
-      // <Wrapper>
-      //   <div
-      //     style={{
-      //       marginLeft: `auto`,
-      //       marginRight: `auto`,
-      //       maxWidth: fullWidth ? "100vw" : rhythm(40),
-      //       padding: fullWidth ? "0" : `${rhythm(1.5)} 1rem`,
-      //     }}
-      //   >
-      //     <header style={{ position: "relative" }}>{header}</header>
-      //     <main
-      //       style={{
-      //         marginBottom: "8rem",
-      //         marginTop: "4rem",
-      //         minHeight: "100vh",
-      //       }}
-      //     >
-      //       {children}
-      //     </main>
-      //   </div>
-      //   <Footer>
-      //     <img
-      //       src={Logo}
-      //       style={{ width: "4rem", marginTop: "1rem", marginBottom: ".5rem" }}
-      //       alt="Jack Gannon Logo"
-      //     />
-      //     <SocialIconPanelFooter />
-      //     <Legal>© {new Date().getFullYear()} Jack Gannon</Legal>
-      //   </Footer>
-      // </Wrapper>
     )
   }
 }

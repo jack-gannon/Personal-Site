@@ -6,17 +6,13 @@ import { colors } from "../../../utils/colors"
 import { rhythm } from "../../../utils/typography"
 import { breakpoints } from "../../../utils/breakpoints"
 import ArrowIcon from "../../vectors/ArrowIcon"
-import PortfolioProjectDetails from "../../portfolio/PortfolioProjectDetails"
 
 const PortfolioProjectHeader = ({ project }) => {
   const {
     title,
     description,
     thumbnail,
-    client,
-    tools,
     actions,
-    credits,
     project_images,
   } = project.frontmatter
 
@@ -45,7 +41,7 @@ const PortfolioProjectHeader = ({ project }) => {
           {actions && (
             <ActionPanel>
               {actions.map(action => (
-                <a href={action.url} target="_blank" rel="noopener">
+                <a href={action.url} target="_blank" rel="noopener noreferrer">
                   {action.action_text}
                 </a>
               ))}

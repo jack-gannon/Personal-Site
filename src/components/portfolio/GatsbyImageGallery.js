@@ -168,7 +168,7 @@ const SelectionPanel = styled.div`
 const SelectionItem = styled.button`
   width: 4rem;
   height: 4rem;
-  padding: 0.25rem;
+  padding: 0rem;
   border: none;
   margin-right: 0.5rem;
   transition: opacity 0.25s ease;
@@ -185,7 +185,11 @@ const SelectionItem = styled.button`
   }
 
   &.deselected {
-    opacity: 0.5;
+    opacity: 0.3;
+
+    &:hover * {
+      opacity: 0.8;
+    }
   }
 
   &.selected {
@@ -209,7 +213,6 @@ const Thumbnail = styled(Image)`
   object-fit: cover;
 
   &:hover {
-    opacity: 0.8;
   }
 `
 

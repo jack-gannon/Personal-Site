@@ -17,7 +17,10 @@ const FeaturedPost = ({ featuredPost }) => {
   return (
     <Container>
       <MainImageLink to={`blog${fields.slug}`}>
-        <MainImage fluid={thumbnail.childImageSharp.fluid} />
+        <MainImage
+          fluid={thumbnail.src.childImageSharp.fluid}
+          alt={thumbnail.alt}
+        />
       </MainImageLink>
       <Details>
         <Title>

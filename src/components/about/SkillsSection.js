@@ -7,7 +7,7 @@ const SkillsSection = ({ skills, id }) => {
   // This component takes in a single skills object. The object
   // will have a sectionTitle key, with a string value, as well
   // as a sectionDescription key with a string value.
-  const { sectionTitle, sectionDescription, columns } = skills
+  const { sectionTitle, columns } = skills
 
   // The skills object also contains a columns key, which takes in
   // an array of objects. Each of these objects must have a "colHeader"

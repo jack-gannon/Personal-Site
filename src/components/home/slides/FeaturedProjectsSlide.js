@@ -1,31 +1,124 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
+import Image from "gatsby-image"
 import styled, { keyframes } from "styled-components"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 
-const FeaturedProjectsSlide = () => {
-  return (
-    <Slide>
-      <Contents>
-        <IntroHeader>Featured Projects</IntroHeader>
-
-        <Grid>
-          <Project to="/portfolio/">
-            <img src="./GatsbyScene.svg" alt="Gatsby Scene" />
-          </Project>
-          <Project to="/portfolio/">
-            <img src="./GatsbyScene.svg" alt="Gatsby Scene" />
-          </Project>
-          <Project to="/portfolio/">
-            <img src="./GatsbyScene.svg" alt="Gatsby Scene" />
-          </Project>
-        </Grid>
-      </Contents>
-    </Slide>
-  )
-}
+const FeaturedProjects = () => (
+  <StaticQuery
+    query={graphql`
+      {
+        featured1: file(
+          sourceInstanceName: { eq: "portfolio" }
+          name: { eq: "zesto" }
+        ) {
+          childMdx {
+            frontmatter {
+              thumbnail {
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 800, quality: 60) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+                alt
+              }
+            }
+            fields {
+              slug
+            }
+          }
+        }
+        featured2: file(
+          sourceInstanceName: { eq: "portfolio" }
+          name: { eq: "onq-connect" }
+        ) {
+          childMdx {
+            frontmatter {
+              thumbnail {
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 800, quality: 60) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+                alt
+              }
+            }
+            fields {
+              slug
+            }
+          }
+        }
+        featured3: file(
+          sourceInstanceName: { eq: "portfolio" }
+          name: { eq: "insurance-discourse" }
+        ) {
+          childMdx {
+            frontmatter {
+              thumbnail {
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 800, quality: 60) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+                alt
+              }
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      const { featured1, featured2, featured3 } = data
+      return (
+        <Slide>
+          <Contents>
+            <IntroHeader>Featured Projects</IntroHeader>
+            <Grid>
+              <Project to={`/portfolio/${featured1.childMdx.fields.slug}`}>
+                <ProjectImage
+                  fluid={
+                    featured1.childMdx.frontmatter.thumbnail.src.childImageSharp
+                      .fluid
+                  }
+                  alt={featured1.childMdx.frontmatter.thumbnail.alt}
+                />
+              </Project>
+              <Project to={`/portfolio/${featured2.childMdx.fields.slug}`}>
+                <ProjectImage
+                  fluid={
+                    featured2.childMdx.frontmatter.thumbnail.src.childImageSharp
+                      .fluid
+                  }
+                  alt={featured2.childMdx.frontmatter.thumbnail.alt}
+                />
+              </Project>
+              <Project to={`/portfolio/${featured3.childMdx.fields.slug}`}>
+                <ProjectImage
+                  fluid={
+                    featured3.childMdx.frontmatter.thumbnail.src.childImageSharp
+                      .fluid
+                  }
+                  alt={featured3.childMdx.frontmatter.thumbnail.alt}
+                />
+              </Project>
+            </Grid>
+          </Contents>
+        </Slide>
+      )
+    }}
+  />
+)
 
 const fadeIn = keyframes`
 0% {
@@ -65,9 +158,9 @@ const Grid = styled.div`
 const Project = styled(Link)`
   display: block;
   margin-bottom: 1rem;
+  padding-bottom: 0rem;
   line-height: 0rem;
   border-radius: 2px;
-  border: 1px solid pink;
   opacity: 0;
   transition: all 0.25s ease;
   animation: ${fadeIn} 0.5s ease;
@@ -86,22 +179,10 @@ const Project = styled(Link)`
     margin-bottom: 0rem;
   }
 
-  & img {
-    width: 100%;
-    height: auto;
-    border: 1px solid purple;
-    margin-bottom: 0rem;
-    transition: transform 0.25s ease, opacity 0.125s ease;
-
-    &:hover {
-      transform: translateY(-0.5rem);
-      opacity: 0.8;
-    }
-  }
-
   @media (min-width: ${breakpoints.tablet.small}) {
     width: 100%;
     margin-bottom: 0rem;
+    height: 18rem;
   }
 `
 
@@ -119,6 +200,16 @@ const Contents = styled.div`
   }
 `
 
+const ProjectImage = styled(Image)`
+  height: 100%;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    opacity: 0.8;
+  }
+`
+
 const IntroHeader = styled.h2`
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -130,4 +221,4 @@ const IntroHeader = styled.h2`
   }
 `
 
-export default FeaturedProjectsSlide
+export default FeaturedProjects

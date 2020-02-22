@@ -5,7 +5,6 @@ import BackgroundImage from "gatsby-background-image"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
-import HeroBackground from "../../../../content/assets/hero.jpg"
 
 const BackgroundSection = ({ children, className }) => (
   <StaticQuery
@@ -13,7 +12,7 @@ const BackgroundSection = ({ children, className }) => (
       query {
         backgroundImage: file(name: { eq: "hero" }) {
           childImageSharp {
-            fluid(quality: 90, maxWidth: 1920) {
+            fluid(quality: 100, maxWidth: 2560) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -171,7 +170,7 @@ const Subheader = styled.p`
   line-height: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.125em;
   animation: ${fadeIn} 0.25s ease;
   animation-delay: 2s;

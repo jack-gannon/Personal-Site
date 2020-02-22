@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
-import ArrowIcon from "../vectors/ArrowIcon"
 
 const SlideControls = ({
   slides,
@@ -64,22 +63,6 @@ const Controls = styled.nav`
     right: 2rem;
     top: 4rem;
     height: 80vh;
-  }
-`
-
-const Indicator = styled.p`
-  position: absolute;
-  right: 1rem;
-  top: -12rem;
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  opacity: 0.1;
-
-  @media (min-width: ${breakpoints.tablet.small}) {
-    right: 12rem;
-    top: -5rem;
-    font-size: 16rem;
   }
 `
 

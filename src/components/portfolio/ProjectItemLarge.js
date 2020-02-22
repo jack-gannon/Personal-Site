@@ -10,7 +10,7 @@ const ProjectItemLarge = ({ project }) => {
   return (
     <Project>
       <ImageLink to={`portfolio${slug}`}>
-        <Thumbnail fluid={thumbnail.childImageSharp.fluid} />
+        <Thumbnail fluid={thumbnail.src.childImageSharp.fluid} />
       </ImageLink>
       <Title>
         <TitleLink to={`portfolio${slug}`}>{title}</TitleLink>

@@ -124,7 +124,7 @@ export const pageQuery = graphql`
             mainImage: fluid(maxWidth: 1248) {
               ...GatsbyImageSharpFluid
             }
-            thumbImage: fluid(maxWidth: 88) {
+            thumbImage: fluid(maxWidth: 120) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -138,7 +138,7 @@ export const pageQuery = graphql`
             mainImage: fluid(maxWidth: 1248) {
               ...GatsbyImageSharpFluid
             }
-            thumbImage: fluid(maxWidth: 88) {
+            thumbImage: fluid(maxWidth: 120) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -152,7 +152,7 @@ export const pageQuery = graphql`
             mainImage: fluid(maxWidth: 1248) {
               ...GatsbyImageSharpFluid
             }
-            thumbImage: fluid(maxWidth: 88) {
+            thumbImage: fluid(maxWidth: 120) {
               ...GatsbyImageSharpFluid
             }
           }

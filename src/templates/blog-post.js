@@ -1,21 +1,13 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Bio from "../components/blog/bio"
 import Layout from "../components/layout"
-import styled from "styled-components"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
-import { breakpoints } from "../utils/breakpoints"
-import RelatedPosts from "../components/blog/RelatedPosts"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.post
-    const relatedPosts = this.props.data.relatedPosts.edges
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
 
     return (
       <article>
@@ -30,7 +22,8 @@ class BlogPostTemplate extends React.Component {
           <SEO
             title={post.frontmatter.title}
             description={post.frontmatter.description || post.excerpt}
-            ogImage={post.frontmatter.thumbnail.publicURL}
+            ogImage={post.frontmatter.ogImage.src.childImageSharp.fixed.src}
+            imageAlt={post.frontmatter.thumbnail.alt}
           />
           {/* <BlogHeader
           title={post.frontmatter.title}
@@ -76,7 +69,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!, $category: String) {
     avatar: file(absolutePath: { regex: "/avatar-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 50, height: 50, quality: 100) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -98,10 +91,21 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         thumbnail {
-          publicURL
-          childImageSharp {
-            fluid(maxWidth: 1246) {
-              ...GatsbyImageSharpFluid
+          src {
+            childImageSharp {
+              fluid(maxWidth: 1248, quality: 90) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          alt
+        }
+        ogImage: thumbnail {
+          src {
+            childImageSharp {
+              fixed(width: 1200, quality: 100) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
@@ -124,11 +128,14 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             description
             thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 120) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 590, quality: 90) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
           }
         }

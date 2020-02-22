@@ -2,15 +2,16 @@ import React from "react"
 import styled from "styled-components"
 import ProjectItemLarge from "./ProjectItemLarge"
 import { breakpoints } from "../../utils/breakpoints"
-import { colors } from "../../utils/colors"
+import { hardcodeSort } from "../../utils/hardcodeSort"
 
 const ProjectCollection = ({ projects }) => {
   console.log(projects)
+  const newProjects = hardcodeSort(projects)
   return (
     <Section>
       <SectionTitle>Projects</SectionTitle>
       <Grid>
-        {projects.map(project => (
+        {newProjects.map(project => (
           <ProjectItemLarge project={project.node} />
         ))}
       </Grid>

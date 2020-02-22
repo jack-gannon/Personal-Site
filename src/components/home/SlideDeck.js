@@ -22,7 +22,7 @@ class SlideDeck extends React.Component {
           theme: "light",
         },
 
-        { name: "from the blog", component: <BlogSlide />, theme: "light" },
+        { name: "from the blog", component: <BlogSlide />, theme: "dark" },
       ],
       transitionDirection: "forward",
     }

@@ -2,8 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import DribbleLogo from "./DribbbleLogo"
 import TwitterLogo from "./TwitterLogo"
-import CodePenLogo from "./CodePenLogo"
 import GitHubLogo from "./GitHubLogo"
+import LinkedInLogo from "./LinkedInLogo"
 import { colors } from "../../../utils/colors"
 
 const SocialIconPanelFooter = () => {
@@ -12,6 +12,7 @@ const SocialIconPanelFooter = () => {
       <a
         href="http://twitter.com/jackgannon_"
         target="_blank"
+        title="Twitter"
         rel="noopener noreferrer"
       >
         <TwitterLogo />
@@ -19,20 +20,23 @@ const SocialIconPanelFooter = () => {
       <a
         href="http://github.com/jack-gannon"
         target="_blank"
+        title="GitHub"
         rel="noopener noreferrer"
       >
         <GitHubLogo />
       </a>
       <a
-        href="https://codepen.io/jackgannon"
+        href="https://www.linkedin.com/in/jack-gannon/"
         target="_blank"
+        title="LinkedIn"
         rel="noopener noreferrer"
       >
-        <CodePenLogo />
+        <LinkedInLogo />
       </a>
       <a
         href="https://dribbble.com/jackgannon"
         target="_blank"
+        title="Dribbble"
         rel="noopener noreferrer"
       >
         <DribbleLogo />

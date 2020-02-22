@@ -15,7 +15,7 @@ const PostItemLarge = ({ post }) => {
     description,
   } = post.childMdx.frontmatter
   const { slug } = post.childMdx.fields
-  const imgFluid = thumbnail.childImageSharp.fluid
+  const imgFluid = thumbnail.src.childImageSharp.fluid
   return (
     <Post>
       <ImageLink to={`blog${slug}`}>

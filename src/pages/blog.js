@@ -6,10 +6,6 @@ import FeaturedPost from "../components/blog/FeaturedPost"
 import PostCollection from "../components/blog/PostCollection"
 
 class Blog extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -53,11 +49,14 @@ export const blogQuery = graphql`
             author
             description
             thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1246) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 834, quality: 90) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
           }
         }
@@ -85,11 +84,14 @@ export const blogQuery = graphql`
               author
               description
               thumbnail {
-                childImageSharp {
-                  fluid(maxWidth: 1246) {
-                    ...GatsbyImageSharpFluid
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 403, quality: 90) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
+                alt
               }
             }
           }

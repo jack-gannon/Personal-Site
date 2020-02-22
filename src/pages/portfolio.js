@@ -1,6 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import Image from "gatsby-image"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ProjectCollection from "../components/portfolio/ProjectCollection"
@@ -31,7 +30,7 @@ export const pageQuery = graphql`
     }
     allFile(
       filter: { sourceInstanceName: { eq: "portfolio" } }
-      sort: { fields: childMdx___frontmatter___title, order: DESC }
+      sort: { fields: childMdx___frontmatter___title, order: ASC }
     ) {
       edges {
         node {
@@ -44,11 +43,14 @@ export const pageQuery = graphql`
               title
               description
               thumbnail {
-                childImageSharp {
-                  fluid(maxWidth: 590) {
-                    ...GatsbyImageSharpFluid
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 608, quality: 90) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
+                alt
               }
             }
           }

@@ -3,20 +3,22 @@ path: insurance-discourse
 index: 3
 title: Insurance Discourse
 description: User Interface & User Experience Design for Insurance Event Web Application
-thumbnail: ../assets/project_images/insurance_discourse/id_1.jpg
+thumbnail:
+  src: ../assets/project_images/insurance_discourse/id_1.jpg
+  alt: IPhone X in front of gray background with website on screen that says 'Find Your Next Event'
 role: UX / UI Designer
 project_images:
-  - alt_text: Ugly gray box
-    caption: An ugly gray box
+  - alt_text: IPhone X in front of gray background with website on screen that says 'Find Your Next Event'
+    caption: Event Search Preview - Mobile
     project_image: ../assets/project_images/insurance_discourse/id_1.jpg
-  - alt_text: Ugly gray box
-    caption: An ugly gray box
+  - alt_text: Isometric angle featuring many examples of Insurance Discourse website interface
+    caption: User Interface Preview
     project_image: ../assets/project_images/insurance_discourse/id_2.jpg
-  - alt_text: Ugly gray box
-    caption: An ugly gray box
+  - alt_text: Two screenshots from Insurance Discourse website side by side against a purple background
+    caption: Event View - Mobile & Desktop
     project_image: ../assets/project_images/insurance_discourse/id_3.jpg
-  - alt_text: Ugly gray box
-    caption: An ugly gray box
+  - alt_text: Iphone X against gray background with website on screen that says Search Filter
+    caption: Search Filter Preview - Mobile
     project_image: ../assets/project_images/insurance_discourse/id_4.jpg
 tools:
   - description: How I used the tool
@@ -33,50 +35,18 @@ client:
   is_personal: false
 ---
 
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+Insurance Discourse is a web application specifically built for managing and displaying events happening in the insurance industry. It promotes face-to-face events that are driven by the insurance industry community and surrounding professionals. For this project, I worked as a freelance User Experience (UX) & User Interface (UI) Designer, providing visual assets to aid in the development of the application. I did so under the direction of Marcus Shields, the lead UX Designer & Consultant for the project.
 
-- This however showed weasel
-- Well uncritical so misled
-  - this is very interesting
-- Goodness much until that fluid owl
+### Wireframing
 
-When she reached the first hills of the **Italic Mountains**, she had a last
-view back on the skyline of her hometown _Bookmarksgrove_, the headline of
-[Alphabet Village](http://google.com) and the subline of her own road, the Line
-Lane. Pityful a rethoric question ran over her cheek, then she continued her
-way. On her way she met a copy.
+My first task was to develop **wireframes**, which act as blueprints for the application interface. It allowed me to structure the visual hierarchy and information architecture for the application's interface. Since this project was cross-platform, a major focus for me was to ensure a consistent user experience across all devices. Wireframing allowed us to quickly iterate designs, ensuring organization of page struture and informative copy was accounted for before we applied visual styles.
 
-### Overlaid the jeepers uselessly much excluding
+### Component-Based Design
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-[Longe and Parole](http://google.com) and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.
+For this project, we applied a methodology similar to one outlined by Brad Frost's **Atomic Design Theory**. This ideology focuses on the creation and management of small, reusable building blocks that can be composed into larger, more robust components. While we did not strictly adhere to the naming convention outlined by Atomic Design Theory, we still followed the core principles and mindset.
 
-> "Far far away, behind the word mountains, far from the countries Vokalia and
-> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-> right at the coast of the Semantics, a large language ocean."
+An amazing feature in modern design software tools, such as Sketch and Figma, is their ability to create **Symbols** or **Components**, respectively. These allow designers to create small building blocks that can be reused and formed into other components. Although it required a little more upfront effort and time to establish, it streamlined the design process in the long-run. If a design change was needed, we were able to make the changes to the master component, which reflected the changes across every instance of the component. This is monumentally less time-consuming, as opposed to having to manually update each instance of the component.
 
-It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.
+### Interactive Prototyping
 
-### Creating Class Components
-
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rethoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.
+Another amazing feature in modern design tools is the ability to add **interactive prototyping** to the design without having to wait until the application is developed. We were able to add clickable events to our static, high-fidelity mockups. This interactivity included things like page transitions, and the toggling of how information was presented on the screen. This allowed us to adjust animations and event values as needed. When it became time to develop the application, that information can be handed over to the developers when necessary.

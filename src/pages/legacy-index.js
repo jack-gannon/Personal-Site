@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 
 import Services from "../components/home/Services"
 import FeaturedProjects from "../components/home/FeaturedProjects"
-import FromTheBlog from "../components/home/FromTheBlog"
 
 class IndexPage extends React.Component {
   render() {

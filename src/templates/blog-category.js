@@ -56,11 +56,14 @@ export const blogQuery = graphql`
               description
               title
               thumbnail {
-                childImageSharp {
-                  fluid(maxWidth: 1246) {
-                    ...GatsbyImageSharpFluid
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 590, quality: 90) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
+                alt
               }
             }
             fields {

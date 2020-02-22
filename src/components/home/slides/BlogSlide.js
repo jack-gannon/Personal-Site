@@ -1,34 +1,51 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import { Link, StaticQuery, graphql } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 
-const BlogSlide = () => {
-  return (
-    <StaticQuery
-      query={blogSlideQuery}
-      render={data => {
-        const post = data.allMdx.edges[0]
-        const { date, title, description, thumbnail } = post.node.frontmatter
+const BackgroundSection = ({ className }) => (
+  //  (
+  //   <StaticQuery
+  //     query={blogSlideQuery}
+  //     render={data => {
+  //       const post = data.allMdx.edges[0]
+  //       const { date, title, description, thumbnail } = post.node.frontmatter
 
-        return (
-          <Slide>
-            <Contents>
-              <SectionHeader>Featured Blog Post</SectionHeader>
-              <Details>
-                <BlogTitle>{title}</BlogTitle>
-                <Description>{description}</Description>
-                <Link to={`blog/${post.node.fields.slug}`}>Read More</Link>
-              </Details>
-            </Contents>
-          </Slide>
-        )
-      }}
-    />
-  )
-}
+  //       return (
+
+  //       )
+  //     }}
+  //   />
+  // )
+  <StaticQuery
+    query={blogSlideQuery}
+    render={data => {
+      const post = data.allMdx.edges[0]
+      const { title, description, thumbnail } = post.node.frontmatter
+      const backgroundImageData = thumbnail.src.childImageSharp.fluid
+      return (
+        <BackgroundImage
+          Tag="section"
+          className={className}
+          fluid={backgroundImageData}
+          backgroundColor={colors.gray90}
+        >
+          <Contents>
+            <SectionHeader>Featured Blog Post</SectionHeader>
+            <Details>
+              <BlogTitle>{title}</BlogTitle>
+              <Description>{description}</Description>
+              <Link to={`blog/${post.node.fields.slug}`}>Read More</Link>
+            </Details>
+          </Contents>
+        </BackgroundImage>
+      )
+    }}
+  />
+)
 
 const blogSlideQuery = graphql`
   {
@@ -49,11 +66,14 @@ const blogSlideQuery = graphql`
             description
             category
             thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 590) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 1400, quality: 90) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
                 }
               }
+              alt
             }
           }
         }
@@ -74,18 +94,36 @@ const slideIn = keyframes`
 }
 `
 
-const Slide = styled.section`
+const StyledBackgroundSection = styled(BackgroundSection)`
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: ${colors.primaryLight};
 `
 
 const Contents = styled.div`
   width: 80%;
   margin-left: 1rem;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    background-color: ${colors.gray90};
+    top: 0rem;
+    left: 0rem;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  & * {
+    z-index: 2;
+    position: relative;
+  }
+
   @media (min-width: ${breakpoints.tablet.small}) {
     width: 100%;
     margin-left: auto;
@@ -98,6 +136,7 @@ const Description = styled.p`
   width: 100%;
   font-size: 0.875rem;
   margin-bottom: 0rem;
+  color: ${colors.gray40};
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1.2rem;
@@ -120,6 +159,7 @@ const SectionHeader = styled.h2`
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.125rem;
+  color: ${colors.gray10};
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1rem;
@@ -130,10 +170,11 @@ const SectionHeader = styled.h2`
 const BlogTitle = styled.h3`
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: ${colors.gray10};
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 4rem;
   }
 `
 
-export default BlogSlide
+export default StyledBackgroundSection

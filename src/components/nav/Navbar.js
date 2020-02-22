@@ -5,7 +5,6 @@ import { Link } from "gatsby"
 import { colors } from "../../utils/colors"
 import { rhythm } from "../../utils/typography"
 import { breakpoints } from "../../utils/breakpoints"
-import { NavConsumer } from "./nav-context"
 import Logo from "../vectors/Logo"
 
 class NavbarNew extends Component {

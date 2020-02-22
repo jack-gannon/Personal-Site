@@ -57,11 +57,14 @@ const fromTheBlogQuery = graphql`
             description
             category
             thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 590) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 590, quality: 90) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
           }
         }

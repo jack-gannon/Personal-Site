@@ -3,7 +3,9 @@ path: design-simplified
 index: 4
 title: Design Simplified
 description: Print & digital design system created for mortgage lender.
-thumbnail: ../assets/project_images/design_simplified/DS_1.jpg
+thumbnail:
+  src: ../assets/project_images/design_simplified/DS_1.jpg
+  alt: isometric view of a collection of various graphics and images
 role: Creative Manager
 project_images:
   - alt_text: isometric view of a collection of various graphics and images

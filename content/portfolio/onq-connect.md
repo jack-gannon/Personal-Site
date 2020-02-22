@@ -3,20 +3,22 @@ path: onq-connect
 index: 2
 title: On Q Connect
 description: User experience design for mortgage lender intranet application.
-thumbnail: ../assets/project_images/onq_intranet/onq_intranet_wires.jpg
+thumbnail:
+  src: ../assets/project_images/onq_intranet/onq_intranet_wires.jpg
+  alt: isometric view of white wireframe documents against a blue background
 role: UX Designer
 project_images:
   - alt_text: isometric view of white wireframe documents against a blue background
-    caption: On Q Connect wireframes
+    caption: On Q Connect Wireframes
     project_image: ../assets/project_images/onq_intranet/onq_intranet_wires.jpg
   - alt_text: white wireframe document titled Dashboard against blue background
-    caption: Dashboard wireframe with calendar side-panel open
+    caption: Dashboard with Side-Panel Open
     project_image: ../assets/project_images/onq_intranet/onq_c1.jpg
   - alt_text: white wireframe document titled Documents against blue background
-    caption: Documents file-browser wireframe
+    caption: Documents Browser Wireframe
     project_image: ../assets/project_images/onq_intranet/onq_c2.jpg
   - alt_text: diagram showing white wireframe documents against blue-gray background with arrows between them
-    caption: Top-level navigation user-flow
+    caption: Top-Level Navigation User-Flow
     project_image: ../assets/project_images/onq_intranet/onq_c3.jpg
 tools:
   - description: How I used the tool
@@ -33,50 +35,28 @@ client:
   is_personal: false
 ---
 
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+On Q Financial is a national mortgage lender headquartered in Tempe, Arizona. They are a rapidly growing company, and as they continue to scale, they require many technological solutions to help them do their job. One such tool is On Q Connect, an intranet web application developed internally. As each department has its own specific needs and requirements, the goal of On Q Connect is to meet these needs while being intuitive and easy to use. For this project, I worked as a freelance UX Designer. My goals were to gain insight regarding On Q Connect's users, and provide the development team with direction in regards to building an intuitive, empowering digital experience.
 
-- This however showed weasel
-- Well uncritical so misled
-  - this is very interesting
-- Goodness much until that fluid owl
+### Stakeholder Interviews
 
-When she reached the first hills of the **Italic Mountains**, she had a last
-view back on the skyline of her hometown _Bookmarksgrove_, the headline of
-[Alphabet Village](http://google.com) and the subline of her own road, the Line
-Lane. Pityful a rethoric question ran over her cheek, then she continued her
-way. On her way she met a copy.
+In order to accomodate each department's requirements for the tool, we first needed to define and understand those requirements. We conducted **stakeholder interviews** in order to help us do so. Participants in the interviews were from various departments, such as compliance and product development. Through these interviews, we were able to ascertain not only their desires, but also some surrounding concerns in moving to a new system. We were also able to gather knowledge regarding the current systems in place, what they liked about it, and what needed improving upon.
 
-### Overlaid the jeepers uselessly much excluding
+### Features & Functionality
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-[Longe and Parole](http://google.com) and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.
+After conducting stakeholder interviews and additional user research, we were able to define the primary functionality that the tool would provide, in addition to some secondary features. The primary functionality includes:
 
-> "Far far away, behind the word mountains, far from the countries Vokalia and
-> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-> right at the coast of the Semantics, a large language ocean."
+- Document Browser & File Management System
+- User Directory
+- Announcements & Event Calendar
+- Global Search Capability
+- Dashboard & Notifications
 
-It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.
+### Wireframing
 
-### Creating Class Components
+Once the requirements were defined, I developed a series of **wireframes** to help organize the application's visual hierarchy and information architecture. For those unfamiliar with the term, wireframes act as blueprints for the interface. It organizes page layout and content structure. It does not contain visual design aspects, such as images or styling, aside from some basic visual hierarchy to help provide context into the page's overall structure.
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rethoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.
+### Interactive Prototyping
+
+Although an interactive prototype is usually created once all of the visual styles and UI Design has been applied, I instead added some basic interactivity to the wireframes via Figma's prototyping feature. The interactivity mostly focused on navigation. I included primary navigation, such as routing and navigating between pages. I also included sub-navigation for things like toggling information, modals, and navigating through on-page processes. I also included interactivity to the sidepanel-based layout, which added animation that adjusted the page layout depending on whether or not the sidepanel was open.
+
+**_Note:_** _This is an ongoing project, and will be updated as additional testing is conducted and improvements are made based on the results of that testing_

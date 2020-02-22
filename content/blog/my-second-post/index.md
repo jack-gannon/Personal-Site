@@ -4,7 +4,9 @@ content_type: blog
 author: Jack Gannon
 category: Development
 date: "2015-05-06T23:46:37.121Z"
-thumbnail: ../../assets/placeholder.png
+thumbnail:
+  src: ../../assets/placeholder.png
+  alt: Ugly gray box
 ---
 
 Wow! I love blogging so much already.

@@ -7,7 +7,7 @@ import { breakpoints } from "../../../utils/breakpoints"
 import ArrowIcon from "../../vectors/ArrowIcon"
 
 const BlogPostHeader = ({ post, avatar }) => {
-  const { title, author, date, description, thumbnail } = post.frontmatter
+  const { title, author, date, thumbnail } = post.frontmatter
   return (
     <Container>
       <BackButton onClick={() => window.history.back()}>
@@ -26,7 +26,7 @@ const BlogPostHeader = ({ post, avatar }) => {
           </Published>
         </div>
       </BlogSubheader>
-      <StyledImage fluid={thumbnail.childImageSharp.fluid} />
+      <StyledImage fluid={thumbnail.src.childImageSharp.fluid} />
     </Container>
   )
 }

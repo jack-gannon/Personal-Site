@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { colors } from "../../utils/colors"
-import Image from "gatsby-image"
 
 const PortfolioProjectDetails = ({ client, credits, tools, role }) => {
   return (
@@ -193,14 +192,6 @@ const ToolIcon = styled.img`
   letter-spacing: 0.05em;
   margin-bottom: 0rem;
   padding-bottom: 0rem;
-`
-
-const ToolName = styled.p`
-  font-family: "Helvetica Neue", sans-serif;
-  color: ${colors.gray60};
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: 0.05em;
 `
 
 export default PortfolioProjectDetails
