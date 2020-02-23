@@ -4,7 +4,7 @@ module.exports = {
     title: `Jack Gannon - Designer & Developer | UX Design • UI Design • Web Development`,
     author: `Jack Gannon`,
     description: `Jack Gannon is a Designer and Developer based out of Phoenix, Arizona. He specializes in User-Experience (UX) Design, User-Interface (UI) Design, and Web Development. His primary focus is on Front-End Development, working with HTML, CSS, JavaScript, and JavaScript frameworks such as React. This website shows his portfolio, blog, and more information.`,
-    siteUrl: `https://jackgannon.io`,
+    siteUrl: `https://romantic-wescoff-277a9a.netlify.com`,
     social: {
       twitter: `jackgannon_`,
     },
