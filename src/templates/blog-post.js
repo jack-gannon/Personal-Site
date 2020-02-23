@@ -22,7 +22,7 @@ class BlogPostTemplate extends React.Component {
           <SEO
             title={post.frontmatter.title}
             description={post.frontmatter.description || post.excerpt}
-            ogImage={post.frontmatter.ogImage.src.childImageSharp.fixed.src}
+            ogImage={post.frontmatter.ogImage.src.absolutePath}
             imageAlt={post.frontmatter.thumbnail.alt}
           />
           {/* <BlogHeader
@@ -102,11 +102,7 @@ export const pageQuery = graphql`
         }
         ogImage: thumbnail {
           src {
-            childImageSharp {
-              fixed(width: 1200, quality: 100) {
-                ...GatsbyImageSharpFixed
-              }
-            }
+            absolutePath
           }
         }
       }
