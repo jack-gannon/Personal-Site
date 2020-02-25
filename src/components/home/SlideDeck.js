@@ -111,6 +111,14 @@ class SlideDeck extends React.Component {
           onScrollUp={() => this.handlePreviousPage()}
           onScrollDown={() => this.handleNextPage()}
         >
+          <SlideControls
+            slides={this.state.slideCollection}
+            handleNextPage={this.handleNextPage}
+            handlePreviousPage={this.handlePreviousPage}
+            currentSlideIndex={this.state.currentSlideIndex}
+            handleJumpToIndex={this.handleJumpToIndex}
+            isDark={this.props.isDark}
+          />
           {this.state.slideCollection.map((slide, index) => (
             <CSSTransition
               key={slide.name}
@@ -128,14 +136,6 @@ class SlideDeck extends React.Component {
               </SlideWrapper>
             </CSSTransition>
           ))}
-          <SlideControls
-            slides={this.state.slideCollection}
-            handleNextPage={this.handleNextPage}
-            handlePreviousPage={this.handlePreviousPage}
-            currentSlideIndex={this.state.currentSlideIndex}
-            handleJumpToIndex={this.handleJumpToIndex}
-            isDark={this.props.isDark}
-          />
           )}
         </ScrollWrapper>
       </>

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { breakpoints } from "../../utils/breakpoints"
 
 const Logo = ({ color, width, type }) => {
   const StyledLogo = styled.svg`
@@ -11,15 +12,18 @@ const Logo = ({ color, width, type }) => {
           : "#FFF"
         : "none"};
     }
-    &:hover {
-      & polyline,
-      line {
-        animation: dash 5s linear forwards;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        @keyframes dash {
-          to {
-            stroke-dashoffset: 0;
+
+    @media (min-width: ${breakpoints.desktop.small}) {
+      &:hover {
+        & polyline,
+        line {
+          animation: dash 5s linear forwards;
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          @keyframes dash {
+            to {
+              stroke-dashoffset: 0;
+            }
           }
         }
       }

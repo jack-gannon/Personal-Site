@@ -1,18 +1,18 @@
 import React from "react"
 import styled from "styled-components"
 import ProjectItemLarge from "./ProjectItemLarge"
+import PageTitle from "../about/PageTitle"
 import { breakpoints } from "../../utils/breakpoints"
 import { hardcodeSort } from "../../utils/hardcodeSort"
 
 const ProjectCollection = ({ projects }) => {
-  console.log(projects)
   const newProjects = hardcodeSort(projects)
   return (
     <Section>
-      <SectionTitle>Projects</SectionTitle>
+      <PageTitle text="Projects" />
       <Grid>
-        {newProjects.map(project => (
-          <ProjectItemLarge project={project.node} />
+        {newProjects.map((project, index) => (
+          <ProjectItemLarge key={index} project={project.node} />
         ))}
       </Grid>
     </Section>
@@ -20,14 +20,6 @@ const ProjectCollection = ({ projects }) => {
 }
 
 const Section = styled.section``
-
-const SectionTitle = styled.h2`
-  text-transform: uppercase;
-  font-size: 1.25rem;
-  letter-spacing: 0.25rem;
-  font-weight: 500;
-`
-
 const Grid = styled.div`
   margin-top: 1rem;
 

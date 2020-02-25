@@ -10,7 +10,7 @@ const BlogPostHeader = ({ post, avatar }) => {
   const { title, author, date, thumbnail } = post.frontmatter
   return (
     <Container>
-      <BackButton onClick={() => window.history.back()}>
+      <BackButton aria-label="Back" onClick={() => window.history.back()}>
         <ArrowIcon lineColor={colors.gray50} lineWidth="4px" />
       </BackButton>
       <Title>{title}</Title>

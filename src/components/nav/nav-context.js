@@ -9,12 +9,10 @@ const NavContext = React.createContext({
 export class NavProvider extends React.Component {
   handleDark = () => {
     this.setState({ isDark: true })
-    console.log("its getting dark in here")
   }
 
   handleLight = () => {
     this.setState({ isDark: false })
-    console.log("its getting bright in here")
   }
 
   state = {

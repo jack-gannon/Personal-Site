@@ -6,6 +6,7 @@ import { colors } from "../../utils/colors"
 import { rhythm } from "../../utils/typography"
 import { breakpoints } from "../../utils/breakpoints"
 import Logo from "../vectors/Logo"
+import SocialIconPanelNav from "../vectors/social-icons/SocialIconPanelNav"
 
 class NavbarNew extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class NavbarNew extends Component {
             color={this.props.color === "dark" ? "light" : "dark"}
             width="2.5rem"
           />
+          <span className="sr-only">Home</span>
         </LogoLink>
         <NavLinksDesktop>
           <NavLink color={this.props.color} activeClassName="activeLink" to="/">
@@ -68,7 +70,13 @@ class NavbarNew extends Component {
           expanded={this.state.isExpanded}
           onClick={() => this.handleNavToggle()}
         >
-          {this.state.isExpanded ? "×" : "..."}
+          {this.state.isExpanded ? (
+            "×"
+          ) : (
+            <ToggleGraphic
+              color={this.props.color === "dark" ? "light" : "dark"}
+            />
+          )}
         </NavLinksToggle>
         <NavLinksMobile expanded={this.state.isExpanded}>
           <NavLink
@@ -114,11 +122,20 @@ class NavbarNew extends Component {
           >
             About
           </NavLink>
+          <SocialIconPanelNav />
         </NavLinksMobile>
       </Nav>
     )
   }
 }
+
+const ToggleGraphic = ({ color }) => (
+  <ToggleSvg color={color} viewBox="0 0 32 32">
+    <line x1="4" y1="6.5" x2="28" y2="6.5" />
+    <line x1="4" y1="26.5" x2="28" y2="26.5" />
+    <line x1="4" y1="16.5" x2="28" y2="16.5" />
+  </ToggleSvg>
+)
 
 const fadeIn = keyframes`
   0% {
@@ -257,6 +274,8 @@ const NavLinksToggle = styled.button.attrs(props => ({
   z-index: 6;
   height: 3rem;
   width: 3rem;
+  font-size: 2rem;
+  line-height: 2rem;
   background-color: ${props =>
     props.expanded
       ? colors.secondary
@@ -266,8 +285,22 @@ const NavLinksToggle = styled.button.attrs(props => ({
 
   border: none;
 
-  @media (min-width: ${breakpoints.tablet.small}) {
+  @media (min-width: ${breakpoints.desktop.small}) {
     display: none;
+  }
+`
+
+const ToggleSvg = styled.svg.attrs(props => ({
+  color: props.color,
+}))`
+  width: 1.5rem;
+  height: 2rem;
+  margin-top: 0.5rem;
+
+  & * {
+    stroke: ${props =>
+      props.color === "dark" ? colors.gray70 : colors.gray30};
+    stroke-width: 2px;
   }
 `
 

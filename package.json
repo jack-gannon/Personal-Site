@@ -11,6 +11,7 @@
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "babel-plugin-styled-components": "^1.10.0",
+    "formik": "^2.1.4",
     "gatsby": "^2.3.25",
     "gatsby-background-image": "^0.9.17",
     "gatsby-cli": "^2.8.27",

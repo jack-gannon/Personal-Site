@@ -36,9 +36,13 @@ const BackgroundSection = ({ className }) => (
           <Contents>
             <SectionHeader>Featured Blog Post</SectionHeader>
             <Details>
-              <BlogTitle>{title}</BlogTitle>
+              <BlogLink to={`blog/${post.node.fields.slug}`}>
+                <BlogTitle>{title}</BlogTitle>
+              </BlogLink>
               <Description>{description}</Description>
-              <Link to={`blog/${post.node.fields.slug}`}>Read More</Link>
+              <ReadMore to={`blog/${post.node.fields.slug}`}>
+                Read More...
+              </ReadMore>
             </Details>
           </Contents>
         </BackgroundImage>
@@ -94,6 +98,16 @@ const slideIn = keyframes`
 }
 `
 
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+
+}
+100% {
+  opacity: .8;
+}
+`
+
 const StyledBackgroundSection = styled(BackgroundSection)`
   position: relative;
   width: 100%;
@@ -101,6 +115,7 @@ const StyledBackgroundSection = styled(BackgroundSection)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 1;
 `
 
 const Contents = styled.div`
@@ -115,8 +130,11 @@ const Contents = styled.div`
     left: 0rem;
     height: 100%;
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.9;
     z-index: 1;
+    animation: ${fadeIn} 0.5s ease;
+    animation-delay: 1.25s;
+    animation-fill-mode: both;
   }
 
   & * {
@@ -147,7 +165,7 @@ const Description = styled.p`
 const Details = styled.div`
   width: 80%;
   animation: ${slideIn} 0.5s ease;
-  animation-delay: 1s;
+  animation-delay: 1.25s;
   animation-fill-mode: both;
 
   @media (min-width: ${breakpoints.tablet.small}) {
@@ -167,6 +185,16 @@ const SectionHeader = styled.h2`
   }
 `
 
+const BlogLink = styled(Link)`
+  text-decoration: none;
+
+  &:hover {
+    & * {
+      opacity: 0.8;
+    }
+  }
+`
+
 const BlogTitle = styled.h3`
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -174,6 +202,20 @@ const BlogTitle = styled.h3`
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 4rem;
+  }
+`
+
+const ReadMore = styled(Link)`
+  font-family: "Helvetica Neue", sans-serif;
+  color: ${colors.gray10};
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.875rem;
+  animation: ${slideIn} 0.5s ease;
+  animation-delay: 2.25s;
+  animation-fill-mode: both;
+
+  @media (min-width: ${breakpoints.tablet.small}) {
   }
 `
 

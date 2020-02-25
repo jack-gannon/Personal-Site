@@ -16,6 +16,7 @@ const SlideControls = ({
       <Step
         onClick={() => handlePreviousPage()}
         className={isDark ? "light" : "dark"}
+        aria-label={`Previous Slide`}
       >
         <svg viewBox="0 0 100 100">
           <polyline points="6,72 50,28 94,72 " />
@@ -28,6 +29,7 @@ const SlideControls = ({
               index === currentSlideIndex ? "active" : "inactive"
             } ${isDark ? "light" : "dark"}`}
             key={slide.name}
+            aria-label={`Go to slide ${index + 1}`}
             onClick={() => handleJumpToIndex(index)}
           >
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -40,6 +42,7 @@ const SlideControls = ({
       <Step
         onClick={() => handleNextPage()}
         className={isDark ? "light" : "dark"}
+        aria-label={`Next Slide`}
       >
         <svg viewBox="0 0 100 100">
           <polyline points="94,28 50,72 6,28 " />

@@ -27,6 +27,7 @@ const BackgroundSection = ({ children, className }) => (
           className={className}
           fluid={backgroundImageData}
           backgroundColor={colors.gray90}
+          fadeIn={true}
         >
           {children}
         </BackgroundImage>

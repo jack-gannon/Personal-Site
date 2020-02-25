@@ -40,7 +40,7 @@ const GatsbyImageGallery = ({ images }) => {
       <SelectionPanel>
         {images.map((image, index) => (
           <SelectionItem
-            key={image.src}
+            key={index}
             onClick={() => handleSelectImage(index)}
             className={index === activeImgIndex ? "selected" : "deselected"}
           >

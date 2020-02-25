@@ -27,7 +27,7 @@ const WebSkills = () => {
         colItems: [
           "Design Patterns",
           "Algorithms & Data Structures",
-          "Test-Driven Development",
+          "Agile Development",
         ],
       },
     ],

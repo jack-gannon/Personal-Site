@@ -48,6 +48,7 @@ const BodyText = styled.p`
   font-family: "Helvetica Neue", sans-serif;
   color: ${colors.gray50};
   font-size: 1.125rem;
+  line-height: 1.5rem;
 `
 
 export default EmptyState

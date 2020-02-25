@@ -47,6 +47,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   color: ${colors.gray60};
+  line-height: 1.5rem;
 `
 
 export default ProjectItemLarge

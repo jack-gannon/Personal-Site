@@ -55,16 +55,6 @@ const SectionTitle = styled.h2`
   font-size: 2rem;
   width: 75%;
 
-  &:after {
-    position: absolute;
-    content: " ";
-    width: 20%;
-    height: 4px;
-    bottom: -4px;
-    left: 0rem;
-    background-color: ${colors.gray30};
-  }
-
   @media (min-width: ${breakpoints.tablet.small}) {
     &:after {
       width: 10%;

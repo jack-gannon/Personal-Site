@@ -113,7 +113,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  ogImage: `https://jackgannon.io/static/placeholder.png`,
+  ogImage: `/static/placeholder.png`,
 }
 
 SEO.propTypes = {

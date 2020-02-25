@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import GatsbyImageGallery from "../components/portfolio/GatsbyImageGallery"
 import { breakpoints } from "../utils/breakpoints"
+import PageTitle from "../components/about/PageTitle"
 
 class About extends React.Component {
   render() {
@@ -36,7 +37,7 @@ class About extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="About" />
-        <PageTitle>Personal</PageTitle>
+        <PageTitle text="Personal" />
         <Personal>
           <GatsbyImageGallery images={aboutImages} />
           <Text>
@@ -86,13 +87,6 @@ class About extends React.Component {
   }
 }
 
-const PageTitle = styled.h2`
-  text-transform: uppercase;
-  font-size: 1.125rem;
-  letter-spacing: 0.175em;
-  font-weight: 600;
-`
-
 const Personal = styled.article`
   @media (min-width: ${breakpoints.desktop.small}) {
     display: grid;
@@ -102,9 +96,9 @@ const Personal = styled.article`
 `
 
 const Text = styled.div`
-  padding: 1rem;
   @media (min-width: ${breakpoints.desktop.small}) {
     font-size: 1.125rem;
+    padding: 1rem;
   }
 `
 
@@ -124,7 +118,7 @@ export const pageQuery = graphql`
             mainImage: fluid(maxWidth: 1248) {
               ...GatsbyImageSharpFluid
             }
-            thumbImage: fluid(maxWidth: 120) {
+            thumbImage: fluid(maxWidth: 180) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -138,7 +132,7 @@ export const pageQuery = graphql`
             mainImage: fluid(maxWidth: 1248) {
               ...GatsbyImageSharpFluid
             }
-            thumbImage: fluid(maxWidth: 120) {
+            thumbImage: fluid(maxWidth: 180) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -152,7 +146,7 @@ export const pageQuery = graphql`
             mainImage: fluid(maxWidth: 1248) {
               ...GatsbyImageSharpFluid
             }
-            thumbImage: fluid(maxWidth: 120) {
+            thumbImage: fluid(maxWidth: 180) {
               ...GatsbyImageSharpFluid
             }
           }

@@ -75,12 +75,14 @@ const Container = styled.div`
   position: relative;
   border-bottom: 1px solid ${colors.gray30};
   width: 100vw;
+  margin-bottom: 2rem;
 
   @media (min-width: 960px) {
     display: grid;
     grid-template-columns: 67% auto;
     grid-gap: 1rem;
     margin-left: 0rem;
+    margin-bottom: 0rem;
     width: 100%;
     border: 1px solid ${colors.gray30};
     background-color: #fff;
