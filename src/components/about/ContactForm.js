@@ -45,7 +45,10 @@ const ContactForm = () => {
       alert(JSON.stringify(values, null, 2))
       fetch("https://jackgannon.herokuapp.com/contact", {
         method: "POST",
-        body: JSON.stringify(values, null, 2),
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
         .then(response => response.json())
         .then(data => console.log("Success!", data))
