@@ -117,7 +117,7 @@ const Selectors = styled.div`
 const Selector = styled.button`
   background: transparent;
   height: 2.5rem;
-  padding: 0.5rem;
+  padding: 0.25rem;
   border: none;
 
   & svg {

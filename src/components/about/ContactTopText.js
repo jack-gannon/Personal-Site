@@ -15,12 +15,13 @@ const TopTextHeader = styled.h3`
 `
 
 const SubText = styled.p`
-  color: ${colors.gray70};
+  color: ${colors.gray60};
   margin-bottom: 2rem;
   width: 100%;
   line-height: 1.5rem;
 
   @media (min-width: ${breakpoints.desktop.small}) {
+    max-width: 45ch;
   }
 `
 

@@ -274,6 +274,7 @@ const NavLinksToggle = styled.button.attrs(props => ({
   z-index: 6;
   height: 3rem;
   width: 3rem;
+  max-width: 3rem;
   font-size: 2rem;
   line-height: 2rem;
   background-color: ${props =>

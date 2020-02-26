@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { useFormik } from "formik"
 import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
+import FormStatusDisplay from "./FormStatusDisplay"
 
 // A custom validation function. This must return an object
 // which keys are symmetrical to our values/initialValues
@@ -34,6 +35,9 @@ const validate = values => {
 }
 
 const ContactForm = () => {
+  const [isLoading, setLoading] = useState(false)
+  const [isSuccess, setSuccess] = useState(false)
+  const [isError, setError] = useState(false)
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -42,7 +46,7 @@ const ContactForm = () => {
     },
     validate,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2))
+      setLoading(true)
       fetch("https://jackgannon.herokuapp.com/contact", {
         method: "POST",
         headers: {
@@ -50,9 +54,15 @@ const ContactForm = () => {
         },
         body: JSON.stringify(values),
       })
-        .then(response => console.log("Success!", response))
+        .then(response => {
+          if (response.status === 200) {
+            setSuccess(true)
+            setLoading(false)
+          }
+        })
         .catch(error => {
-          console.log(error)
+          setError(true)
+          setLoading(false)
         })
     },
   })
@@ -104,13 +114,23 @@ const ContactForm = () => {
       {formik.touched.message && formik.errors.message ? (
         <ErrorMsg>{formik.errors.message}</ErrorMsg>
       ) : null}
-      <SubmitButton type="submit">Submit</SubmitButton>
+
+      {isLoading ? (
+        <FormStatusDisplay statusType="loading" />
+      ) : isError ? (
+        <FormStatusDisplay statusType="error" />
+      ) : isSuccess ? (
+        <FormStatusDisplay statusType="success" />
+      ) : (
+        <SubmitButton type="submit">Submit</SubmitButton>
+      )}
     </Form>
   )
 }
 
 const Form = styled.form`
   width: 100%;
+  margin-bottom: 0rem;
   font-family: "Helvetica Neue", sans-serif;
   @media (min-width: ${breakpoints.desktop.small}) {
   }
@@ -168,7 +188,6 @@ const ErrorMsg = styled.p`
 
 const SubmitButton = styled.button`
   display: block;
-  float: right;
   background-color: ${colors.primary};
   color: #fff;
   padding: 0.5rem 1rem;
@@ -182,6 +201,7 @@ const SubmitButton = styled.button`
   }
 
   @media (min-width: ${breakpoints.desktop.small}) {
+    float: right;
     width: 12rem;
   }
 `
