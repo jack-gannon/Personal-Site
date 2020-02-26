@@ -45,7 +45,7 @@ const ContactForm = () => {
       alert(JSON.stringify(values, null, 2))
       fetch("https://jackgannon.herokuapp.com/contact", {
         method: "POST",
-        body: JSON.stringify(values),
+        body: JSON.stringify(values, null, 2),
       })
         .then(response => response.json())
         .then(data => console.log("Success!", data))
@@ -54,6 +54,7 @@ const ContactForm = () => {
         })
     },
   })
+
   return (
     <Form onSubmit={formik.handleSubmit}>
       <NameEmailFields>
