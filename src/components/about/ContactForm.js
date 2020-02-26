@@ -45,13 +45,12 @@ const ContactForm = () => {
       alert(JSON.stringify(values, null, 2))
       fetch("https://jackgannon.herokuapp.com/contact", {
         method: "POST",
-        body: JSON.stringify(values),
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(values),
       })
-        .then(response => response.json())
-        .then(data => console.log("Success!", data))
+        .then(response => console.log("Success!", response))
         .catch(error => {
           console.log(error)
         })
