@@ -293,7 +293,6 @@ const NavLinksToggle = styled.button.attrs(props => ({
       ? colors.gray70
       : colors.gray30};
 
-  border: 1px solid red;
   padding: 0.5rem 0.25rem;
 
   @media (min-width: ${breakpoints.desktop.small}) {
@@ -306,7 +305,6 @@ const ToggleSvg = styled.svg.attrs(props => ({
 }))`
   width: 1.5rem;
   height: 2rem;
-  border: 1px solid purple;
 
   & * {
     stroke: ${props =>
