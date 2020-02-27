@@ -16,7 +16,7 @@ class Blog extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
         <FeaturedPost featuredPost={featuredPost} />
-        <PostCollection posts={allPosts} />
+        <PostCollection posts={allPosts} showEmptyState={false} />
       </Layout>
     )
   }
@@ -31,32 +31,37 @@ export const blogQuery = graphql`
         title
       }
     }
-    featuredPost: allMdx(
-      sort: { order: DESC, fields: frontmatter___date }
+    featuredPost: allFile(
+      sort: { fields: childMdx___frontmatter___date, order: DESC }
       limit: 1
-      filter: { frontmatter: { content_type: { eq: "blog" } } }
+      filter: {
+        sourceInstanceName: { eq: "blog" }
+        internal: { mediaType: { regex: "/text/" } }
+      }
     ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            category
-            author
-            description
-            thumbnail {
-              src {
-                childImageSharp {
-                  fluid(maxWidth: 834, quality: 90) {
-                    ...GatsbyImageSharpFluid
+          childMdx {
+            excerpt
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date(formatString: "MMMM DD, YYYY")
+              category
+              author
+              description
+              thumbnail {
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
+                alt
               }
-              alt
             }
           }
         }

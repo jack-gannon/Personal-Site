@@ -4,20 +4,20 @@ import PostItemLarge from "./PostItemLarge"
 import { breakpoints } from "../../utils/breakpoints"
 import EmptyState from "../layout/main/EmptyState"
 
-function BlogPostCollection({ posts = [] }) {
+function BlogPostCollection({ posts = [], showEmptyState = true }) {
   return posts.length > 0 ? (
     <Container>
       {posts.map(({ node }, index) => {
         return <PostItemLarge post={node} key={node.childMdx.fields.slug} />
       })}
     </Container>
-  ) : (
+  ) : showEmptyState ? (
     <EmptyState
       type="blog"
       mainText="No Posts Here...Yet!"
       bodyText="I am busy writing some more content. Check back again soon!"
     />
-  )
+  ) : null
 }
 
 const Container = styled.div`

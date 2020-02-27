@@ -12,8 +12,8 @@ const FeaturedPost = ({ featuredPost }) => {
     category,
     date,
     description,
-  } = featuredPost.frontmatter
-  const { fields } = featuredPost
+  } = featuredPost.childMdx.frontmatter
+  const { fields } = featuredPost.childMdx
   return (
     <Container>
       <MainImageLink to={`blog${fields.slug}`}>
@@ -36,39 +36,6 @@ const FeaturedPost = ({ featuredPost }) => {
     </Container>
   )
 }
-
-// const featuredPostQuery = graphql`
-//   query FeaturedPostQuery {
-//     allMdx(
-//       limit: 1
-//       sort: { order: DESC, fields: frontmatter___date }
-//       filter: { frontmatter: { content_type: { eq: "blog" } } }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           fields {
-//             slug
-//           }
-//           frontmatter {
-//             date(formatString: "MMMM DD, YYYY")
-//             description
-//             category
-//             title
-//             thumbnail {
-//               childImageSharp {
-//                 fluid(maxWidth: 590) {
-//                   ...GatsbyImageSharpFluid
-//                 }
-//               }
-//             }
-//           }
-//           excerpt(pruneLength: 30)
-//         }
-//       }
-//     }
-//   }
-// `
 
 const Container = styled.div`
   margin-left: -1rem;

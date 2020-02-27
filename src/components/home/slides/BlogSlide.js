@@ -23,8 +23,8 @@ const BackgroundSection = ({ className }) => (
   <StaticQuery
     query={blogSlideQuery}
     render={data => {
-      const post = data.allMdx.edges[0]
-      const { title, description, thumbnail } = post.node.frontmatter
+      const post = data.allFile.edges[0].node
+      const { title, description, thumbnail } = post.childMdx.frontmatter
       const backgroundImageData = thumbnail.src.childImageSharp.fluid
       return (
         <BackgroundImage
@@ -36,11 +36,11 @@ const BackgroundSection = ({ className }) => (
           <Contents>
             <SectionHeader>Featured Blog Post</SectionHeader>
             <Details>
-              <BlogLink to={`blog/${post.node.fields.slug}`}>
+              <BlogLink to={`blog/${post.childMdx.fields.slug}`}>
                 <BlogTitle>{title}</BlogTitle>
               </BlogLink>
               <Description>{description}</Description>
-              <ReadMore to={`blog/${post.node.fields.slug}`}>
+              <ReadMore to={`blog/${post.childMdx.fields.slug}`}>
                 Read More...
               </ReadMore>
             </Details>
@@ -53,31 +53,37 @@ const BackgroundSection = ({ className }) => (
 
 const blogSlideQuery = graphql`
   {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { content_type: { eq: "blog" } } }
+    allFile(
+      sort: { fields: childMdx___frontmatter___date, order: DESC }
       limit: 1
+      filter: {
+        sourceInstanceName: { eq: "blog" }
+        internal: { mediaType: { regex: "/text/" } }
+      }
     ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            category
-            thumbnail {
-              src {
-                childImageSharp {
-                  fluid(maxWidth: 1400, quality: 90) {
-                    ...GatsbyImageSharpFluid_withWebp
+          childMdx {
+            excerpt
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date(formatString: "MMMM DD, YYYY")
+              category
+              author
+              description
+              thumbnail {
+                src {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
+                alt
               }
-              alt
             }
           }
         }

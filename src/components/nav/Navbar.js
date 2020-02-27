@@ -166,7 +166,7 @@ const Nav = styled.nav.attrs(props => ({
     props.color === "dark" ? colors.gray80 : colors.gray10};
   border-bottom: 1px solid
     ${props => (props.color === "dark" ? colors.gray80 : colors.gray20)};
-  transition: transform 0.25s ease;
+  transition: transform 0.5s ease;
 
   &.visible {
     transform: translateY(0rem);
