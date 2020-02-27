@@ -54,7 +54,7 @@ class Layout extends React.Component {
         <HeaderContainer>
           <Navigation defaultToDark={false} />
           <PageTitle>Blog</PageTitle>
-          <BlogCategoryTabs />
+          <BlogCategoryTabs location={location} />
         </HeaderContainer>
       )
     } else if (
@@ -117,7 +117,7 @@ class Layout extends React.Component {
           asideContents={asideContents}
           reverseMain={reverseMain}
         >
-          <main>{children}</main>
+          <main role="main">{children}</main>
           <aside>{asideContents}</aside>
         </BodyContainer>
         {footer}

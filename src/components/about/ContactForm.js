@@ -68,7 +68,7 @@ const ContactForm = () => {
   })
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit} role="form">
       <NameEmailFields>
         <div>
           <Label htmlFor="name">Name</Label>
@@ -80,6 +80,7 @@ const ContactForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.name}
+            role="textbox"
           ></TextInput>
           {formik.touched.name && formik.errors.name ? (
             <ErrorMsg>{formik.errors.name}</ErrorMsg>
@@ -95,6 +96,7 @@ const ContactForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
+            role="textbox"
           ></TextInput>
           {formik.touched.email && formik.errors.email ? (
             <ErrorMsg>{formik.errors.email}</ErrorMsg>
@@ -110,6 +112,7 @@ const ContactForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.message}
+        role="textbox"
       ></TextArea>
       {formik.touched.message && formik.errors.message ? (
         <ErrorMsg>{formik.errors.message}</ErrorMsg>
@@ -169,11 +172,15 @@ const TextInput = styled.input.attrs(props => ({
   padding-left: 0.5rem;
 `
 
-const TextArea = styled.textarea`
+const TextArea = styled.textarea.attrs(props => ({
+  isError: props.isError,
+}))`
   display: block;
   width: 100%;
   margin-bottom: ${props => (props.isError ? "0.5rem" : "1rem")};
   height: 8rem;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
   border: 1px solid ${props => (props.isError ? "red" : colors.gray30)};
   border-radius: 2px;
   padding-left: 0.5rem;
@@ -182,8 +189,12 @@ const TextArea = styled.textarea`
 const ErrorMsg = styled.p`
   font-size: 0.75rem;
   line-height: 0.5rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
   color: red;
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    margin-bottom: 0rem;
+  }
 `
 
 const SubmitButton = styled.button`

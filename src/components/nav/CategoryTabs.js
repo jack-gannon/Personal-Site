@@ -7,7 +7,7 @@ import { breakpoints } from "../../utils/breakpoints"
 
 const CategoryTabs = ({ location, categories }) => {
   return (
-    <TabPanel>
+    <TabPanel role="tablist">
       {categories.map(category => {
         return (
           <Tab
@@ -15,6 +15,8 @@ const CategoryTabs = ({ location, categories }) => {
             to={category.path}
             color={category.color}
             activeClassName="activeTab"
+            role="tab"
+            aria-controls={category.name}
           >
             {category.name}
           </Tab>

@@ -9,16 +9,16 @@ thumbnail:
 role: UX / UI Designer
 project_images:
   - alt_text: IPhone X in front of gray background with website on screen that says 'Find Your Next Event'
-    caption: Event Search Preview - Mobile
+    caption: Event Search preview - mobile
     project_image: ../assets/project_images/insurance_discourse/id_1.jpg
   - alt_text: Isometric angle featuring many examples of Insurance Discourse website interface
-    caption: User Interface Preview
+    caption: User Interface preview
     project_image: ../assets/project_images/insurance_discourse/id_2.jpg
   - alt_text: Two screenshots from Insurance Discourse website side by side against a purple background
-    caption: Event View - Mobile & Desktop
+    caption: Event View - mobile & desktop
     project_image: ../assets/project_images/insurance_discourse/id_3.jpg
   - alt_text: Iphone X against gray background with website on screen that says Search Filter
-    caption: Search Filter Preview - Mobile
+    caption: Search Filter preview - mobile
     project_image: ../assets/project_images/insurance_discourse/id_4.jpg
 tools:
   - description: How I used the tool

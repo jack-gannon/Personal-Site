@@ -48,6 +48,7 @@ const Title = styled.h3`
 const Description = styled.p`
   color: ${colors.gray60};
   line-height: 1.5rem;
+  font-family: "Helvetica Neue", sans-serif;
 `
 
 export default ProjectItemLarge

@@ -2,14 +2,14 @@
 path: design-simplified
 index: 4
 title: Design Simplified
-description: Print & digital design system created for mortgage lender.
+description: Print & Digital Design System Created for Mortgage Lender
 thumbnail:
   src: ../assets/project_images/design_simplified/DS_1.jpg
   alt: isometric view of a collection of various graphics and images
 role: Creative Manager
 project_images:
   - alt_text: isometric view of a collection of various graphics and images
-    caption: Examples of flyer design modules
+    caption: Examples of flyer template modules
     project_image: ../assets/project_images/design_simplified/DS_1.jpg
   - alt_text: three pairs of flyers and email graphics layed out in isometric angle
     caption: Examples of flyer & email templates
@@ -37,94 +37,27 @@ client:
   is_personal: false
 ---
 
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+On Q Financial is a national mortgage lender headquartered in Scottsdale, Arizona. The marketing department that I was employed under was tasked with supporting Mortgage Consultants all over the country. The design department's primary responsibility was providing design assets within a 24 hour turnaround time between the initial request and first draft. As the number of Mortgage Consultants continued to grow, we needed a solution to accomodate for the increasing demand. As Creative Manager, I worked with various members of the marketing department to develop a whole new design system that would transform our worklow and enable us to produce high-quality design assets. I came up with the name: "Design Simplified", which was a play on On Q Financial's slogan: "Mortgages Simplified". Design Simplified was completed with the following features:
 
-- This however showed weasel
-- Well uncritical so misled
-  - this is very interesting
-- Goodness much until that fluid owl
+- Overhaul of request process
+- Asset library
+- Modular asset assembly system
+- Documentation
 
-When she reached the first hills of the **Italic Mountains**, she had a last
-view back on the skyline of her hometown _Bookmarksgrove_, the headline of
-[Alphabet Village](http://google.com) and the subline of her own road, the Line
-Lane. Pityful a rethoric question ran over her cheek, then she continued her
-way. On her way she met a copy.
+### Creative Request Form
 
-### Overlaid the jeepers uselessly much excluding
+One aspect of our current system that was lacking was the **Creative Request Form (CRF)**. This form was a PDF that was completed by Mortgage Consultants or marketing personnel based on the needs of the in-house client. A problem that we were facing was incomplete or inconsistent design specifications on the request forms. Even a small incorrect detail on a request could lead to hours of wasted efforts if a redesign was required.
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-[Longe and Parole](http://google.com) and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.
+By using Adobe InDesign and Acrobat, I overhauled the capabilities of the Creative Request Form. I learned the Adobe Acrobat JavaScript API documentation, and used it to add interactive elements to the PDF. Fields could be disabled or auto-completed based on user input so that the requester could focus on content instead of design-related minutia. This resulted in a drastic reduction of incorrect design specifications, which saved us many valuable hours of work. I also incorporated the ability to export the CRF's content to a **Comma Separated Values (.CSV)** file format, which would prove useful for other aspects of the design system.
 
-> "Far far away, behind the word mountains, far from the countries Vokalia and
-> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-> right at the coast of the Semantics, a large language ocean."
+### Asset Library
 
-It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.
+The bulk of the work completed for Design Simplified was revamping our **template library**. The other designers on my team and myself worked diligently to create a myriad of design assets across both print and digital platforms. We needed to ensure that they looked great while staying consistent with On Q Financial's visual brand identity.
 
-### Creating Class Components
+In addition to creating ready to go templates, I also created a system for assembling **template modules**. These modules are self-contained "chunks", which could be combined in a variety of ways to rapidly create a new template or design asset based on the individual needs of the client. These modules followed a specific sizing pattern based on the asset type to ensure that they could be replaced as needed without any redesign necessary.
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rethoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.
+A new feature we also implemented in the assets was InDesign's **merge tag** feature. Merge tags allow members of the team to export .CSV data from the Creative Request Form, which is then imported into the InDesign document. The imported data then auto-populates the corresponding merge tags inside the document. This reduced the need for excessive copying and pasting, and instead required slight additional reformatting of the text when needed.
 
-> The copy warned the Little Blind Text, that where it came from it would have
-> been rewritten a thousand times and everything that was left from its origin
-> would be the word "and" and the Little Blind Text should turn around and
-> return to its own, safe country.
+### Documentation
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with Longe and Parole
-and dragged her into their agency, where they abused her for their projects
-again and again. And if she hasn’t been rewritten, then they are still using
-her. Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts.
-
-#### Silent delightfully including because before one up barring chameleon
-
-Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-large language ocean. A small river named Duden flows by their place and
-supplies it with the necessary regelialia. It is a paradisematic country, in
-which roasted parts of sentences fly into your mouth.
-
-Even the all-powerful Pointing has no control about the blind texts it is an
-almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox
-advised her not to do so, because there were thousands of bad Commas, wild
-Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.
-
-##### Wherever far wow thus a squirrel raccoon jeez jaguar this from along
-
-She packed her seven versalia, put her initial into the belt and made herself on
-the way. When she reached the first hills of the Italic Mountains, she had a
-last view back on the skyline of her hometown Bookmarksgrove, the headline of
-Alphabet Village and the subline of her own road, the Line Lane. Pityful a
-rethoric question ran over her cheek, then she continued her way. On her way she
-met a copy.
-
-###### Slapped cozy a that lightheartedly and far
-
-The copy warned the Little Blind Text, that where it came from it would have
-been rewritten a thousand times and everything that was left from its origin
-would be the word "and" and the Little Blind Text should turn around and return
-to its own, safe country. But nothing the copy said could convince her and so it
-didn’t take long until a few insidious Copy Writers ambushed her, made her drunk
-with Longe and Parole and dragged her into their agency, where they abused her
-for their projects again and again.
+A design system without documentation is just an asset library. We needed to ensure that current and future members of our team were well aware of the capabilities of the design system, and the best practices for using it efficiently. We compiled a user manual that featured all of the various sizing requirements, and how to ensure consistent creation and maintenance of visual assets moving forward. We also outlined the various processes and created reference material to assist with carrying out those processes. My team was extremely supportive of the new system, and it was an awesome chance for us to work together and improve our output as a team. I couldn't have made it happen without their valuable contributions.
