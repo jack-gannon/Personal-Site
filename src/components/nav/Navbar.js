@@ -294,7 +294,7 @@ const NavLinksToggle = styled.button.attrs(props => ({
       : colors.gray30};
 
   padding: 0.5rem 0.25rem;
-
+  border: none;
   @media (min-width: ${breakpoints.desktop.small}) {
     display: none;
   }
