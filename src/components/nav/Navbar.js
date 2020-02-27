@@ -71,8 +71,8 @@ class NavbarNew extends Component {
           expanded={this.state.isExpanded}
           onClick={() => this.handleNavToggle()}
           type="button"
-          aria-pressed={`${this.state.isExpanded}`}
-          aria-expanded={`${this.state.isExpanded}`}
+          aria-pressed={this.state.isExpanded}
+          aria-expanded={this.state.isExpanded}
         >
           {this.state.isExpanded ? (
             "×"
@@ -84,7 +84,7 @@ class NavbarNew extends Component {
         </NavLinksToggle>
         <NavLinksMobile
           expanded={this.state.isExpanded}
-          aria-hidden={`${this.state.isExpanded}`}
+          aria-hidden={this.state.isExpanded}
         >
           <NavLink
             to="/"
@@ -166,7 +166,7 @@ const Nav = styled.nav.attrs(props => ({
     props.color === "dark" ? colors.gray80 : colors.gray10};
   border-bottom: 1px solid
     ${props => (props.color === "dark" ? colors.gray80 : colors.gray20)};
-  transition: transform 0.5s ease;
+  transition: transform 0.25s ease;
 
   &.visible {
     transform: translateY(0rem);
@@ -282,10 +282,10 @@ const NavLinksToggle = styled.button.attrs(props => ({
   z-index: 6;
   height: 3rem;
   width: 3rem;
-  max-width: 3rem;
-  max-height: 3rem;
+  max-width: 48px;
+  max-height: 48px;
   font-size: 2rem;
-  line-height: 1rem;
+  line-height: 0rem;
   background-color: ${props =>
     props.expanded
       ? colors.secondary
@@ -293,7 +293,8 @@ const NavLinksToggle = styled.button.attrs(props => ({
       ? colors.gray70
       : colors.gray30};
 
-  border: none;
+  border: 1px solid red;
+  padding: 0.5rem 0.25rem;
 
   @media (min-width: ${breakpoints.desktop.small}) {
     display: none;
@@ -305,6 +306,7 @@ const ToggleSvg = styled.svg.attrs(props => ({
 }))`
   width: 1.5rem;
   height: 2rem;
+  border: 1px solid purple;
 
   & * {
     stroke: ${props =>
