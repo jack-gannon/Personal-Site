@@ -11,7 +11,6 @@ import { rhythm } from "../utils/typography"
 import BlogPostHeader from "./layout/headers/BlogPostHeader"
 import PortfolioProjectHeader from "./layout/headers/PortfolioProjectHeader"
 import HeaderContainer from "./layout/headers/HeaderContainer"
-import DownloadResume from "../components/about/DownloadResume"
 
 import Footer from "./layout/footers/Footer"
 
@@ -45,7 +44,6 @@ class Layout extends React.Component {
           <Navigation defaultToDark={true} />
         </>
       )
-
       footer = null
     } else if (
       location.pathname === blogPath ||
@@ -76,10 +74,8 @@ class Layout extends React.Component {
       header = (
         <HeaderContainer>
           <Navigation defaultToDark={false} />
-          <HeaderPanel>
-            <PageTitle>About</PageTitle>
-            <DownloadResume />
-          </HeaderPanel>
+          <PageTitle>About</PageTitle>
+
           <AboutCategoryTabs />
         </HeaderContainer>
       )
@@ -169,11 +165,6 @@ const PageTitle = styled.h3`
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 4rem;
   }
-`
-
-const HeaderPanel = styled.div`
-  display: flex;
-  justify-content: space-between;
 `
 
 export default Layout

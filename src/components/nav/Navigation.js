@@ -12,8 +12,7 @@ class Navigation extends React.Component {
     }
 
     this.handleNav = this.handleNav.bind(this)
-    // this.handleDark = this.handleDark.bind(this)
-    // this.handleLight = this.handleLight.bind(this)
+
     // Tracks instance of the event, prevents memory leak
     this.throttleNav = throttle(this.handleNav, 1000)
 
@@ -53,7 +52,7 @@ class Navigation extends React.Component {
     //     this.handleDark()
     //   }
     // } else {
-    //   this.props.handleLight()
+    //   this.handleLight()
     // }
 
     // Handle scroll activated nav toggle

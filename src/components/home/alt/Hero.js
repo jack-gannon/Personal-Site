@@ -1,54 +1,22 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled, { keyframes } from "styled-components"
-import { graphql, StaticQuery, Link } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
-import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
-import BackgroundImg from "../../../../content/assets/hero.jpg"
-
-// const BackgroundSection = ({ children, className }) => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         backgroundImage: file(name: { eq: "hero" }) {
-//           childImageSharp {
-//             fluid(quality: 100, maxWidth: 2560) {
-//               ...GatsbyImageSharpFluid_withWebp
-//             }
-//           }
-//         }
-//       }
-//     `}
-//     render={data => {
-//       const backgroundImageData = data.backgroundImage.childImageSharp.fluid
-//       return (
-//         <BackgroundImage
-//           Tag="section"
-//           className={className}
-//           fluid={backgroundImageData}
-//           backgroundColor={colors.gray90}
-//           fadeIn={true}
-//         >
-//           {children}
-//         </BackgroundImage>
-//       )
-//     }}
-//   />
-// )
-
-const IntroSlide = () => {
+import { rhythm } from "../../../utils/typography"
+import BackgroundImg from "../../../content/assets/hero.jpg"
+const Hero = () => {
   return (
-    <Slide>
-      <Contents>
+    <Wrapper>
+      <Container>
         <Eyebrow>My name is </Eyebrow>
         <IntroHeader>Jack Gannon</IntroHeader>
         <Subheader>
           I am a designer and developer based in Phoenix, AZ.
         </Subheader>
         <Contact to="/about/contact/">Contact Me</Contact>
-      </Contents>
-    </Slide>
+      </Container>
+    </Wrapper>
   )
 }
 
@@ -93,11 +61,11 @@ const elongate = keyframes`
 }
 `
 
-const Slide = styled.div`
+const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+  height: 90vh;
   width: 100%;
   background-image: url(${BackgroundImg});
   background-repeat: no-repeat;
@@ -105,7 +73,7 @@ const Slide = styled.div`
   background-position: top;
 `
 
-const Contents = styled.div`
+const Container = styled.div`
   width: 80%;
   margin-left: 1rem;
   color: ${colors.gray10};
@@ -210,5 +178,4 @@ const Contact = styled(Link)`
     cursor: pointer;
   }
 `
-
-export default IntroSlide
+export default Hero

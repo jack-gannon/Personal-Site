@@ -125,6 +125,7 @@ class SlideDeck extends React.Component {
               in={this.state.currentSlideIndex === index}
               classNames="fade"
               timeout={1000}
+              mountOnEnter
               unmountOnExit
               onEntering={() => this.handleNavColor(slide.theme)}
             >

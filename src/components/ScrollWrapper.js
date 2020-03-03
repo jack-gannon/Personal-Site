@@ -11,12 +11,12 @@ class ScrollWrapper extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("wheel", this.throttleScroll)
+    window.addEventListener("wheel", this.throttleScroll, { passive: true })
   }
 
   componentWillUnmount() {
     this.throttleScroll.cancel()
-    window.removeEventListener("wheel", this.throttleScroll)
+    window.removeEventListener("wheel", this.throttleScroll, { passive: true })
   }
 
   handleScroll = e => {
@@ -34,7 +34,7 @@ class ScrollWrapper extends Component {
         <Swipeable
           onSwipedUp={() => this.props.onScrollDown()}
           onSwipedDown={() => this.props.onScrollUp()}
-          preventDefaultTouchmoveEvent={true}
+          preventDefaultTouchmoveEvent={false}
           trackTouch={true}
         >
           {this.props.children}

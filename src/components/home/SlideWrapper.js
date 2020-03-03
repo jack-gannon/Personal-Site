@@ -176,6 +176,8 @@ const Contents = styled.div.attrs(props => ({}))`
   right: 0rem;
   height: 100%;
   width: 100vw;
+  will-change: transform, opacity;
+
 
   @media (min-width ${breakpoints.tablet.small}) {
     height: 100vh;
