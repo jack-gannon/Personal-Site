@@ -34,7 +34,7 @@ class ScrollWrapper extends Component {
         <Swipeable
           onSwipedUp={() => this.props.onScrollDown()}
           onSwipedDown={() => this.props.onScrollUp()}
-          preventDefaultTouchmoveEvent={false}
+          preventDefaultTouchmoveEvent={true}
           trackTouch={true}
         >
           {this.props.children}
