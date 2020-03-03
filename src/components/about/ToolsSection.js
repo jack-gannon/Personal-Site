@@ -31,7 +31,7 @@ const Tools = styled.section`
   }
 `
 
-const ToolHeader = styled.h3``
+const ToolHeader = styled.h4``
 
 const Grid = styled.div`
   display: flex;

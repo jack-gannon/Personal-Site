@@ -50,7 +50,7 @@ const TitleCell = styled.div`
   width: 100%;
 `
 
-const SectionTitle = styled.h2`
+const SectionTitle = styled.h3`
   position: relative;
   font-size: 2rem;
   width: 75%;
