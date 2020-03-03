@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 import { rhythm } from "../../../utils/typography"
-import BackgroundImg from "../../../content/assets/hero.jpg"
+import BackgroundImg from "../../../../content/assets/hero.jpg"
 const Hero = () => {
   return (
     <Wrapper>

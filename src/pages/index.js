@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import SlideDeck from "../components/home/legacy/SlideDeck"
+import SlideDeck from "../components/home/SlideDeck"
 import { NavProvider, NavConsumer } from "../components/nav/nav-context"
 
 class IndexPage extends React.Component {

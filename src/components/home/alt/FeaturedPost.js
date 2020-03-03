@@ -107,16 +107,6 @@ const slideIn = keyframes`
 }
 `
 
-const fadeIn = keyframes`
-0% {
-  opacity: 0;
-
-}
-100% {
-  opacity: .8;
-}
-`
-
 const StyledBackgroundSection = styled(BackgroundSection)`
   position: relative;
   width: 100%;

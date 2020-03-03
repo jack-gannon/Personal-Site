@@ -3,8 +3,8 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Services from "../components/home/legacy/Services"
-import FeaturedProjects from "../components/home/legacy/FeaturedProjects"
+import Services from "../components/home/Services"
+import FeaturedProjects from "../components/home/FeaturedProjects"
 
 class IndexPage extends React.Component {
   render() {

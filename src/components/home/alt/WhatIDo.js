@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
@@ -66,16 +66,6 @@ const WhatIDo = () => {
     </Wrapper>
   )
 }
-
-const slideIn = keyframes`
-0% {
-  opacity: 0;
-
-}
-100% {
-  opacity: 1;
-}
-`
 
 const StyledSal = styled(SalWrapper)``
 

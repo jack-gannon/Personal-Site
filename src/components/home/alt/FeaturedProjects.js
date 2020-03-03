@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"

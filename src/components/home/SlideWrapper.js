@@ -19,7 +19,6 @@ const Slide = styled.div.attrs(props => ({
   height: 100vh;
   overflow: hidden;
   z-index: 1;
-  will-change: transform, opacity;
   transform: translateZ(0);
 
   background-color: ${colors.gray30};
@@ -176,7 +175,6 @@ const Contents = styled.div.attrs(props => ({}))`
   right: 0rem;
   height: 100%;
   width: 100vw;
-  will-change: transform, opacity;
 
 
   @media (min-width ${breakpoints.tablet.small}) {

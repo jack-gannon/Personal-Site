@@ -81,7 +81,6 @@ const Step = styled.button`
     fill: none;
     stroke: ${colors.gray80};
     stroke-width: 8px;
-    transition: stroke 1s ease;
   }
 
   &.dark {
@@ -125,10 +124,9 @@ const Selector = styled.button`
     fill: none;
     stroke: ${colors.gray80};
     stroke-width: 8px;
-    transition: stroke 1s ease;
 
     .inner {
-      transition: transform 1s ease, fill 1s ease;
+      transition: transform 1s ease;
       transform-origin: center;
       stroke: none;
     }

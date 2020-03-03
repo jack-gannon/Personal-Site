@@ -1,10 +1,10 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Hero from "../components/home/Hero"
-import WhatIDo from "../components/home/WhatIDo"
-import FeaturedProjects from "../components/home/FeaturedProjects"
-import FeaturedPost from "../components/home/FeaturedPost"
+import Hero from "../components/home/alt/Hero"
+import WhatIDo from "../components/home/alt/WhatIDo"
+import FeaturedProjects from "../components/home/alt/FeaturedProjects"
+import FeaturedPost from "../components/home/alt/FeaturedPost"
 
 class IndexPage extends React.Component {
   render() {

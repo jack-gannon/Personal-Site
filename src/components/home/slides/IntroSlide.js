@@ -1,41 +1,10 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-import { graphql, StaticQuery, Link } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
+import { Link } from "gatsby"
 import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 import BackgroundImg from "../../../../content/assets/hero.jpg"
-
-// const BackgroundSection = ({ children, className }) => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         backgroundImage: file(name: { eq: "hero" }) {
-//           childImageSharp {
-//             fluid(quality: 100, maxWidth: 2560) {
-//               ...GatsbyImageSharpFluid_withWebp
-//             }
-//           }
-//         }
-//       }
-//     `}
-//     render={data => {
-//       const backgroundImageData = data.backgroundImage.childImageSharp.fluid
-//       return (
-//         <BackgroundImage
-//           Tag="section"
-//           className={className}
-//           fluid={backgroundImageData}
-//           backgroundColor={colors.gray90}
-//           fadeIn={true}
-//         >
-//           {children}
-//         </BackgroundImage>
-//       )
-//     }}
-//   />
-// )
 
 const IntroSlide = () => {
   return (
