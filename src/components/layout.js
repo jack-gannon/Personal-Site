@@ -48,6 +48,7 @@ class Layout extends React.Component {
       footer = null
     } else if (
       location.pathname === blogPath ||
+      location.pathname === `${blogPath}/` ||
       location.pathname.startsWith(blogCategory)
     ) {
       header = (
@@ -82,6 +83,7 @@ class Layout extends React.Component {
       )
     } else if (
       location.pathname === portfolioPath ||
+      location.pathname === `${portfolioPath}/` ||
       location.pathname.startsWith(portfolioCategory)
     ) {
       header = (
