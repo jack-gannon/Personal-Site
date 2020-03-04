@@ -15,8 +15,6 @@ const CategoryTabs = ({ location, categories }) => {
             to={category.path}
             color={category.color}
             activeClassName="activeTab"
-            role="tab"
-            aria-controls={category.name}
           >
             {category.name}
           </Tab>

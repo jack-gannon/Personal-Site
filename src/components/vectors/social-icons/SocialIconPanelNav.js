@@ -5,6 +5,7 @@ import TwitterLogo from "./TwitterLogo"
 import GitHubLogo from "./GitHubLogo"
 import LinkedInLogo from "./LinkedInLogo"
 import { colors } from "../../../utils/colors"
+import { breakpoints } from "../../../utils/breakpoints"
 
 const SocialIconPanelNav = () => {
   return (
@@ -49,9 +50,8 @@ const Panel = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-top: 0rem;
-  margin-top: 4rem;
-  width: 50%;
-  height: auto;
+  margin-top: 1rem;
+  width: 100%;
 
   & * {
     flex-basis: 15%;
@@ -65,6 +65,7 @@ const Panel = styled.div`
     margin-right: 0.5rem;
     padding-right: 0rem;
     height: 2.5rem;
+    border: none;
 
     &:first-child {
       margin-top: 0rem;
@@ -82,6 +83,16 @@ const Panel = styled.div`
 
     &:first-child {
       margin-top: 0rem;
+    }
+  }
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    & a {
+      height: 3rem;
+    }
+
+    & * {
+      flex-basis: 10%;
     }
   }
 `

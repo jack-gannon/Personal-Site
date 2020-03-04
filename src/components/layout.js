@@ -29,10 +29,11 @@ class Layout extends React.Component {
       project,
     } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
+    const blogPath = `${__PATH_PREFIX__}/blog`
     const blogCategory = `${__PATH_PREFIX__}/blog/category/`
-    const aboutPath = `${__PATH_PREFIX__}/about/`
-    const portfolioPath = `${__PATH_PREFIX__}/portfolio/`
+    const aboutPath = `${__PATH_PREFIX__}/about`
+    const contactPath = `${__PATH_PREFIX__}/contact`
+    const portfolioPath = `${__PATH_PREFIX__}/portfolio`
     const portfolioCategory = `${__PATH_PREFIX__}/portfolio/category/`
 
     let header
@@ -98,6 +99,13 @@ class Layout extends React.Component {
         <HeaderContainer>
           <Navigation defaultToDark={false} />
           <PortfolioProjectHeader project={project} avatar={avatar} />
+        </HeaderContainer>
+      )
+    } else if (location.pathname === contactPath) {
+      header = (
+        <HeaderContainer>
+          <Navigation defaultToDark={false} />
+          <PageTitle>Contact</PageTitle>
         </HeaderContainer>
       )
     } else {

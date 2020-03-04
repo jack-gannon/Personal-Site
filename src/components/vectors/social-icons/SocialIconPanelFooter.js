@@ -15,7 +15,7 @@ const SocialIconPanelFooter = () => {
         title="Twitter"
         rel="noopener noreferrer"
       >
-        <TwitterLogo />
+        <TwitterLogo focusable="false" />
       </a>
       <a
         href="http://github.com/jack-gannon"
@@ -23,7 +23,7 @@ const SocialIconPanelFooter = () => {
         title="GitHub"
         rel="noopener noreferrer"
       >
-        <GitHubLogo />
+        <GitHubLogo focusable="false" />
       </a>
       <a
         href="https://www.linkedin.com/in/jack-gannon/"
@@ -31,7 +31,7 @@ const SocialIconPanelFooter = () => {
         title="LinkedIn"
         rel="noopener noreferrer"
       >
-        <LinkedInLogo />
+        <LinkedInLogo focusable="false" />
       </a>
       <a
         href="https://dribbble.com/jackgannon"
@@ -39,7 +39,7 @@ const SocialIconPanelFooter = () => {
         title="Dribbble"
         rel="noopener noreferrer"
       >
-        <DribbleLogo />
+        <DribbleLogo focusable="false" />
       </a>
     </Panel>
   )
@@ -58,6 +58,12 @@ const Panel = styled.div`
     margin-left: 0.25rem;
     fill: ${colors.gray50};
     box-shadow: none;
+  }
+
+  & a:hover {
+    & svg {
+      opacity: 0.8;
+    }
   }
 `
 

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { Link } from "gatsby"
 import { rhythm } from "../../../utils/typography"
@@ -7,15 +7,21 @@ import { breakpoints } from "../../../utils/breakpoints"
 import BackgroundImg from "../../../../content/assets/hero.jpg"
 
 const IntroSlide = () => {
+  // Handles focus once component is rendered
+  let introSlideContents = React.createRef()
+  useEffect(() => {
+    introSlideContents.current.focus()
+  })
+
   return (
     <Slide>
-      <Contents>
+      <Contents ref={introSlideContents}>
         <Eyebrow>My name is </Eyebrow>
         <IntroHeader>Jack Gannon</IntroHeader>
         <Subheader>
           I am a designer and developer based in Phoenix, AZ.
         </Subheader>
-        <Contact to="/about/contact/">Contact Me</Contact>
+        <Contact to="/contact">Contact Me</Contact>
       </Contents>
     </Slide>
   )
@@ -81,6 +87,11 @@ const Contents = styled.div`
   animation: ${slideUp} 1s ease;
 
   @media (min-width: ${breakpoints.tablet.small}) {
+    width: 100%;
+    margin-left: 2rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -125,15 +136,22 @@ const IntroHeader = styled.h1`
   }
 
   @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 6rem;
+    width: 70%;
+    line-height: 5rem;
+    margin-bottom: 1.5rem;
+
+    &:after {
+      width: 9rem;
+      bottom: -0.875rem;
+    }
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
     font-size: 8rem;
     width: 60%;
     line-height: 7rem;
     margin-bottom: 1.75rem;
-
-    &:after {
-      width: 9rem;
-      bottom: -0.75rem;
-    }
   }
 `
 
@@ -149,6 +167,13 @@ const Subheader = styled.p`
   animation-fill-mode: both;
 
   @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 1.5rem;
+    width: 60%;
+    margin-bottom: 1.5rem;
+    line-height: 2.25rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
     font-size: 1.5rem;
     width: 80%;
     margin-bottom: 1.5rem;

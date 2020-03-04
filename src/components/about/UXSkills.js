@@ -16,7 +16,7 @@ const UXSkills = () => {
       },
       {
         colHeader: "Information Architecture",
-        colItems: ["Wireframing", "Sitemapping"],
+        colItems: ["Wireframing", "Sitemapping", "Relation Mapping"],
       },
       {
         colHeader: "User Testing",

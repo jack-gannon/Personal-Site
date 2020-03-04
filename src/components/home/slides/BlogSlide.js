@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { Link, StaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
@@ -6,50 +6,45 @@ import { rhythm } from "../../../utils/typography"
 import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 
-const BackgroundSection = ({ className }) => (
-  //  (
-  //   <StaticQuery
-  //     query={blogSlideQuery}
-  //     render={data => {
-  //       const post = data.allMdx.edges[0]
-  //       const { date, title, description, thumbnail } = post.node.frontmatter
+const BackgroundSection = ({ className }) => {
+  // Handles focus once component is rendered
+  let blogSlideContents = React.createRef()
+  useEffect(() => {
+    blogSlideContents.current.focus()
+  })
 
-  //       return (
-
-  //       )
-  //     }}
-  //   />
-  // )
-  <StaticQuery
-    query={blogSlideQuery}
-    render={data => {
-      const post = data.allFile.edges[0].node
-      const { title, description, thumbnail } = post.childMdx.frontmatter
-      const backgroundImageData = thumbnail.src.childImageSharp.fluid
-      return (
-        <BackgroundImage
-          Tag="section"
-          className={className}
-          fluid={backgroundImageData}
-          backgroundColor={colors.gray90}
-        >
-          <Contents>
-            <SectionHeader>Featured Blog Post</SectionHeader>
-            <Details>
-              <BlogLink to={`blog/${post.childMdx.fields.slug}`}>
-                <BlogTitle>{title}</BlogTitle>
-              </BlogLink>
-              <Description>{description}</Description>
-              <ReadMore to={`blog/${post.childMdx.fields.slug}`}>
-                Read More...
-              </ReadMore>
-            </Details>
-          </Contents>
-        </BackgroundImage>
-      )
-    }}
-  />
-)
+  return (
+    <StaticQuery
+      query={blogSlideQuery}
+      render={data => {
+        const post = data.allFile.edges[0].node
+        const { title, description, thumbnail } = post.childMdx.frontmatter
+        const backgroundImageData = thumbnail.src.childImageSharp.fluid
+        return (
+          <BackgroundImage
+            Tag="section"
+            className={className}
+            fluid={backgroundImageData}
+            backgroundColor={colors.gray90}
+          >
+            <Contents ref={blogSlideContents}>
+              <SectionHeader>Featured Blog Post</SectionHeader>
+              <Details>
+                <BlogLink to={`blog/${post.childMdx.fields.slug}`}>
+                  <BlogTitle>{title}</BlogTitle>
+                </BlogLink>
+                <Description>{description}</Description>
+                <ReadMore to={`blog/${post.childMdx.fields.slug}`}>
+                  Read More...
+                </ReadMore>
+              </Details>
+            </Contents>
+          </BackgroundImage>
+        )
+      }}
+    />
+  )
+}
 
 const blogSlideQuery = graphql`
   {
@@ -150,32 +145,14 @@ const Contents = styled.div`
 
   @media (min-width: ${breakpoints.tablet.small}) {
     width: 100%;
+    margin-left: 2rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     max-width: ${rhythm(40)};
-  }
-`
-
-const Description = styled.p`
-  width: 100%;
-  font-size: 0.875rem;
-  margin-bottom: 0rem;
-  color: ${colors.gray40};
-
-  @media (min-width: ${breakpoints.tablet.small}) {
-    font-size: 1.2rem;
-    width: 50%;
-  }
-`
-
-const Details = styled.div`
-  width: 80%;
-  animation: ${slideIn} 0.5s ease;
-  animation-delay: 1.25s;
-  animation-fill-mode: both;
-
-  @media (min-width: ${breakpoints.tablet.small}) {
-    width: 60%;
   }
 `
 
@@ -188,6 +165,17 @@ const SectionHeader = styled.h2`
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1rem;
     margin-bottom: 2rem;
+  }
+`
+
+const Details = styled.div`
+  width: 80%;
+  animation: ${slideIn} 0.5s ease;
+  animation-delay: 1.25s;
+  animation-fill-mode: both;
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    width: 60%;
   }
 `
 
@@ -208,6 +196,22 @@ const BlogTitle = styled.h3`
 
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 4rem;
+  }
+`
+
+const Description = styled.p`
+  width: 100%;
+  font-size: 0.875rem;
+  margin-bottom: 0rem;
+  color: ${colors.gray40};
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 1.2rem;
+    width: 60%;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    width: 50%;
   }
 `
 

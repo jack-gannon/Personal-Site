@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import styled, { keyframes } from "styled-components"
 import { rhythm } from "../../../utils/typography"
@@ -6,11 +6,15 @@ import { colors } from "../../../utils/colors"
 import { breakpoints } from "../../../utils/breakpoints"
 
 const FeaturedProjectsSlide = () => {
+  // Handles focus once component is rendered
+  let servicesSlideContents = React.createRef()
+  useEffect(() => {
+    servicesSlideContents.current.focus()
+  })
   return (
     <Slide>
-      <Contents>
+      <Contents ref={servicesSlideContents}>
         <SectionHeader>What I Do</SectionHeader>
-
         <Grid>
           <Service>
             <ServiceHeader>Web Development</ServiceHeader>
@@ -74,9 +78,48 @@ const Slide = styled.section`
   }
 `
 
+const Contents = styled.div`
+  width: 80%;
+  height: calc(100% - 12rem);
+  margin-left: 1rem;
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    margin-left: 2rem;
+    width: 100%;
+    height: auto;
+    max-width: ${rhythm(40)};
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    max-width: ${rhythm(40)};
+  }
+`
+
+const SectionHeader = styled.h2`
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+
+  @media (min-width: ${breakpoints.tablet.small}) {
+    font-size: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+`
+
 const Grid = styled.div`
   width: 70%;
-  @media (min-width: ${breakpoints.tablet.small}) {
+
+  @media (min-width: ${breakpoints.desktop.small}) {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-gap: 2rem;
@@ -105,6 +148,11 @@ const Service = styled.div`
   }
 
   @media (min-width: ${breakpoints.tablet.small}) {
+    width: 70%;
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
     width: 70%;
     margin-bottom: 0rem;
   }
@@ -135,20 +183,6 @@ const Description = styled.p`
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 1.2rem;
     line-height: 2.25rem;
-  }
-`
-
-const Contents = styled.div`
-  width: 80%;
-  height: calc(100% - 12rem);
-  margin-left: 1rem;
-
-  @media (min-width: ${breakpoints.tablet.small}) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: auto;
-    max-width: ${rhythm(40)};
   }
 `
 
@@ -186,18 +220,6 @@ const LearnMoreMobile = styled(Link)`
 
   @media (min-width: ${breakpoints.tablet.small}) {
     display: none;
-  }
-`
-
-const SectionHeader = styled.h2`
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.125rem;
-
-  @media (min-width: ${breakpoints.tablet.small}) {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 4rem;
   }
 `
 

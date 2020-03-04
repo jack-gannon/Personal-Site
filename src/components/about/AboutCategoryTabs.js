@@ -15,12 +15,7 @@ const AboutCategoryTabs = () => {
       color: colors.gray30,
     },
     {
-      name: "Contact",
-      path: "/about/contact",
-      color: colors.gray30,
-    },
-    {
-      name: "Resume",
+      name: "CV/Resume",
       path: "/about/resume",
       color: colors.gray30,
     },

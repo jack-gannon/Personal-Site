@@ -103,8 +103,8 @@ const CaptionToggle = styled.button`
   }
 
   @media (min-width: ${breakpoints.tablet.medium}) {
-    top: 24rem;
-    left: 0.25rem;
+    top: 21.75rem;
+    left: 0.5rem;
   }
 
   @media (min-width: ${breakpoints.desktop.small}) {
@@ -151,7 +151,7 @@ const Caption = styled.figcaption`
   }
 
   @media (min-width: ${breakpoints.tablet.medium}) {
-    top: 24rem;
+    top: 21.125rem;
     font-size: 1rem;
   }
 

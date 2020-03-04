@@ -4,7 +4,11 @@ import { colors } from "../../utils/colors"
 
 const BlogCategoryTabs = () => {
   const blogCategories = [
-    { name: "All Posts", path: "/blog/", color: colors.gray40 },
+    {
+      name: "All Posts",
+      path: "/blog",
+      color: colors.gray40,
+    },
     {
       name: "Design",
       path: "/blog/category/design-posts/",

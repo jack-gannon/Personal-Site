@@ -11,8 +11,12 @@ const UISkills = () => {
         colItems: ["Color Theory", "Typography", "Layout"],
       },
       {
-        colHeader: "Artifacts",
-        colItems: ["Interactive Prototyping", "Static Mockups"],
+        colHeader: "Asset Creation",
+        colItems: [
+          "Interactive Prototyping",
+          "Static Mockups",
+          "Sketching / Low-Fidelity",
+        ],
       },
       {
         colHeader: "Design Systems",

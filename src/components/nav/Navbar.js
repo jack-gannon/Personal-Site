@@ -38,14 +38,11 @@ class NavbarNew extends Component {
           <span className="sr-only">Home</span>
         </LogoLink>
         <NavLinksDesktop>
-          <NavLink color={this.props.color} activeClassName="activeLink" to="/">
-            Home
-          </NavLink>
           <NavLink
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/portfolio/"
+            to="/portfolio"
           >
             Portfolio
           </NavLink>
@@ -53,7 +50,7 @@ class NavbarNew extends Component {
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/blog/"
+            to="/blog"
           >
             Blog
           </NavLink>
@@ -61,9 +58,17 @@ class NavbarNew extends Component {
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/about/"
+            to="/about"
           >
             About
+          </NavLink>
+          <NavLink
+            color={this.props.color}
+            activeClassName="activeLink"
+            partiallyActive={true}
+            to="/contact"
+          >
+            Contact
           </NavLink>
         </NavLinksDesktop>
         <NavLinksToggle
@@ -89,16 +94,20 @@ class NavbarNew extends Component {
           <NavLink
             to="/"
             onClick={() => this.handleNavToggle()}
+            className="navLink"
             activeStyle={{
               borderRight: `8px solid ${colors.primary}`,
               paddingRight: ".5rem",
             }}
+            partiallyActive={false}
           >
-            Home
+            <Logo color="dark" width="3.5rem" />
+            <span className="sr-only">Home</span>
           </NavLink>
           <NavLink
-            to="/portfolio/"
+            to="/portfolio"
             onClick={() => this.handleNavToggle()}
+            className="navLink"
             activeStyle={{
               borderRight: `8px solid ${colors.primary}`,
               paddingRight: ".5rem",
@@ -108,8 +117,9 @@ class NavbarNew extends Component {
             Portfolio
           </NavLink>
           <NavLink
-            to="/blog/"
+            to="/blog"
             onClick={() => this.handleNavToggle()}
+            className="navLink"
             activeStyle={{
               borderRight: `8px solid ${colors.primary}`,
               paddingRight: ".5rem",
@@ -119,8 +129,9 @@ class NavbarNew extends Component {
             Blog
           </NavLink>
           <NavLink
-            to="/about/"
+            to="/about"
             onClick={() => this.handleNavToggle()}
+            className="navLink"
             activeStyle={{
               borderRight: `8px solid ${colors.primary}`,
               paddingRight: ".5rem",
@@ -128,6 +139,18 @@ class NavbarNew extends Component {
             partiallyActive={true}
           >
             About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            onClick={() => this.handleNavToggle()}
+            className="navLink"
+            activeStyle={{
+              borderRight: `8px solid ${colors.primary}`,
+              paddingRight: ".5rem",
+            }}
+            partiallyActive={true}
+          >
+            Contact
           </NavLink>
           <SocialIconPanelNav />
         </NavLinksMobile>
@@ -187,7 +210,6 @@ const NavLink = styled(Link).attrs(props => ({
   position: relative;
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 700;
-
   letter-spacing: 0.05rem;
   color: ${props =>
     props.color === "dark" ? (props.expanded ? "#4d4d4d" : "#FFF") : "#4d4d4d"};
@@ -262,7 +284,7 @@ const LogoLink = styled(Link).attrs(props => ({
 
 const NavLinksDesktop = styled.div`
   display: none;
-  @media (min-width: ${breakpoints.tablet.small}) {
+  @media (min-width: ${breakpoints.desktop.small}) {
     display: flex;
     justify-content: flex-end;
     margin-left: auto;
@@ -328,18 +350,25 @@ const NavLinksMobile = styled.div.attrs(props => ({
   background-color: ${colors.gray10};
   animation: ${fadeIn} 0.25s ease-in-out;
 
-  & * {
+  & .navLink {
     width: 100%;
-    height: 2rem;
     line-height: 1.75rem;
     text-align: right;
-    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     font-size: 2rem;
     padding-right: 1rem;
-  }
+    border-bottom: 1px solid ${colors.gray20};
 
-  & *:first-child {
-    margin-top: 8.5rem;
+    &:first-child {
+      margin-top: 8.5rem;
+      height: 3rem;
+      border-top: 1px solid ${colors.gray20};
+
+      & svg {
+        margin-top: -1rem;
+      }
+    }
   }
 `
 

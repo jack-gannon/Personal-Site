@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 import { colors } from "../../utils/colors"
+import { breakpoints } from "../../utils/breakpoints"
 import { rhythm } from "../../utils/typography"
 
 const FeaturedPost = ({ featuredPost }) => {
@@ -77,7 +78,11 @@ const Details = styled.div`
   width: 80vw;
   background-color: #fff;
 
-  @media (min-width: 780px) {
+  @media (min-width: ${breakpoints.tablet.small}) {
+    width: 60vw;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
     position: relative;
     width: 100%;
   }
