@@ -5,11 +5,11 @@ import { colors } from "../../../utils/colors"
 import { rhythm } from "../../../utils/typography"
 import { breakpoints } from "../../../utils/breakpoints"
 import ArrowIcon from "../../vectors/ArrowIcon"
-import FacebookShare from "../../blog/share/FacebookShare"
+import SharePanel from "../../blog/SharePanel"
 
 const BlogPostHeader = ({ post, avatar, location }) => {
   console.log(location.href)
-  const { title, author, date, thumbnail } = post.frontmatter
+  const { title, author, date, thumbnail, description } = post.frontmatter
   return (
     <Container>
       <BackButton aria-label="Back" onClick={() => window.history.back()}>
@@ -17,24 +17,32 @@ const BlogPostHeader = ({ post, avatar, location }) => {
       </BackButton>
       <Title>{title}</Title>
       <BlogSubheader>
-        <Avatar fixed={avatar} />
-        <div>
-          <Author>
-            By:
-            <AuthorName>{author}</AuthorName>
-          </Author>
-          <Published>
-            <Date>{date}</Date>
-          </Published>
-        </div>
-        <FacebookShare url={location.href} title={title} />
+        <AuthorDetails>
+          <Avatar fixed={avatar} />
+          <div>
+            <Author>
+              By:
+              <AuthorName>{author}</AuthorName>
+            </Author>
+            <Published>
+              <Date>{date}</Date>
+            </Published>
+          </div>
+        </AuthorDetails>
+        <SharePanel
+          url={location.href}
+          title={title}
+          description={description}
+        />
       </BlogSubheader>
       <StyledImage fluid={thumbnail.src.childImageSharp.fluid} />
     </Container>
   )
 }
 
-const Container = styled.div``
+const Container = styled.div`
+  position: relative;
+`
 
 const Title = styled.h1`
   margin-top: ${rhythm(0.5)};
@@ -54,9 +62,15 @@ const Title = styled.h1`
 
 const BlogSubheader = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: space-between;
   font-family: "Helvetica Neue", "Segoe UI", "Helvetica", "Arial", sans-serif;
   margin-bottom: ${rhythm(1 / 2)};
+  z-index: 2;
+`
+
+const AuthorDetails = styled.div`
+  display: flex;
 `
 
 const Avatar = styled(Image)`
@@ -121,6 +135,7 @@ const StyledImage = styled(Image)`
   height: auto;
   width: 100vw;
   margin-left: -1rem;
+  z-index: 1;
 
   @media (min-width: ${breakpoints.desktop.small}) {
     margin-left: 0rem;
