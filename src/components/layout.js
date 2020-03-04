@@ -66,7 +66,7 @@ class Layout extends React.Component {
       header = (
         <HeaderContainer>
           <Navigation defaultToDark={false} />
-          <BlogPostHeader post={post} avatar={avatar} />
+          <BlogPostHeader post={post} avatar={avatar} location={location} />
         </HeaderContainer>
       )
     } else if (

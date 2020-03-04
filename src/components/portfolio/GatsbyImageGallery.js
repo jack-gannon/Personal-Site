@@ -109,6 +109,7 @@ const CaptionToggle = styled.button`
 
   @media (min-width: ${breakpoints.desktop.small}) {
     top: 36rem;
+    left: 0.25rem;
 
     &.active {
       height: 2em;

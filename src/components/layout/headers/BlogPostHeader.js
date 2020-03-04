@@ -5,8 +5,10 @@ import { colors } from "../../../utils/colors"
 import { rhythm } from "../../../utils/typography"
 import { breakpoints } from "../../../utils/breakpoints"
 import ArrowIcon from "../../vectors/ArrowIcon"
+import FacebookShare from "../../blog/share/FacebookShare"
 
-const BlogPostHeader = ({ post, avatar }) => {
+const BlogPostHeader = ({ post, avatar, location }) => {
+  console.log(location.href)
   const { title, author, date, thumbnail } = post.frontmatter
   return (
     <Container>
@@ -25,6 +27,7 @@ const BlogPostHeader = ({ post, avatar }) => {
             <Date>{date}</Date>
           </Published>
         </div>
+        <FacebookShare url={location.href} title={title} />
       </BlogSubheader>
       <StyledImage fluid={thumbnail.src.childImageSharp.fluid} />
     </Container>
