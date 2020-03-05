@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
+import ShareIcon from "../vectors/ShareIcon"
 import FacebookShare from "./share/FacebookShare"
 import TwitterShare from "./share/TwitterShare"
 import LinkedInShare from "./share/LinkedInShare"
@@ -19,7 +20,7 @@ const SharePanel = ({ url, title, description }) => {
           className={isExpanded ? "active" : "inactive"}
           onClick={() => handleToggleExpanded()}
         >
-          {isExpanded ? "×" : "Share"}
+          {isExpanded ? "×" : <ShareIcon />}
         </MobileToggle>
         <MobileShareLinks className={isExpanded ? "active" : "inactive"}>
           <FacebookShare url={url} title={title} />
@@ -50,16 +51,25 @@ const MobileToggle = styled.button`
   width: 3rem;
   height: 3rem;
   border-radius: 1.5rem;
-  background-color: transparent;
 
   &.active {
-    width: 3rem;
-    border: 1px solid ${colors.gray60};
+    border: 1px solid ${colors.gray50};
+    color: ${colors.gray20};
+    background-color: ${colors.gray50};
+    font-size: 1.5rem;
+    line-height: 0.25rem;
+    padding: 0rem;
   }
 
   &.inactive {
-    width: 6rem;
     border: 1px solid ${colors.gray30};
+    background-color: ${colors.gray10};
+    padding: 0.625rem;
+
+    & svg {
+      fill: ${colors.gray50};
+      width: 100%;
+    }
   }
 `
 
@@ -82,6 +92,13 @@ const MobileShareLinks = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  &:after {
+    content: "Share Post:";
+    position: absolute;
+    left: 1rem;
+    color: ${colors.gray60};
   }
 
   & a {

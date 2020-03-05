@@ -13,7 +13,7 @@ const Education = () => {
       <Degrees>
         <Degree
           title="Graphic Information Technology"
-          degreeType="Bachelor of Science (B.S)"
+          degreeType="Bachelor of Science (B.S.)"
           dateRange="Jan 2012 - Dec 2015"
           schoolName="Ira A. Fulton Schools of Engineering"
           university="Arizona State University"

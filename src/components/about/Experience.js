@@ -30,7 +30,7 @@ const Experience = () => {
           companyLocation="Tempe, AZ"
           responsibilities={[
             "Provided leadership and technical guidance for in-house creative team.",
-            "Worked with third-party developers and design professionals to launch our comapny’s new website.",
+            "Collaborated with third-party developers and design professionals to launch our comapny’s new website.",
             "Was Product Manager and UX lead for an internal marketing software project.",
             "Created wireframes, documentation, prototypes, and other design deliverables for digital production.",
           ]}
