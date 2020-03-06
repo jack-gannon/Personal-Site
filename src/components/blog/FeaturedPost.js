@@ -44,6 +44,7 @@ const Container = styled.div`
   border-bottom: 1px solid ${colors.gray30};
   width: 100vw;
   margin-bottom: 2rem;
+  box-shadow: ${colors.shadow1};
 
   @media (min-width: 960px) {
     display: grid;

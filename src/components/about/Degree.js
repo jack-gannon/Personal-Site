@@ -40,6 +40,11 @@ const Degree = ({
 const Container = styled.div`
   font-family: "Helvetia Neue", sans-serif;
   margin-top: 6rem;
+  margin-left: 1rem;
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    margin-left: 0rem;
+  }
 `
 
 const MainPanel = styled.div`
@@ -61,8 +66,31 @@ const DegreeType = styled.p`
 `
 
 const DegreeName = styled.h4`
-  font-size: 1.25rem;
-  margin-bottom: 0.25rem;
+  position: relative;
+  font-size: 1.125rem;
+  margin-bottom: 0rem;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    height: 1.25rem;
+    width: 1.25rem;
+    top: 0.025rem;
+    left: -1.65rem;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    background-color: ${colors.gray50};
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+
+    &:before {
+      left: -33px;
+      top: 0.04rem;
+    }
+  }
 `
 
 const School = styled.p`

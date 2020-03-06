@@ -44,6 +44,7 @@ const Grid = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     padding-bottom: 0.5rem;
+    overflow-x: visible;
   }
 `
 
@@ -63,6 +64,7 @@ const Tool = styled.div`
   border-radius: 4px;
   margin-bottom: 0.75rem;
   margin-right: 1rem;
+  box-shadow: ${colors.shadow1};
 
   & h5 {
     margin-bottom: 1rem;

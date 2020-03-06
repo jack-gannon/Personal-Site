@@ -90,4 +90,6 @@ export const colors = {
   gray70: "#4f5559",
   gray80: "#363a3d",
   gray90: "#222527",
+  // Shadows
+  shadow1: "0px 2px 8px rgba(79, 85, 89, 0.1)",
 }

@@ -65,6 +65,7 @@ const Post = styled.div`
   border: 1px solid ${colors.gray30};
   border-radius: 2px;
   background-color: #fff;
+  box-shadow: ${colors.shadow1};
 
   @media (min-width: ${breakpoints.tablet.medium}) {
   }

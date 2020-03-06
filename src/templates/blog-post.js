@@ -32,7 +32,6 @@ class BlogPostTemplate extends React.Component {
           avatar={this.props.data.avatar.childImageSharp.fixed}
         /> */}
           <MDXRenderer>{post.body}</MDXRenderer>
-
           {/* <ul
             style={{
               display: `flex`,

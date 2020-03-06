@@ -15,7 +15,7 @@ class About extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="About" />
-        <PageTitle text="Resume" />
+        <PageTitle text="CV/Resume" />
         <DownloadResume />
         <Experience />
         <Education />

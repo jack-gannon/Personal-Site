@@ -37,9 +37,14 @@ const Position = ({
 const Container = styled.div`
   font-family: "Helvetia Neue", sans-serif;
   margin-top: 4rem;
+  margin-left: 1rem;
 
   @media (min-width: ${breakpoints.tablet.medium}) {
     margin-top: 6rem;
+  }
+
+  @media (min-width: ${breakpoints.desktop.small}) {
+    margin-left: 0rem;
   }
 `
 
@@ -69,7 +74,7 @@ const Title = styled.h4`
     width: 1.25rem;
     top: 0.025rem;
     left: -1.65rem;
-    border: 6px solid ${colors.gray10};
+    border: 6px solid #fff;
     border-radius: 50%;
     background-color: ${colors.gray50};
   }
@@ -79,7 +84,7 @@ const Title = styled.h4`
     margin-bottom: 0.25rem;
 
     &:before {
-      left: -2.65rem;
+      left: -33px;
       top: 0.04rem;
     }
   }

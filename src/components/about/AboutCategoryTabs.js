@@ -6,7 +6,7 @@ const AboutCategoryTabs = () => {
   const aboutCategories = [
     {
       name: "Personal",
-      path: "/about/",
+      path: "/about",
       color: colors.gray30,
     },
     {

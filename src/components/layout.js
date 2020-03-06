@@ -71,6 +71,7 @@ class Layout extends React.Component {
       )
     } else if (
       location.pathname === aboutPath ||
+      location.pathname === `${aboutPath}/` ||
       location.pathname.startsWith(aboutPath)
     ) {
       header = (

@@ -38,6 +38,7 @@ const Education = () => {
 
 const Section = styled.section`
   margin-bottom: 2rem;
+
   @media (min-width: ${breakpoints.desktop.small}) {
     display: grid;
     grid-template-columns: calc(25% - 0.5rem) calc(75% - 0.5rem);
@@ -63,18 +64,38 @@ const SectionTitle = styled.h3`
 `
 
 const Degrees = styled.div`
+  position: relative;
+  background-color: #fff;
+  border: 1px solid ${colors.gray20};
+  border-radius: 2px;
+  box-shadow: ${colors.shadow1};
+  padding: 1rem;
+  margin-left: -1rem;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 1rem;
+    width: 1px;
+    height: calc(100% - 2.5rem);
+    background-color: ${colors.gray30};
+    opacity: 0.75;
+  }
+
   & .degree:first-child {
     margin-top: 0rem;
   }
 
-  border-left: 1px solid ${colors.gray30};
-  padding-left: 1rem;
-
   @media (min-width: ${breakpoints.desktop.small}) {
-    border-left: 1px solid ${colors.gray30};
+    margin-left: 0rem;
 
     & .degree {
-      margin-left: 1rem;
+      margin-left: 2rem;
+    }
+
+    &:before {
+      left: 1.5rem;
+      top: 1.5rem;
     }
   }
 `

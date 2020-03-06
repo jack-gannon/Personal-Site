@@ -38,6 +38,7 @@ const SkillsSection = ({ skills, id }) => {
 
 const Section = styled.section`
   margin-bottom: 2rem;
+
   @media (min-width: ${breakpoints.desktop.small}) {
     display: grid;
     grid-template-columns: calc(25% - 0.5rem) calc(75% - 0.5rem);
@@ -74,6 +75,7 @@ const Columns = styled.div`
   width: 100%;
   background-color: #fff;
   border: 1px solid ${colors.gray20};
+  box-shadow: ${colors.shadow1};
 
   @media (min-width: ${breakpoints.tablet.small}) {
     flex-direction: row;

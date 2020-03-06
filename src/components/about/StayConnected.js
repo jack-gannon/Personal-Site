@@ -68,6 +68,7 @@ const Container = styled.div`
   background-color: #fff;
   border: 1px solid ${colors.gray20};
   border-radius: 4px;
+  box-shadow: ${colors.shadow1};
 
   @media (min-width: ${breakpoints.tablet.small}) {
     display: flex;

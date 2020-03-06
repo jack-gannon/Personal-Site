@@ -28,6 +28,7 @@ const Container = styled.div`
   background-color: #fff;
   border: 1px solid ${colors.gray20};
   border-radius: 4px;
+  box-shadow: ${colors.shadow1};
 `
 
 const Content = styled.div``
@@ -36,10 +37,11 @@ const Image = styled.img`
   margin: -1rem;
 
   @media (min-width: ${breakpoints.desktop.small}) {
-    margin-bottom: 1rem;
+    margin-bottom: 1.325rem;
     height: 12rem;
     width: calc(100% + 2rem);
     max-width: calc(100% + 2rem);
+    border-bottom: 2px solid ${colors.gray30};
   }
 `
 

@@ -41,7 +41,7 @@ const SharePanel = ({ url, title, description }) => {
 const MobilePanel = styled.div`
   position: relative;
 
-  @media (min-width: ${breakpoints.desktop.small}) {
+  @media (min-width: ${breakpoints.tablet.medium}) {
     display: none;
   }
 `
@@ -132,7 +132,7 @@ const MobileShareLinks = styled.div`
 const DesktopPanel = styled.div`
   display: none;
 
-  @media (min-width: ${breakpoints.desktop.small}) {
+  @media (min-width: ${breakpoints.tablet.medium}) {
     display: flex;
   align-items: center;
   height: 2rem;

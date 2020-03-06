@@ -6,6 +6,7 @@ import { rhythm } from "../../../utils/typography"
 import { breakpoints } from "../../../utils/breakpoints"
 import ArrowIcon from "../../vectors/ArrowIcon"
 import SharePanel from "../../blog/SharePanel"
+import AuthorDetails from "../../blog/AuthorDetails"
 
 const BlogPostHeader = ({ post, avatar, location }) => {
   console.log(location.href)
@@ -17,18 +18,7 @@ const BlogPostHeader = ({ post, avatar, location }) => {
       </BackButton>
       <Title>{title}</Title>
       <BlogSubheader>
-        <AuthorDetails>
-          <Avatar fixed={avatar} />
-          <div>
-            <Author>
-              By:
-              <AuthorName>{author}</AuthorName>
-            </Author>
-            <Published>
-              <Date>{date}</Date>
-            </Published>
-          </div>
-        </AuthorDetails>
+        <AuthorDetails author={author} date={date} avatar={avatar} />
         <SharePanel
           url={location.href}
           title={title}
@@ -61,42 +51,35 @@ const Title = styled.h1`
 `
 
 const BlogSubheader = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   font-family: "Helvetica Neue", "Segoe UI", "Helvetica", "Arial", sans-serif;
+  margin-top: 1.5rem;
   margin-bottom: ${rhythm(1 / 2)};
   z-index: 2;
-`
 
-const AuthorDetails = styled.div`
-  display: flex;
-`
+  &:before {
+    content: " ";
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    height: 1px;
+    width: calc(100% + 2rem);
+    background-color: ${colors.gray30};
+    opacity: 0.8;
+  }
 
-const Avatar = styled(Image)`
-  margin-right: 0.5rem;
-  border-radius: 50%;
+  @media (min-width: ${breakpoints.desktop.small}) {
+    &:before {
+      left: 0rem;
+      right: 0rem;
+      width: 100%;
+    }
+  }
 `
-
-const Author = styled.p`
-  margin-bottom: ${rhythm(0)};
-  line-height: 1rem;
-`
-
-const AuthorName = styled.span`
-  font-weight: 800;
-  font-size: 1rem;
-  color: ${colors.gray80};
-  margin-left: 0.25rem;
-`
-
-const Published = styled.p`
-  color: ${colors.gray60};
-  font-size: 0.875rem;
-  margin-bottom: ${rhythm(0)};
-`
-
-const Date = styled.span``
 
 const BackButton = styled.button`
   width: 3rem;
