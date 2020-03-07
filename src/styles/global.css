@@ -13,3 +13,23 @@ html {
   padding: 0;
   position: absolute;
 }
+/* CSS Variables for gatsby-remark-vscode plugin */
+:root {
+  --grvsc-border-radius: 2px;
+  --grvsc-line-highlighted-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.code-container {
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
+  margin-right: -1rem;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 960px) {
+  .code-container {
+    margin-left: 0rem;
+    width: 100%;
+    margin-right: 0rem;
+  }
+}

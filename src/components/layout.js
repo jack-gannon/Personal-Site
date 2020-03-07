@@ -175,7 +175,7 @@ const BodyContainer = styled.div.attrs(props => ({
     }
 
     & main.blog-main {
-      & p:first-child:first-letter {
+      & :first-letter {
         color: ${colors.gray90};
         float: left;
         font-family: Georgia;

@@ -64,6 +64,10 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: "Monokai",
+              wrapperClassName: "code-container",
+            },
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
@@ -77,8 +81,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // edit below
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-129113451-1`,
       },
     },
     {
