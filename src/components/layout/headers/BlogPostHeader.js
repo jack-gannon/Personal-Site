@@ -9,7 +9,6 @@ import SharePanel from "../../blog/SharePanel"
 import AuthorDetails from "../../blog/AuthorDetails"
 
 const BlogPostHeader = ({ post, avatar, location }) => {
-  console.log(location.href)
   const { title, author, date, thumbnail, description } = post.frontmatter
   return (
     <Container>
