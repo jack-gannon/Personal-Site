@@ -1,14 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-
 import Navigation from "./nav/Navigation"
-
 import BlogCategoryTabs from "./blog/BlogCategoryTabs"
 import AboutCategoryTabs from "./about/AboutCategoryTabs"
 import { breakpoints } from "../utils/breakpoints"
-
+import { colors } from "../utils/colors"
 import { rhythm } from "../utils/typography"
 import BlogPostHeader from "./layout/headers/BlogPostHeader"
+import BlogFooter from "../components/layout/footers/BlogFooter"
 import PortfolioProjectHeader from "./layout/headers/PortfolioProjectHeader"
 import HeaderContainer from "./layout/headers/HeaderContainer"
 
@@ -21,6 +20,7 @@ class Layout extends React.Component {
       children,
       fullWidth = false,
       fullHeight = false,
+      isBlog = false,
       articleLayout = false,
       reverseMain = false,
       asideContents = null,
@@ -29,17 +29,20 @@ class Layout extends React.Component {
       project,
     } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog`
+    const blogPath = `${__PATH_PREFIX__}/blog/`
     const blogCategory = `${__PATH_PREFIX__}/blog/category/`
-    const aboutPath = `${__PATH_PREFIX__}/about`
-    const contactPath = `${__PATH_PREFIX__}/contact`
-    const portfolioPath = `${__PATH_PREFIX__}/portfolio`
+    const aboutPath = `${__PATH_PREFIX__}/about/`
+    const contactPath = `${__PATH_PREFIX__}/contact/`
+    const portfolioPath = `${__PATH_PREFIX__}/portfolio/`
     const portfolioCategory = `${__PATH_PREFIX__}/portfolio/category/`
 
     let header
     let footer = <Footer />
 
-    if (location.pathname === rootPath) {
+    if (
+      // Home Page
+      location.pathname === rootPath
+    ) {
       header = (
         <>
           <Navigation defaultToDark={true} />
@@ -47,6 +50,7 @@ class Layout extends React.Component {
       )
       footer = null
     } else if (
+      // Blog Pages
       location.pathname === blogPath ||
       location.pathname === `${blogPath}/` ||
       location.pathname.startsWith(blogCategory)
@@ -59,6 +63,7 @@ class Layout extends React.Component {
         </HeaderContainer>
       )
     } else if (
+      // Blog Post
       location.pathname !== blogPath &&
       !location.pathname.startsWith(blogCategory) &&
       location.pathname.startsWith(blogPath)
@@ -69,9 +74,10 @@ class Layout extends React.Component {
           <BlogPostHeader post={post} avatar={avatar} location={location} />
         </HeaderContainer>
       )
+      footer = <BlogFooter post={post} />
     } else if (
+      // About Pages
       location.pathname === aboutPath ||
-      location.pathname === `${aboutPath}/` ||
       location.pathname.startsWith(aboutPath)
     ) {
       header = (
@@ -83,8 +89,8 @@ class Layout extends React.Component {
         </HeaderContainer>
       )
     } else if (
+      // Portfolio Pages
       location.pathname === portfolioPath ||
-      location.pathname === `${portfolioPath}/` ||
       location.pathname.startsWith(portfolioCategory)
     ) {
       header = (
@@ -94,6 +100,7 @@ class Layout extends React.Component {
         </HeaderContainer>
       )
     } else if (
+      // Portfolio Entry
       location.pathname !== portfolioPath &&
       !location.pathname.startsWith(portfolioCategory) &&
       location.pathname.startsWith(portfolioPath)
@@ -104,7 +111,10 @@ class Layout extends React.Component {
           <PortfolioProjectHeader project={project} avatar={avatar} />
         </HeaderContainer>
       )
-    } else if (location.pathname === contactPath) {
+    } else if (
+      // Contact Page
+      location.pathname === contactPath
+    ) {
       header = (
         <HeaderContainer>
           <Navigation defaultToDark={false} />
@@ -128,7 +138,9 @@ class Layout extends React.Component {
           asideContents={asideContents}
           reverseMain={reverseMain}
         >
-          <main role="main">{children}</main>
+          <main role="main" className={isBlog ? "blog-main" : null}>
+            {children}
+          </main>
           <aside>{asideContents}</aside>
         </BodyContainer>
         {footer}
@@ -160,6 +172,19 @@ const BodyContainer = styled.div.attrs(props => ({
     & main {
       font-size: ${props => (props.articleLayout ? "18px" : "16px")};
       flex-basis: 67%;
+    }
+
+    & main.blog-main {
+      & p:first-child:first-letter {
+        color: ${colors.gray90};
+        float: left;
+        font-family: Georgia;
+        font-size: 72px;
+        line-height: 60px;
+        padding-top: 4px;
+        padding-right: 8px;
+        padding-left: 3px;
+      }
     }
 
     & aside {

@@ -15,6 +15,7 @@ class BlogPostTemplate extends React.Component {
           location={this.props.location}
           title={siteTitle}
           post={post}
+          isBlog={true}
           avatar={this.props.data.avatar.childImageSharp.fixed}
           articleLayout={true}
           reverseMain={false}
@@ -25,37 +26,7 @@ class BlogPostTemplate extends React.Component {
             ogImage={post.frontmatter.ogImage.src.publicURL}
             imageAlt={post.frontmatter.thumbnail.alt}
           />
-          {/* <BlogHeader
-          title={post.frontmatter.title}
-          author={post.frontmatter.author}
-          date={post.frontmatter.date}
-          avatar={this.props.data.avatar.childImageSharp.fixed}
-        /> */}
           <MDXRenderer>{post.body}</MDXRenderer>
-          {/* <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={`blog${previous.fields.slug}`} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={`blog${next.fields.slug}`} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul> */}
         </Layout>
       </article>
     )
@@ -87,6 +58,9 @@ export const pageQuery = graphql`
         title
         author
         category
+        tags {
+          name
+        }
         date(formatString: "MMMM DD, YYYY")
         description
         thumbnail {

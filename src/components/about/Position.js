@@ -73,7 +73,7 @@ const Title = styled.h4`
     height: 1.25rem;
     width: 1.25rem;
     top: 0.025rem;
-    left: -1.65rem;
+    left: -1.575rem;
     border: 6px solid #fff;
     border-radius: 50%;
     background-color: ${colors.gray50};

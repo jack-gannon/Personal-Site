@@ -6,7 +6,7 @@ const BlogCategoryTabs = () => {
   const blogCategories = [
     {
       name: "All Posts",
-      path: "/blog",
+      path: "/blog/",
       color: colors.gray40,
     },
     {

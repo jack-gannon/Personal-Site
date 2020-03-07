@@ -42,7 +42,7 @@ class NavbarNew extends Component {
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/portfolio"
+            to="/portfolio/"
           >
             Portfolio
           </NavLink>
@@ -50,7 +50,7 @@ class NavbarNew extends Component {
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/blog"
+            to="/blog/"
           >
             Blog
           </NavLink>
@@ -58,7 +58,7 @@ class NavbarNew extends Component {
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/about"
+            to="/about/"
           >
             About
           </NavLink>
@@ -66,7 +66,7 @@ class NavbarNew extends Component {
             color={this.props.color}
             activeClassName="activeLink"
             partiallyActive={true}
-            to="/contact"
+            to="/contact/"
           >
             Contact
           </NavLink>
@@ -105,7 +105,7 @@ class NavbarNew extends Component {
             <span className="sr-only">Home</span>
           </NavLink>
           <NavLink
-            to="/portfolio"
+            to="/portfolio/"
             onClick={() => this.handleNavToggle()}
             className="navLink"
             activeStyle={{
@@ -117,7 +117,7 @@ class NavbarNew extends Component {
             Portfolio
           </NavLink>
           <NavLink
-            to="/blog"
+            to="/blog/"
             onClick={() => this.handleNavToggle()}
             className="navLink"
             activeStyle={{
@@ -129,7 +129,7 @@ class NavbarNew extends Component {
             Blog
           </NavLink>
           <NavLink
-            to="/about"
+            to="/about/"
             onClick={() => this.handleNavToggle()}
             className="navLink"
             activeStyle={{

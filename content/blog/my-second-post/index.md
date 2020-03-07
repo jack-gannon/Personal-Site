@@ -7,6 +7,12 @@ date: "2015-05-06T23:46:37.121Z"
 thumbnail:
   src: ../../assets/placeholder.png
   alt: Ugly gray box
+tags:
+  - name: Blogging
+  - name: Learning
+  - name: Personal
+  - name: Community
+  - name: Technology
 ---
 
 Wow! I love blogging so much already.

@@ -70,7 +70,7 @@ const typography = new Typography({
       textDecoration: "underline",
     },
     "main a": {
-      color: colors.tertiaryMedium,
+      color: colors.tertiaryDarker,
     },
   }),
 })
