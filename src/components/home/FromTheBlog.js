@@ -40,11 +40,7 @@ export default () => (
 
 const fromTheBlogQuery = graphql`
   {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { content_type: { eq: "blog" } } }
-      limit: 3
-    ) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
       edges {
         node {
           excerpt
