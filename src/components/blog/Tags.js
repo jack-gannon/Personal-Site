@@ -4,11 +4,12 @@ import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
 
 const Tags = ({ tags = [] }) => {
+  console.log(tags)
   return (
     <TagsCollection>
-      {tags.map(tag => (
-        <Tag key={tag.name}>{tag.name}</Tag>
-      ))}
+      {tags &&
+        tags.length > 1 &&
+        tags.map(tag => <Tag key={tag.name}>{tag.name}</Tag>)}
     </TagsCollection>
   )
 }
