@@ -34,7 +34,11 @@ const Container = styled.div`
 const Content = styled.div``
 
 const Image = styled.img`
-  margin: -1rem;
+  margin: -1rem -1rem 1rem -1rem;
+  object-fit: cover;
+  width: calc(100% + 2rem);
+  max-width: calc(100% + 2rem);
+  height: 10rem;
 
   @media (min-width: ${breakpoints.desktop.small}) {
     margin-bottom: 1.325rem;
