@@ -34,12 +34,12 @@ class Navigation extends React.Component {
 
   componentDidMount() {
     this.prev = window.scrollY
-    window.addEventListener("scroll", this.throttleNav)
+    window.addEventListener("scroll", this.throttleNav, { passive: true })
   }
 
   componentWillUnmount() {
     this.throttleNav.cancel()
-    window.removeEventListener("scroll", this.throttleNav)
+    window.removeEventListener("scroll", this.throttleNav, { passive: true })
   }
 
   handleNav = e => {

@@ -113,7 +113,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  ogImage: `/static/placeholder.png`,
+  ogImage: `/static/assets/default.jpg`,
 }
 
 SEO.propTypes = {

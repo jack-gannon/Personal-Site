@@ -8,6 +8,20 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.post
     const siteTitle = this.props.data.site.siteMetadata.title
+    const defaultKeywords = [
+      "Jack Gannon",
+      "designer",
+      "developer",
+      "web developer",
+      "Phoenix",
+      "Arizona",
+      "freelance web developer",
+      "ux designer",
+      "ui designer",
+      "freelance website designer",
+    ]
+    const tagKeywords = post.frontmatter.tags.map(tag => tag.name)
+    const keywords = defaultKeywords.concat(tagKeywords)
 
     return (
       <article>
@@ -25,6 +39,7 @@ class BlogPostTemplate extends React.Component {
             description={post.frontmatter.description || post.excerpt}
             ogImage={post.frontmatter.ogImage.src.publicURL}
             imageAlt={post.frontmatter.thumbnail.alt}
+            keywords={keywords}
           />
           <MDXRenderer>{post.body}</MDXRenderer>
         </Layout>

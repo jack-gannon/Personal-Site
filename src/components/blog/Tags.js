@@ -4,7 +4,6 @@ import { colors } from "../../utils/colors"
 import { breakpoints } from "../../utils/breakpoints"
 
 const Tags = ({ tags = [] }) => {
-  console.log(tags)
   return (
     <TagsCollection>
       {tags && tags.length > 1 ? (
@@ -27,6 +26,7 @@ const Tag = styled.p`
   display: inline-block;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 0.75rem;
+  text-transform: capitalize;
   border: 1px solid ${colors.gray50};
   margin-right: 0.5rem;
   margin-bottom: 1rem;

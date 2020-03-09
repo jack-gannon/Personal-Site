@@ -20,7 +20,19 @@ class IndexPage extends React.Component {
           >
             <SEO
               title="Home"
-              keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+              keywords={[
+                `blog`,
+                `gatsby`,
+                `javascript`,
+                `react`,
+                `Jack Gannon`,
+                `designer`,
+                `developer`,
+                `Phoenix`,
+                `Arizona`,
+                `web development`,
+                `freelance`,
+              ]}
             />
 
             <NavConsumer>
