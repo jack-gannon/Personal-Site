@@ -19,7 +19,7 @@ const Footer = () => {
 }
 
 const FooterWrapper = styled.footer`
-  width: 100vw;
+  width: 100%;
   text-align: center;
 
   background-color: ${colors.gray20};
