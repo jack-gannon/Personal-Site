@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import defaultImage from "../../content/assets/default.jpg"
 
 function SEO({
   description,
@@ -113,7 +114,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  ogImage: `/static/assets/default.jpg`,
+  ogImage: defaultImage,
 }
 
 SEO.propTypes = {
