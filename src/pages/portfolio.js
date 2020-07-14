@@ -12,7 +12,10 @@ class Portfolio extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Portfolio" />
+        <SEO
+          title="Portfolio"
+          description="Jack Gannon's portfolio is a showcase of previous design and development work that he has completed for both clients as well as on a personal basis. From developing simple websites to designing large, complex software solutions, Jack Gannon has completed a variety of projects."
+        />
         <ProjectCollection projects={projects} />
       </Layout>
     )
