@@ -65,8 +65,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              theme: "Monokai",
+              theme: "Sonoran",
               wrapperClassName: "code-container",
+              extensions: ["sonoran"],
             },
           },
           {

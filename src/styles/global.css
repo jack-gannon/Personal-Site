@@ -15,15 +15,57 @@ html {
 }
 /* CSS Variables for gatsby-remark-vscode plugin */
 :root {
-  --grvsc-border-radius: 2px;
+  --grvsc-border-radius: 4px;
   --grvsc-line-highlighted-background-color: rgba(255, 255, 255, 0.1);
+  --grvsc-padding-top: 3rem; /* Adjust padding-top by itself */
+  --grvsc-padding-bottom: 2rem; /* Adjust padding-top by itself */
 }
 
+code {
+  line-height: 1.5;
+} 
+
 .code-container {
-  margin-left: -1rem;
-  width: calc(100% + 2rem);
-  margin-right: -1rem;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+  margin-left: -0.5rem;
+  width: calc(100% + 1rem);
+  margin-right: -0.5rem;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.13);
+  position: relative;
+}
+
+.code-container[data-language]:before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  color: #222527;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  background-color: #4f5559;
+}
+
+.code-container[data-language="js"]:before {
+  content: "JavaScript";
+}
+
+.code-container[data-language="css"]:before {
+  content: "CSS";
+}
+
+.code-container[data-language="html"]:before {
+  content: "SASS";
+}
+
+.code-container[data-language="html"]:before {
+  content: "HTML";
+}
+
+.code-container[data-language="bash"]:before {
+  content: "SHELL";
 }
 
 @media (min-width: 960px) {

@@ -4,7 +4,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.post
