@@ -14,10 +14,7 @@ class Contact extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="Contact"
-          description="Do you want to contact Jack Gannon, or just stay connected? Follow him on social media, or use the contact form for project and employment inquiries. For a more accurate response, please provide a detailed description of your design or web development project, along with your contact information."
-        />
+        <SEO title="Contact" />
         <ContactContainer>
           <StayConnected />
           <GetInTouch />
