@@ -12,11 +12,7 @@
     "@mdx-js/react": "^1.5.1",
     "babel-plugin-styled-components": "^1.10.0",
     "formik": "^2.1.4",
-<<<<<<< HEAD
-    "gatsby": "2.3.25",
-=======
     "gatsby": "^2.24.67",
->>>>>>> 0f707d831bd5c590f9379291814a340b3c64efcd
     "gatsby-background-image": "^0.9.17",
     "gatsby-cli": "^2.12.102",
     "gatsby-image": "^2.0.39",
