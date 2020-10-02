@@ -19,10 +19,10 @@ const PostItemSmall = ({ post }) => {
           <Date>{date}</Date>
         </Info>
         <PostTitle>
-          <Link to={`blog${slug}`}>{title}</Link>
+          <Link to={`.${slug}`}>{title}</Link>
         </PostTitle>
       </Details>
-      <ReadMore category={category} to={`blog${slug}`}>
+      <ReadMore category={category} to={`.${slug}`}>
         <ArrowIcon
           direction="right"
           lineColor={

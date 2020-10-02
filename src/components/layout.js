@@ -38,7 +38,7 @@ class Layout extends React.Component {
 
     let header
     let footer = <Footer />
-
+    console.log(location)
     if (
       // Home Page
       location.pathname === rootPath

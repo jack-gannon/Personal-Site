@@ -18,7 +18,7 @@ const PostItemLarge = ({ post }) => {
   const imgFluid = thumbnail.src.childImageSharp.fluid
   return (
     <Post>
-      <ImageLink to={`blog${slug}`}>
+      <ImageLink to={`.${slug}`}>
         <Thumbnail fluid={imgFluid} />
       </ImageLink>
       <Details>
@@ -27,7 +27,7 @@ const PostItemLarge = ({ post }) => {
           <Date>{date}</Date>
         </Info>
         <PostTitle>
-          <Link to={`blog${slug}`}>{title}</Link>
+          <Link to={`.${slug}`}>{title}</Link>
         </PostTitle>
         <Description
           dangerouslySetInnerHTML={
@@ -39,7 +39,7 @@ const PostItemLarge = ({ post }) => {
           }
         />
       </Details>
-      <ReadMore category={category} to={`blog${slug}`}>
+      <ReadMore category={category} to={`.${slug}`}>
         <ArrowIcon
           direction="right"
           lineColor={

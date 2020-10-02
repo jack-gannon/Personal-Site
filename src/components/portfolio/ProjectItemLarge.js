@@ -9,11 +9,11 @@ const ProjectItemLarge = ({ project }) => {
   const { slug } = project.childMdx.fields
   return (
     <Project>
-      <ImageLink to={`portfolio${slug}`}>
+      <ImageLink to={`.${slug}`}>
         <Thumbnail fluid={thumbnail.src.childImageSharp.fluid} />
       </ImageLink>
       <Title>
-        <TitleLink to={`portfolio${slug}`}>{title}</TitleLink>
+        <TitleLink to={`.${slug}`}>{title}</TitleLink>
       </Title>
       <Description>{description}</Description>
     </Project>
