@@ -16,10 +16,7 @@ class About extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="About"
-          description="Jack Gannon has developed a multi-faceted skill-set, specializing in UX Design, UI Design, and Web Development. Providing a wide range of services, his skills as a full-stack digital professional can make him a valuable asset for any project surrounding modern tech-stacks."
-        />
+        <SEO title="About" />
         <PageTitle text="Skills & Services" />
         <WebSkills />
         <WebTools />

@@ -14,10 +14,7 @@ class Blog extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="Blog"
-          description="Jack Gannon's blog is a collection of all things design and development, as well as his personal insights. If you are looking to learn more about web development, UX Design, UI Design, or technology in general, check out some of these articles."
-        />
+        <SEO title="Blog" />
         <FeaturedPost featuredPost={featuredPost} />
         <PostCollection posts={allPosts} showEmptyState={false} />
       </Layout>
