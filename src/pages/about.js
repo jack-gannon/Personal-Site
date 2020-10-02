@@ -36,10 +36,7 @@ class About extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="About"
-          description="Jack Gannon designs and develops websites and web applications. There's more to him than just that, though. Learn more about who Jack is, and why he loves working in the tech industry."
-        />
+        <SEO title="About" />
         <PageTitle text="Personal" />
         <Personal>
           <GatsbyImageGallery images={aboutImages} />

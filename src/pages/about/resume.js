@@ -14,10 +14,7 @@ class About extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="Resume"
-          description="Jack Gannon has experience working on some exciting projects for some amazing companies. This page acts as his digital resume, providing information for all of the design roles that he has had over the years."
-        />
+        <SEO title="About" />
         <PageTitle text="CV/Resume" />
         <DownloadResume />
         <Experience />
