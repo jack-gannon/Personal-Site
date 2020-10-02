@@ -13,7 +13,10 @@ class NotFoundPage extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="404: Not Found" />
+        <SEO
+          title="404: Not Found"
+          description="Unfortunately, we couldn't find what you were looking for. Luckily for you, there is more amazing design and web dev content elsewhere on the site. Check it out!"
+        />
         <FourOhFour>404</FourOhFour>
         <ErrorTitle>Page Not Found</ErrorTitle>
         <Blurb>

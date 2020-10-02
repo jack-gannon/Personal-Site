@@ -145,7 +145,7 @@ const Date = styled.p`
 `
 
 const Description = styled.p`
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: ${colors.gray60};
 `
 
