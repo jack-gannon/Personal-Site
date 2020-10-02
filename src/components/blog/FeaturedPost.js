@@ -18,7 +18,7 @@ const FeaturedPost = ({ featuredPost }) => {
   
   return (
     <Container>
-      <MainImageLink to={`.${fields.slug}`}>
+      <MainImageLink to={`/blog${fields.slug}`}>
         <MainImage
           fluid={thumbnail.src.childImageSharp.fluid}
           alt={thumbnail.alt}
@@ -26,14 +26,14 @@ const FeaturedPost = ({ featuredPost }) => {
       </MainImageLink>
       <Details>
         <Title>
-          <Link to={`.${fields.slug}`}>{title}</Link>
+          <Link to={`/blog${fields.slug}`}>{title}</Link>
         </Title>
         <Info>
           <Category category={category}>{category}</Category> |
           <Date>{date}</Date>
         </Info>
         <Description>{description}</Description>
-        <ReadMore to={`.${fields.slug}`}>Read More...</ReadMore>
+        <ReadMore to={`/blog${fields.slug}`}>Read More...</ReadMore>
       </Details>
     </Container>
   )
