@@ -1,10 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
-import Image from "gatsby-image"
-import styled from "styled-components"
-import { colors } from "../../utils/colors"
-import { breakpoints } from "../../utils/breakpoints"
-import { rhythm } from "../../utils/typography"
+import React from "react";
+import { Link } from "gatsby";
+import Image from "gatsby-image";
+import styled from "styled-components";
+import { colors } from "../../utils/colors";
+import { breakpoints } from "../../utils/breakpoints";
+import { rhythm } from "../../utils/typography";
 
 const FeaturedPost = ({ featuredPost }) => {
   const {
@@ -13,9 +13,9 @@ const FeaturedPost = ({ featuredPost }) => {
     category,
     date,
     description,
-  } = featuredPost.childMdx.frontmatter
-  const { fields } = featuredPost.childMdx
-  
+  } = featuredPost.childMdx.frontmatter;
+  const { fields } = featuredPost.childMdx;
+
   return (
     <Container>
       <MainImageLink to={`/blog${fields.slug}`}>
@@ -33,11 +33,13 @@ const FeaturedPost = ({ featuredPost }) => {
           <Date>{date}</Date>
         </Info>
         <Description>{description}</Description>
-        <ReadMore to={`/blog${fields.slug}`}>Read More...</ReadMore>
+        <ReadMore to={`/blog${fields.slug}`} category={category}>
+          Read More...
+        </ReadMore>
       </Details>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
   margin-left: -1rem;
@@ -57,20 +59,20 @@ const Container = styled.div`
     border: 1px solid ${colors.gray30};
     background-color: #fff;
   }
-`
+`;
 
-const MainImageLink = styled(Link)``
+const MainImageLink = styled(Link)``;
 
 const MainImage = styled(Image)`
   width: 100vw;
-  height: ${rhythm(16)};
+  height: ${rhythm(14)};
   transition: opacity 0.125s ease;
 
   @media (min-width: 960px) {
     margin-left: 0rem;
     width: 100%;
   }
-`
+`;
 
 const Details = styled.div`
   position: absolute;
@@ -88,7 +90,7 @@ const Details = styled.div`
     position: relative;
     width: 100%;
   }
-`
+`;
 
 const Title = styled.h2`
   margin-bottom: ${rhythm(0.5)};
@@ -106,7 +108,7 @@ const Title = styled.h2`
   &:hover {
     opacity: 0.8;
   }
-`
+`;
 
 const Info = styled.p`
   display: flex;
@@ -114,12 +116,12 @@ const Info = styled.p`
   font-size: 0.875rem;
   font-family: "Helvetica Neue", "Segoe UI", "Helvetica", "Arial", sans-serif;
   color: ${colors.gray30};
-`
+`;
 
 const Date = styled.span`
   color: ${colors.gray50};
   margin-left: 0.5rem;
-`
+`;
 
 const Category = styled.span.attrs(props => ({
   category: props.category,
@@ -136,12 +138,14 @@ const Category = styled.span.attrs(props => ({
   letter-spacing: 0.125rem;
   margin-right: 0.5rem;
   margin-bottom: 0rem;
-`
+`;
 
 const Description = styled.p`
+  font-family: "Helvetica Neue", sans-serif;
+  line-height: 1.75em;
   margin-bottom: ${rhythm(1)};
   color: ${colors.gray60};
-`
+`;
 
 const ReadMore = styled(Link).attrs(props => ({
   category: props.category,
@@ -149,12 +153,14 @@ const ReadMore = styled(Link).attrs(props => ({
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
   font-size: 0.875rem;
   text-transform: uppercase;
+  text-decoration: none;
   font-family: "Helvetica Neue", "Segoe UI", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   letter-spacing: 0.125rem;
+  transition: opacity .125s ease;
   color: ${props =>
     props.category === "Design"
       ? colors.secondaryDarker
@@ -168,6 +174,10 @@ const ReadMore = styled(Link).attrs(props => ({
       : props.category === "Development"
       ? colors.primaryLightest
       : colors.tertiaryLightest};
-`
+  
+  }
+  &:hover {
+    opacity: 0.75;
+`;
 
-export default FeaturedPost
+export default FeaturedPost;

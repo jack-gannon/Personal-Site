@@ -27,11 +27,15 @@ const Container = styled.div`
   grid-template-columns: 67% 33%;
   margin-left: auto;
   margin-right: auto;
-  max-width: ${rhythm(40)};
+  max-width: ${rhythm(24)};
 
   & main {
     font-size: 18px;
   }
+}
+
+@media (min-width: ${breakpoints.desktop.small}{
+  max-width: ${rhythm(36)};
 }
   
 `

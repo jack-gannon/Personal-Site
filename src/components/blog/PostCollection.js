@@ -34,7 +34,7 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 `
 

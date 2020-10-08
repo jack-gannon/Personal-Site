@@ -13,7 +13,7 @@ const Header = styled.header`
   margin-right: auto;
   padding: 1rem;
   width: 100%;
-  max-width: ${rhythm(40)};
+  max-width: ${rhythm(36)};
   margin-top: 4rem;
   overflow-x: hidden;
 

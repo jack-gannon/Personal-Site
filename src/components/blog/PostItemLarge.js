@@ -1,10 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
-import Image from "gatsby-image"
-import { colors } from "../../utils/colors"
-import styled from "styled-components"
-import ArrowIcon from "../vectors/ArrowIcon"
-import { breakpoints } from "../../utils/breakpoints"
+import React from "react";
+import { Link } from "gatsby";
+import Image from "gatsby-image";
+import { colors } from "../../utils/colors";
+import styled from "styled-components";
+import ArrowIcon from "../vectors/ArrowIcon";
+import { breakpoints } from "../../utils/breakpoints";
 
 const PostItemLarge = ({ post }) => {
   const {
@@ -13,9 +13,9 @@ const PostItemLarge = ({ post }) => {
     category,
     date,
     description,
-  } = post.childMdx.frontmatter
-  const { slug } = post.childMdx.fields
-  const imgFluid = thumbnail.src.childImageSharp.fluid
+  } = post.childMdx.frontmatter;
+  const { slug } = post.childMdx.fields;
+  const imgFluid = thumbnail.src.childImageSharp.fluid;
   return (
     <Post>
       <ImageLink to={`/blog${slug}`}>
@@ -53,8 +53,8 @@ const PostItemLarge = ({ post }) => {
         />
       </ReadMore>
     </Post>
-  )
-}
+  );
+};
 
 const Post = styled.div`
   position: relative;
@@ -69,14 +69,14 @@ const Post = styled.div`
 
   @media (min-width: ${breakpoints.tablet.medium}) {
   }
-`
+`;
 
 const ImageLink = styled(Link)`
   display: block;
   height: 100%;
   max-height: 12rem;
   width: 100%;
-`
+`;
 
 const Thumbnail = styled(Image)`
   height: 100%;
@@ -86,14 +86,14 @@ const Thumbnail = styled(Image)`
 
   @media (min-width: 960px) {
   }
-`
+`;
 
 const Info = styled.span`
   display: flex;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: ${colors.gray30};
-`
+`;
 
 const Details = styled.div`
   width: 100%
@@ -103,7 +103,7 @@ const Details = styled.div`
   @media (min-width: ${breakpoints.tablet.medium}) {
     
   }
-`
+`;
 
 const Category = styled.p`
   text-transform: uppercase;
@@ -118,7 +118,7 @@ const Category = styled.p`
   letter-spacing: 0.125rem;
   margin-right: 0.5rem;
   margin-bottom: 0rem;
-`
+`;
 
 const PostTitle = styled.h2`
   font-size: 1.25rem;
@@ -134,7 +134,7 @@ const PostTitle = styled.h2`
   &:hover {
     text-decoration: underline;
   }
-`
+`;
 
 const Date = styled.p`
   font-family: "Helvetica Neue", sans-serif;
@@ -142,12 +142,14 @@ const Date = styled.p`
   color: ${colors.gray50};
   margin-bottom: 0rem;
   letter-spacing: 0.05rem;
-`
+`;
 
 const Description = styled.p`
   margin-bottom: 2rem;
+  font-family: "Helvetica Neue", sans-serif;
+  line-height: 1.75rem;
   color: ${colors.gray60};
-`
+`;
 
 const ReadMore = styled(Link).attrs(props => ({
   category: props.category,
@@ -177,5 +179,5 @@ const ReadMore = styled(Link).attrs(props => ({
   & svg {
     width: 1.25rem;
   }
-`
-export default PostItemLarge
+`;
+export default PostItemLarge;

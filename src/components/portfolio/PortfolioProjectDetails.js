@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import { colors } from "../../utils/colors"
+import React from "react";
+import styled from "styled-components";
+import { colors } from "../../utils/colors";
 
 const PortfolioProjectDetails = ({ client, credits, tools, role }) => {
   return (
@@ -44,8 +44,8 @@ const PortfolioProjectDetails = ({ client, credits, tools, role }) => {
         </Field>
       )}
     </Details>
-  )
-}
+  );
+};
 
 const Details = styled.section`
   grid-area: details;
@@ -53,7 +53,7 @@ const Details = styled.section`
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 2rem;
-`
+`;
 const Field = styled.div`
   display: flex;
   justify-content: space-between;
@@ -67,7 +67,7 @@ const Field = styled.div`
   & p {
     margin-bottom: 0rem;
   }
-`
+`;
 
 const Label = styled.p`
   font-family: "Helvetica Neue", sans-serif;
@@ -76,7 +76,7 @@ const Label = styled.p`
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.125em;
-`
+`;
 
 const ClientName = styled.p`
   font-family: "Helvetica Neue", sans-serif;
@@ -84,7 +84,7 @@ const ClientName = styled.p`
   font-weight: 400;
   padding-bottom: 0.125rem;
   letter-spacing: 0.025em;
-`
+`;
 
 const Role = styled.p`
   font-family: "Helvetica Neue", sans-serif;
@@ -92,32 +92,33 @@ const Role = styled.p`
   font-weight: 400;
   padding-bottom: 0.125rem;
   letter-spacing: 0.025em;
-`
+`;
 
 const Credits = styled.ul`
   list-style: none;
   margin-top: 0.125rem;
   margin-bottom: 0rem;
-`
+`;
 
 const Credit = styled.li`
   margin-bottom: 0rem;
   text-align: right;
   letter-spacing: 0.025em;
-`
+  font-size: 0.875rem;
+`;
 
 const CreditName = styled.span`
   font-family: "Helvetica Neue", sans-serif;
   color: ${colors.gray70};
   font-weight: 400;
-`
+`;
 
 const CreditTitle = styled.span`
   font-family: "Helvetica Neue", sans-serif;
   color: ${colors.gray60};
   font-weight: 300;
   letter-spacing: 0.05em;
-`
+`;
 
 const Personal = styled.span`
   font-family: "Helvetica Neue", sans-serif;
@@ -125,14 +126,14 @@ const Personal = styled.span`
   font-weight: 300;
   font-style: italic;
   letter-spacing: 0.05em;
-`
+`;
 const Tools = styled.ul`
   list-style: none;
   display: flex;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   align-items: center;
-`
+`;
 
 const Tool = styled.li`
   display: block;
@@ -151,7 +152,7 @@ const Tool = styled.li`
   &:hover img {
     opacity: 0.6;
   }
-`
+`;
 
 const Tooltip = styled.p`
   position: absolute;
@@ -180,7 +181,7 @@ const Tooltip = styled.p`
     border-style: solid;
     border-color: ${colors.gray70} transparent transparent transparent;
   }
-`
+`;
 
 const ToolIcon = styled.img`
   width: auto;
@@ -192,6 +193,6 @@ const ToolIcon = styled.img`
   letter-spacing: 0.05em;
   margin-bottom: 0rem;
   padding-bottom: 0rem;
-`
+`;
 
-export default PortfolioProjectDetails
+export default PortfolioProjectDetails;
