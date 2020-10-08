@@ -1,25 +1,25 @@
-import React, { useEffect } from "react"
-import styled, { keyframes } from "styled-components"
-import { Link, StaticQuery, graphql } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
-import { rhythm } from "../../../utils/typography"
-import { colors } from "../../../utils/colors"
-import { breakpoints } from "../../../utils/breakpoints"
+import React, { useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import { Link, StaticQuery, graphql } from "gatsby";
+import BackgroundImage from "gatsby-background-image";
+import { rhythm } from "../../../utils/typography";
+import { colors } from "../../../utils/colors";
+import { breakpoints } from "../../../utils/breakpoints";
 
 const BackgroundSection = ({ className }) => {
   // Handles focus once component is rendered
-  let blogSlideContents = React.createRef()
+  let blogSlideContents = React.createRef();
   useEffect(() => {
-    blogSlideContents.current.focus()
-  })
+    blogSlideContents.current.focus();
+  });
 
   return (
     <StaticQuery
       query={blogSlideQuery}
       render={data => {
-        const post = data.allFile.edges[0].node
-        const { title, description, thumbnail } = post.childMdx.frontmatter
-        const backgroundImageData = thumbnail.src.childImageSharp.fluid
+        const post = data.allFile.edges[0].node;
+        const { title, description, thumbnail } = post.childMdx.frontmatter;
+        const backgroundImageData = thumbnail.src.childImageSharp.fluid;
         return (
           <BackgroundImage
             Tag="section"
@@ -30,21 +30,21 @@ const BackgroundSection = ({ className }) => {
             <Contents ref={blogSlideContents}>
               <SectionHeader>Featured Blog Post</SectionHeader>
               <Details>
-                <BlogLink to={`blog/${post.childMdx.fields.slug}`}>
+                <BlogLink to={`blog${post.childMdx.fields.slug}`}>
                   <BlogTitle>{title}</BlogTitle>
                 </BlogLink>
                 <Description>{description}</Description>
-                <ReadMore to={`blog/${post.childMdx.fields.slug}`}>
+                <ReadMore to={`blog${post.childMdx.fields.slug}`}>
                   Read More...
                 </ReadMore>
               </Details>
             </Contents>
           </BackgroundImage>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
 const blogSlideQuery = graphql`
   {
@@ -85,7 +85,7 @@ const blogSlideQuery = graphql`
       }
     }
   }
-`
+`;
 
 const slideIn = keyframes`
 0% {
@@ -97,7 +97,7 @@ const slideIn = keyframes`
   opacity: 1;
   transform: translateX(0rem);
 }
-`
+`;
 
 const fadeIn = keyframes`
 0% {
@@ -107,7 +107,7 @@ const fadeIn = keyframes`
 100% {
   opacity: .8;
 }
-`
+`;
 
 const StyledBackgroundSection = styled(BackgroundSection)`
   position: relative;
@@ -117,7 +117,7 @@ const StyledBackgroundSection = styled(BackgroundSection)`
   flex-direction: column;
   justify-content: center;
   z-index: 1;
-`
+`;
 
 const Contents = styled.div`
   width: 80%;
@@ -154,7 +154,7 @@ const Contents = styled.div`
     margin-right: auto;
     max-width: ${rhythm(40)};
   }
-`
+`;
 
 const SectionHeader = styled.h2`
   font-size: 0.875rem;
@@ -166,7 +166,7 @@ const SectionHeader = styled.h2`
     font-size: 1rem;
     margin-bottom: 2rem;
   }
-`
+`;
 
 const Details = styled.div`
   width: 80%;
@@ -177,7 +177,7 @@ const Details = styled.div`
   @media (min-width: ${breakpoints.tablet.small}) {
     width: 60%;
   }
-`
+`;
 
 const BlogLink = styled(Link)`
   text-decoration: none;
@@ -187,7 +187,7 @@ const BlogLink = styled(Link)`
       opacity: 0.8;
     }
   }
-`
+`;
 
 const BlogTitle = styled.h3`
   font-size: 2rem;
@@ -197,7 +197,7 @@ const BlogTitle = styled.h3`
   @media (min-width: ${breakpoints.tablet.small}) {
     font-size: 4rem;
   }
-`
+`;
 
 const Description = styled.p`
   width: 100%;
@@ -213,7 +213,7 @@ const Description = styled.p`
   @media (min-width: ${breakpoints.desktop.small}) {
     width: 50%;
   }
-`
+`;
 
 const ReadMore = styled(Link)`
   font-family: "Helvetica Neue", sans-serif;
@@ -227,6 +227,6 @@ const ReadMore = styled(Link)`
 
   @media (min-width: ${breakpoints.tablet.small}) {
   }
-`
+`;
 
-export default StyledBackgroundSection
+export default StyledBackgroundSection;

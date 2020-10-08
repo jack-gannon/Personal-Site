@@ -1,17 +1,17 @@
-import React, { useEffect } from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styled, { keyframes } from "styled-components"
-import { rhythm } from "../../../utils/typography"
-import { colors } from "../../../utils/colors"
-import { breakpoints } from "../../../utils/breakpoints"
+import React, { useEffect } from "react";
+import { Link, StaticQuery, graphql } from "gatsby";
+import Image from "gatsby-image";
+import styled, { keyframes } from "styled-components";
+import { rhythm } from "../../../utils/typography";
+import { colors } from "../../../utils/colors";
+import { breakpoints } from "../../../utils/breakpoints";
 
 const FeaturedProjects = () => {
   // Handles focus once component is rendered
-  let projectsSlideContents = React.createRef()
+  let projectsSlideContents = React.createRef();
   useEffect(() => {
-    projectsSlideContents.current.focus()
-  })
+    projectsSlideContents.current.focus();
+  });
 
   return (
     <StaticQuery
@@ -86,13 +86,13 @@ const FeaturedProjects = () => {
         }
       `}
       render={data => {
-        const { featured1, featured2, featured3 } = data
+        const { featured1, featured2, featured3 } = data;
         return (
           <Slide>
             <Contents ref={projectsSlideContents}>
               <SectionHeader>Featured Projects</SectionHeader>
               <Grid>
-                <Project to={`/portfolio/${featured1.childMdx.fields.slug}`}>
+                <Project to={`/portfolio${featured1.childMdx.fields.slug}`}>
                   <ProjectImage
                     fluid={
                       featured1.childMdx.frontmatter.thumbnail.src
@@ -101,7 +101,7 @@ const FeaturedProjects = () => {
                     alt={featured1.childMdx.frontmatter.thumbnail.alt}
                   />
                 </Project>
-                <Project to={`/portfolio/${featured2.childMdx.fields.slug}`}>
+                <Project to={`/portfolio${featured2.childMdx.fields.slug}`}>
                   <ProjectImage
                     fluid={
                       featured2.childMdx.frontmatter.thumbnail.src
@@ -110,7 +110,7 @@ const FeaturedProjects = () => {
                     alt={featured2.childMdx.frontmatter.thumbnail.alt}
                   />
                 </Project>
-                <Project to={`/portfolio/${featured3.childMdx.fields.slug}`}>
+                <Project to={`/portfolio${featured3.childMdx.fields.slug}`}>
                   <ProjectImage
                     fluid={
                       featured3.childMdx.frontmatter.thumbnail.src
@@ -122,11 +122,11 @@ const FeaturedProjects = () => {
               </Grid>
             </Contents>
           </Slide>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
 const fadeIn = keyframes`
 0% {
@@ -137,7 +137,7 @@ const fadeIn = keyframes`
 100% {
   opacity: 1;
 }
-`
+`;
 
 const Slide = styled.section`
   display: flex;
@@ -150,7 +150,7 @@ const Slide = styled.section`
   @media (min-width: ${breakpoints.tablet.small}) {
     justify-content: center;
   }
-`
+`;
 
 const Contents = styled.div`
   width: 80%;
@@ -168,7 +168,7 @@ const Contents = styled.div`
     height: auto;
     max-width: ${rhythm(40)};
   }
-`
+`;
 
 const SectionHeader = styled.h2`
   font-size: 0.875rem;
@@ -184,7 +184,7 @@ const SectionHeader = styled.h2`
     font-size: 1rem;
     text-align: center;
   }
-`
+`;
 
 const Grid = styled.div`
   margin-bottom: 1rem;
@@ -200,7 +200,7 @@ const Grid = styled.div`
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
   }
-`
+`;
 
 const Project = styled(Link)`
   display: block;
@@ -237,7 +237,7 @@ const Project = styled(Link)`
     margin-bottom: 0rem;
     height: 18rem;
   }
-`
+`;
 
 const ProjectImage = styled(Image)`
   height: 100%;
@@ -247,6 +247,6 @@ const ProjectImage = styled(Image)`
     transform: translateY(-0.5rem);
     opacity: 0.8;
   }
-`
+`;
 
-export default FeaturedProjects
+export default FeaturedProjects;
