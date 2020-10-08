@@ -1,11 +1,11 @@
-import React from "react"
-import styled from "styled-components"
-import { rhythm } from "../../../utils/typography"
-import { breakpoints } from "../../../utils/breakpoints"
+import React from "react";
+import styled from "styled-components";
+import { rhythm } from "../../../utils/typography";
+import { breakpoints } from "../../../utils/breakpoints";
 
 const HeaderContainer = ({ children }) => {
-  return <Header>{children}</Header>
-}
+  return <Header>{children}</Header>;
+};
 
 const Header = styled.header`
   position: relative;
@@ -20,6 +20,10 @@ const Header = styled.header`
   @media (min-width: ${breakpoints.tablet.medium}) {
     overflow-x: visible;
   }
-`
 
-export default HeaderContainer
+  @media (min-width: ${breakpoints.desktop.large}) {
+    max-width: ${rhythm(40)};
+  }
+`;
+
+export default HeaderContainer;
