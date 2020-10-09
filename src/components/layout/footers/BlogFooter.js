@@ -1,9 +1,9 @@
-import React from "react"
-import Footer from "./Footer"
-import styled from "styled-components"
-import { rhythm } from "../../../utils/typography"
-import { breakpoints } from "../../../utils/breakpoints"
-import Tags from "../../blog/Tags"
+import React from "react";
+import Footer from "./Footer";
+import styled from "styled-components";
+import { rhythm } from "../../../utils/typography";
+import { breakpoints } from "../../../utils/breakpoints";
+import Tags from "../../blog/Tags";
 
 const BlogFooter = ({ post }) => {
   return (
@@ -13,12 +13,12 @@ const BlogFooter = ({ post }) => {
       </ContentBottom>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 const ContentBottom = styled.div`
   width: 100%;
-  max-width: ${rhythm(40)};
+  max-width: ${rhythm(36)};
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
@@ -28,6 +28,10 @@ const ContentBottom = styled.div`
       width: 67%;
     }
   }
-`
 
-export default BlogFooter
+  @media (min-width: ${breakpoints.desktop.large}) {
+    max-width: ${rhythm(40)};
+  }
+`;
+
+export default BlogFooter;

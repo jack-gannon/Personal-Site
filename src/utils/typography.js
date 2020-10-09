@@ -1,5 +1,5 @@
-import Typography from "typography"
-import { colors } from "./colors"
+import Typography from "typography";
+import { colors } from "./colors";
 
 // Wordpress2016.overrideThemeStyles = ({ rhythm }, options) => {
 //   return {
@@ -48,7 +48,7 @@ const typography = new Typography({
   googleFonts: [{ name: "IBM Plex Mono", styles: ["300", "400", "600"] }],
   headerFontFamily: [
     "Helvetica Neue",
-    "Segoe UI",
+    "Roboto",
     "Helvetica",
     "Arial",
     "sans-serif",
@@ -62,7 +62,7 @@ const typography = new Typography({
       marginLeft: "-1rem",
       paddingLeft: "calc(1rem - 4px)",
       fontFamily:
-        "'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', sans-serif",
+        "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
       fontWeight: 600,
       color: colors.gray70,
     },
@@ -73,13 +73,13 @@ const typography = new Typography({
       color: colors.tertiaryDarker,
     },
   }),
-})
+});
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
-  typography.injectStyles()
+  typography.injectStyles();
 }
 
-export default typography
-export const rhythm = typography.rhythm
-export const scale = typography.scale
+export default typography;
+export const rhythm = typography.rhythm;
+export const scale = typography.scale;
